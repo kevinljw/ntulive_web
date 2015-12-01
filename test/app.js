@@ -31,6 +31,7 @@ describe('GET /api', function() {
       .get('/api')
       .expect(200, done);
   });
+  console.log("--/api");
 });
 
 describe('GET /contact', function() {

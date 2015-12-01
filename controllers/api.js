@@ -23,6 +23,7 @@ var request;
 var _ = require('lodash');
 var async = require('async');
 var querystring = require('querystring');
+var User = require('../models/User');
 
 var secrets = require('../config/secrets');
 
@@ -31,9 +32,33 @@ var secrets = require('../config/secrets');
  * List of API examples.
  */
 exports.getApi = function(req, res) {
-  res.render('api/index', {
-    title: 'API Examples'
+  // get all the users
+  var formatedUserData=[];
+
+  User.find({}, function(err, users) {
+    if (err) throw err;
+
+    // object of all the users
+    // var allUsers = JSON.parse(users);
+    console.log('users.length:'+users.length);
+    
+    users.forEach(function(eachUser){
+      var formatedItem = {
+        'email': eachUser.email,
+        'name': eachUser.profile.name
+      };
+      formatedUserData.push(formatedItem);
+      console.log(eachUser.email);
+    });
+
+    res.render('api/index', {
+      title: 'API Examples',
+      userData: formatedUserData
+    });
+    
   });
+
+  
 };
 
 /**
