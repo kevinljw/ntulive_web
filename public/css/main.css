@@ -11728,3 +11728,11 @@ footer p, footer ul {
 .fa {
   margin-right: 6px;
 }
+
+.kv-avatar .file-preview, .kv-avatar .file-preview:hovor {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  text-align: center;
+}

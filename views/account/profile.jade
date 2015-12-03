@@ -3,9 +3,27 @@ extends ../layout
 block content
   .page-header
     h3 Profile Information
-
+  script.
+    userPic="#{user.profile.picture}";
+  form.form-horizontal(action='account/uploadPImg/'+user.id, method='POST', enctype='multipart/form-data')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-3.control-label(for='gravatar') Profile Image
+      .col-sm-4
+        if user.profile.picture
+          img(src="uploadPImg/#{user.profile.picture}", class='profile', width='180', height='180')
+        else 
+          img(src="img/default_profile.png", class='profile', width='180', height='180')
+    .form-group
+      label.col-sm-3.control-label(for='userPImg') Image Upload
+      .col-sm-7
+        input.file(id='input-1', type='file', data-preview-file-type='text', name='userPImg')
   form.form-horizontal(action='/account/profile', method='POST')
     input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-3.control-label(for='status') Status
+      .col-sm-7
+        input.form-control(type='status', name='status', id='status', disabled='disabled', value='#{user.profile.status}')  
     .form-group
       label.col-sm-3.control-label(for='email') Email
       .col-sm-7
@@ -32,15 +50,10 @@ block content
       .col-sm-7
         input.form-control(type='text', name='website', id='website', value='#{user.profile.website}')
     .form-group
-      label.col-sm-3.control-label(for='gravatar') Gravatar
-      .col-sm-4
-        img(src="#{user.gravatar()}", class='profile', width='100', height='100')
-    .form-group
       .col-sm-offset-3.col-sm-4
         button.btn.btn.btn-primary(type='submit')
           i.fa.fa-pencilr
           | Update Profile
-
   .page-header
     h3 Change Password
 

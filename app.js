@@ -1,6 +1,8 @@
 /**
  * Module dependencies.
  */
+// var fs = require('fs');
+
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var compress = require('compression');
@@ -9,7 +11,20 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 var errorHandler = require('errorhandler');
+
+var multer  = require('multer');
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/uploadPImg/'); // Absolute path. Folder must exist, will not be created for you.
+  },
+  filename: function (req, file, cb) {
+    cb(null, req.params.id + file.originalname.substr(file.originalname.lastIndexOf('.')));
+  }
+})
+var uploadPImg = multer({ storage: storage });
+
 var lusca = require('lusca');
+var csrf = lusca.csrf();
 var methodOverride = require('method-override');
 
 var _ = require('lodash');
@@ -21,14 +36,16 @@ var passport = require('passport');
 var expressValidator = require('express-validator');
 var sass = require('node-sass-middleware');
 
-
 /**
  * Controllers (route handlers).
  */
 var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
 var apiController = require('./controllers/api');
+var peopleController = require('./controllers/people');
 var contactController = require('./controllers/contact');
+var introController = require('./controllers/intro');
+var shareController = require('./controllers/sharing');
 
 /**
  * API keys and Passport configuration.
@@ -53,6 +70,7 @@ mongoose.connection.on('error', function() {
 /**
  * Express configuration.
  */
+
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -80,7 +98,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use(lusca({
-  csrf: true,
+  csrf: false,
   xframe: 'SAMEORIGIN',
   xssProtection: true
 }));
@@ -96,7 +114,17 @@ app.use(function(req, res, next) {
 });
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 
-
+// app.use(function(req, res, next) {
+//   // Paths that start with /account/upload don't need CSRF
+//   console.log(req.originalUrl);
+//   if (/^\/account/.test(req.originalUrl) || /^\/account\/upload/.test(req.originalUrl)) {
+//     console.log("[Skip]-------");
+//     next();
+//   } else {
+//     console.log("[csrf]-------");
+//     csrf(req, res, next);
+//   }
+// });
 /**
  * Primary app routes.
  */
@@ -112,11 +140,22 @@ app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
 app.get('/contact', passportConf.isAuthenticated, contactController.getContact);
 app.post('/contact', passportConf.isAuthenticated, contactController.postContact);
+app.get('/people', passportConf.isAuthenticated, peopleController.getPeople);
+app.post('/people', passportConf.isAuthenticated, peopleController.postPeople);
+app.get('/people/:id', passportConf.isAuthenticated, peopleController.getPeopleId);
+// app.get('/people/mentors', passportConf.isAuthenticated, peopleController.getMentors);
+// app.get('/people/ta', passportConf.isAuthenticated, peopleController.getTA);
+// app.get('/people/faculty', passportConf.isAuthenticated, peopleController.getFaculty);
+app.get('/intro/:id', passportConf.isAuthenticated, introController.getIntro);
+app.get('/sharing', passportConf.isAuthenticated, shareController.getSharing);
+
+
 app.get('/account', passportConf.isAuthenticated, userController.getAccount);
 app.post('/account/profile', passportConf.isAuthenticated, userController.postUpdateProfile);
 app.post('/account/password', passportConf.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
+app.post('/account/uploadPImg/:id', passportConf.isAuthenticated, uploadPImg.single('userPImg'), userController.postPImg);
 
 /**
  * API examples routes.

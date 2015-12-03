@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h2 People
+  p
+  p Meet the team behind NTU LIVE
+  p
+  
+  .row
+    ul(style='list-style-type:none;',class='nav nav-tabs')
+      li(role="presentation",class="active"): a(href='/people/student') Students
+        .badge 28
+      li(role="presentation"): a(href='/people/mentor',role="presentation") Mentors
+        .badge 4
+      li(role="presentation"): a(href='/people/ta',role="presentation") TA
+      li(role="presentation"): a(href='/people/faculty',role="presentation") Faculty
+  p
+  include ./people/viewUsers.jade
+  

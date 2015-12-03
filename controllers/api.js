@@ -32,32 +32,34 @@ var secrets = require('../config/secrets');
  * List of API examples.
  */
 exports.getApi = function(req, res) {
-  // get all the users
-  var formatedUserData=[];
+  // // get all the users
+  // var formatedUserData=[];
 
-  User.find({}, function(err, users) {
-    if (err) throw err;
+  // User.find({}, function(err, users) {
+  //   if (err) throw err;
 
-    // object of all the users
-    // var allUsers = JSON.parse(users);
-    console.log('users.length:'+users.length);
+  //   // object of all the users
+  //   // var allUsers = JSON.parse(users);
+  //   console.log('users.length:'+users.length);
     
-    users.forEach(function(eachUser){
-      var formatedItem = {
-        'email': eachUser.email,
-        'name': eachUser.profile.name
-      };
-      formatedUserData.push(formatedItem);
-      console.log(eachUser.email);
-    });
+  //   users.forEach(function(eachUser){
+  //     var formatedItem = {
+  //       'email': eachUser.email,
+  //       'name': eachUser.profile.name
+  //     };
+  //     formatedUserData.push(formatedItem);
+  //     console.log(eachUser.email);
+  //   });
 
+  //   res.render('api/index', {
+  //     title: 'API Examples',
+  //     userData: formatedUserData
+  //   });
+    
+  // });
     res.render('api/index', {
-      title: 'API Examples',
-      userData: formatedUserData
+      title: 'API Examples'
     });
-    
-  });
-
   
 };
 

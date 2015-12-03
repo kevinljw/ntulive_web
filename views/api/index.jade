@@ -2,26 +2,7 @@ extends ../layout
 
 block content
   h2 API Examples
-  p Meet the team behind NTU LIVE
-  p
   
-  .row
-    ul(style='list-style-type:none;',class='nav nav-tabs')
-      li(role="presentation",class="active"): a(href='people/students') Students
-        .badge 28
-      li(role="presentation"): a(href='people/mentors',role="presentation") Mentors
-        .badge 4
-      li(role="presentation"): a(href='people/ta',role="presentation") TA
-      li(role="presentation"): a(href='people/faculty',role="presentation") Faculty
-      li(role="presentation"): a(href='people/all',role="presentation") View Full People
-  p
-  .row  
-    each val in userData
-      .col-sm-3(style='text-align: center;min-height: 250px;')
-        a.eachPeoplePic(href='#')
-          img(src='https://graph.facebook.com/964466123603712/picture?type=large', height=155)
-        .eachPeopleText(style='padding-top: 23px; font-size: 16px;font-weight: 500; list-style-type:none; text-decoration:none; color: #000;')
-          li= val.name
   .row
     .col-sm-4
       a(href='/api/github', style='color: #fff')

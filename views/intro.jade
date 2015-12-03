@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h2 Intro
+  p
+  p Meet the team behind NTU LIVE
+  p
+  
+  p #{thisProfile.name}
+  if thisProfile.picture
+    img(src="/uploadPImg/#{thisProfile.picture}", height=155)
+  else
+    img(src='https://graph.facebook.com/964466123603712/picture?type=large', height=155)
+  p
+  
+  

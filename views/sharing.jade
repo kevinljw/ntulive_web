@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  .page-header
+    h3 Sharing
+   
+  form.form-horizontal(action='sharing/uploadfiles/', method='POST', enctype='multipart/form-data')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-3.control-label(for='userFiles') Upload
+      .col-sm-7
+        input.file(id='input-2', type='file', data-preview-file-type='text',multiple, name='userFiles')

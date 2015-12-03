@@ -1,0 +1,8 @@
+
+.row  
+    each val in userData
+      .col-sm-3(style='text-align: center;min-height: 250px;')
+        a.eachPeoplePic(href='/intro/'+val.id)
+          img(src="/uploadPImg/#{user.profile.picture}", width='180')
+        .eachPeopleText(style='padding-top: 23px; font-size: 16px;font-weight: 500; list-style-type:none; text-decoration:none; color: #000;')
+          li= val.name
