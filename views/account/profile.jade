@@ -4,14 +4,15 @@ block content
   .page-header
     h3 Profile Information
   script.
-    userPic="#{user.profile.picture}";
+    userPic="#{user.profile.picture}"
+    usersList="#{ulist}"
   form.form-horizontal(action='account/uploadPImg/'+user.id, method='POST', enctype='multipart/form-data')
     input(type='hidden', name='_csrf', value=_csrf)
     .form-group
       label.col-sm-3.control-label(for='gravatar') Profile Image
       .col-sm-4
         if user.profile.picture
-          img(src="uploadPImg/#{user.profile.picture}", class='profile', width='180', height='180')
+          img(src="/uploadPImg/#{user.profile.picture}", class='profile', width='180', height='180')
         else 
           img(src="img/default_profile.png", class='profile', width='180', height='180')
     .form-group
@@ -85,37 +86,71 @@ block content
           i.fa.fa-trash
           | Delete my account
 
-  .page-header
-    h3 Linked Accounts
-  .form-horizontal
-    .form-group
-      .col-sm-offset-3.col-sm-4
-        if user.instagram
-          p: a.text-danger(href='/account/unlink/instagram') Unlink your Instagram account
-        else
-          p: a(href='/auth/instagram') Link your Instagram account
-      .col-sm-offset-3.col-sm-4
-        if user.google
-          p: a.text-danger(href='/account/unlink/google') Unlink your Google account
-        else
-          p: a(href='/auth/google') Link your Google account
-      .col-sm-offset-3.col-sm-4
-        if user.facebook
-          p: a.text-danger(href='/account/unlink/facebook') Unlink your Facebook account
-        else
-          p: a(href='/auth/facebook') Link your Facebook account
-      .col-sm-offset-3.col-sm-4
-        if user.twitter
-          p: a.text-danger(href='/account/unlink/twitter') Unlink your Twitter account
-        else
-          p: a(href='/auth/twitter') Link your Twitter account
-      .col-sm-offset-3.col-sm-4
-        if user.github
-          p: a.text-danger(href='/account/unlink/github') Unlink your GitHub account
-        else
-          p: a(href='/auth/github') Link your GitHub account
-      .col-sm-offset-3.col-sm-4
-        if user.linkedin
-          p: a.text-danger(href='/account/unlink/linkedin') Unlink your LinkedIn account
-        else
-          p: a(href='/auth/linkedin') Link your LinkedIn account
+  if user.IsAdmin
+    .page-header
+      h3 Administration
+
+    .panel(class='panel-default')
+      .panel-heading: | User List
+      select#NameSelect(name='NameSelect',form='adminUsers', onchange='nameSelectFoo()')
+        each val in ulist
+          option(value='#{val.name}') #{val.name}
+      #demo
+      table(class='table-bordered')
+        thead
+          tr
+            th Name
+            th Email
+            th Admin
+            th Status
+        tbody
+          each val in ulist
+            tr
+              td #{val.name}
+              td #{val.email}
+              td 
+                select(name='adminSelect',form='adminUsers', value='#{val.IsAdmin}')
+                  option(value='true') true
+                  option(value='false') false
+              td
+                select(name='statusSelect',form='adminUsers', value='#{val.status}')
+                  option(value='mentor') mentor
+                  option(value='student') student
+                  option(value='ta') ta
+                  option(value='faculty') faculty
+                
+              
+  //- .page-header
+  //-   h3 Linked Accounts
+  //- .form-horizontal
+  //-   .form-group
+  //-     .col-sm-offset-3.col-sm-4
+  //-       if user.instagram
+  //-         p: a.text-danger(href='/account/unlink/instagram') Unlink your Instagram account
+  //-       else
+  //-         p: a(href='/auth/instagram') Link your Instagram account
+  //-     .col-sm-offset-3.col-sm-4
+  //-       if user.google
+  //-         p: a.text-danger(href='/account/unlink/google') Unlink your Google account
+  //-       else
+  //-         p: a(href='/auth/google') Link your Google account
+  //-     .col-sm-offset-3.col-sm-4
+  //-       if user.facebook
+  //-         p: a.text-danger(href='/account/unlink/facebook') Unlink your Facebook account
+  //-       else
+  //-         p: a(href='/auth/facebook') Link your Facebook account
+  //-     .col-sm-offset-3.col-sm-4
+  //-       if user.twitter
+  //-         p: a.text-danger(href='/account/unlink/twitter') Unlink your Twitter account
+  //-       else
+  //-         p: a(href='/auth/twitter') Link your Twitter account
+  //-     .col-sm-offset-3.col-sm-4
+  //-       if user.github
+  //-         p: a.text-danger(href='/account/unlink/github') Unlink your GitHub account
+  //-       else
+  //-         p: a(href='/auth/github') Link your GitHub account
+  //-     .col-sm-offset-3.col-sm-4
+  //-       if user.linkedin
+  //-         p: a.text-danger(href='/account/unlink/linkedin') Unlink your LinkedIn account
+  //-       else
+  //-         p: a(href='/auth/linkedin') Link your LinkedIn account

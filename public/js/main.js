@@ -12,7 +12,7 @@ $(document).ready(function() {
     '<i class="glyphicon glyphicon-tag"></i>' +
     '</button>'; 
 
-  $("#input-1").fileinput({
+    $("#input-1").fileinput({
         previewFileType: "image",
         browseClass: "btn btn-success",
         browseLabel: "Pick Image",
@@ -20,7 +20,7 @@ $(document).ready(function() {
         removeClass: "btn btn-danger",
         removeLabel: "Delete",
         removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
-        uploadClass: "btsn btn-info",
+        uploadClass: "btn btn-info",
         uploadLabel: "Upload",
         uploadIcon: "<i class=\"glyphicon glyphicon-upload\"></i> ",
         overwriteInitial: true,
@@ -38,4 +38,10 @@ $(document).ready(function() {
         maxFileCount: 10,
         showPreview: false,
     });
+    
 });
+function nameSelectFoo() {
+        var selIndex = document.getElementById("NameSelect").selectedIndex;
+        console.log(usersList);
+        document.getElementById("demo").innerHTML = "You selected: " + usersList[selIndex].email;
+}

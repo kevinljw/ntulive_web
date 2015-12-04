@@ -5,7 +5,7 @@ var nodemailer = require('nodemailer');
 var passport = require('passport');
 var User = require('../models/User');
 var secrets = require('../config/secrets');
-
+var adminList = ['evin92@gmail.tw'];
 /**
  * GET /login
  * Login page.
@@ -90,14 +90,29 @@ exports.postSignup = function(req, res, next) {
     req.flash('errors', errors);
     return res.redirect('/signup');
   }
+  // console.log(adminList.indexOf(req.body.email));
+  if(adminList.indexOf(req.body.email)>-1){
+    console.log("same");
+    var user = new User({
+      email: req.body.email,
+      IsAdmin: true,
+      profile: {
+        name: req.body.uname,
+      },
+      password: req.body.password
+    });
+  }
+  else{
+    var user = new User({
+      email: req.body.email,
+      profile: {
+        name: req.body.uname,
+      },
+      password: req.body.password
+    });
 
-  var user = new User({
-    email: req.body.email,
-    profile: {
-      name: req.body.uname,
-    },
-    password: req.body.password
-  });
+  }
+  
 
   User.findOne({ email: req.body.email }, function(err, existingUser) {
     if (existingUser) {
@@ -123,8 +138,30 @@ exports.postSignup = function(req, res, next) {
  * Profile page.
  */
 exports.getAccount = function(req, res) {
-  res.render('account/profile', {
-    title: 'Account Management'
+  var usersList = [];
+
+  User.find({}, function(err, users) {
+    if (err) throw err;
+    users.forEach(function(eachUser,index){
+
+      var thisOneData = {
+          'name': eachUser.profile.name,
+          'email':  eachUser.email,
+          'IsAdmin': eachUser.IsAdmin,
+          'status': eachUser.profile.status
+      } 
+
+      usersList.push(thisOneData);
+
+      if(index==users.length-1){
+          res.render('account/profile', {
+            title: 'Account Management',
+            ulist: usersList
+          });
+      }
+    });
+    
+    
   });
 };
 
