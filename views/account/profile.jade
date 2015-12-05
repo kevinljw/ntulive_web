@@ -107,15 +107,43 @@ block content
         h3 Administration
       .panel(class='panel-default')
         .panel-heading: | White List (Email)
+        
         form.form-horizontal(action='/account/whitelist', method='POST')
           input(type='hidden', name='_csrf', value=_csrf)
+          .panelContainer
+            table(style='width:100%')
+              thead
+                tr
+                  th Status
+                  th Email
+              tbody
+                each val in wList
+                  tr
+                    td #{val.status}
+                    td #{val.email}
+          .form-group
+            label.col-sm-3.control-label(for='whitelist_status') Status
+            .col-sm-7
+              select(name='whitelist_status', id='whitelist_status')
+                    option(value='student') Student
+                    option(value='mentor') Mentor
+                    option(value='ta') TA
+                    option(value='faculty') Faculty
           .form-group
             label.col-sm-3.control-label(for='whitelist') Add Email
             .col-sm-7
               input.form-control(type='text', name='whitelist', id='whitelist')
+          
           .form-group
             .col-sm-offset-3.col-sm-4
               button.btn.btn-primary(type='submit') Post This Email
+        form.form-horizontal(action='/account/delete_whitelist', method='POST')
+          .form-group
+            input(type='hidden', name='_csrf', value=_csrf)
+            .col-sm-offset-3.col-sm-4
+              button.btn.btn-danger(type='submit')
+                i.fa.fa-trash
+                | Delete lastest Item
           //- form.form-horizontal(action='/account/whitelist', method='POST')
           //-   input(type='hidden', name='_csrf', value=_csrf)
           //-   .form-group
@@ -128,34 +156,34 @@ block content
           //-         i.fa.fa-pencilr
           //-         | Update Profile
 
-      .panel(class='panel-default')
-        .panel-heading: | User List
-        select#NameSelect(name='NameSelect',form='adminUsers', onchange='nameSelectFoo()')
-          each val in ulist
-            option(value='#{val.name}') #{val.name}
-        #demo
-        table(class='table-bordered')
-          thead
-            tr
-              th Name
-              th Email
-              th Admin
-              th Status
-          tbody
-            each val in ulist
-              tr
-                td #{val.name}
-                td #{val.email}
-                td 
-                  select(name='adminSelect',form='adminUsers', value='#{val.IsAdmin}')
-                    option(value='true') true
-                    option(value='false') false
-                td
-                  select(name='statusSelect',form='adminUsers', value='#{val.status}')
-                    option(value='mentor') mentor
-                    option(value='student') student
-                    option(value='ta') ta
-                    option(value='faculty') faculty
+      //- .panel(class='panel-default')
+      //-   .panel-heading: | User List
+      //-   select#NameSelect(name='NameSelect',form='adminUsers', onchange='nameSelectFoo()')
+      //-     each val in ulist
+      //-       option(value='#{val.name}') #{val.name}
+      //-   #demo
+      //-   table(class='table-bordered')
+      //-     thead
+      //-       tr
+      //-         th Name
+      //-         th Email
+      //-         th Admin
+      //-         th Status
+      //-     tbody
+      //-       each val in ulist
+      //-         tr
+      //-           td #{val.name}
+      //-           td #{val.email}
+      //-           td 
+      //-             select(name='adminSelect',form='adminUsers', value='#{val.IsAdmin}')
+      //-               option(value='true') true
+      //-               option(value='false') false
+      //-           td
+      //-             select(name='statusSelect',form='adminUsers', value='#{val.status}')
+      //-               option(value='mentor') mentor
+      //-               option(value='student') student
+      //-               option(value='ta') ta
+      //-               option(value='faculty') faculty
                   
                 
     //- .page-header

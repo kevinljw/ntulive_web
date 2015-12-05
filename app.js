@@ -162,7 +162,8 @@ app.post('/account/delete', passportConf.isAuthenticated, userController.postDel
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
 app.post('/account/uploadPImg/:id', passportConf.isAuthenticated, uploadPImg.single('userPImg'), userController.postPImg);
 
-app.post('/account/whitelist', passportConf.isAuthenticated, adminController.postEmailToWhitelist);
+app.post('/account/whitelist', passportConf.isAuthenticated, userController.postEmailToWhitelist);
+app.post('/account/delete_whitelist', passportConf.isAuthenticated, userController.postDeleteLastWhitelist);
 /**
  * API examples routes.
  */

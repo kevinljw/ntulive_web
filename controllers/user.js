@@ -6,6 +6,72 @@ var passport = require('passport');
 var User = require('../models/User');
 var secrets = require('../config/secrets');
 var adminList = ['evin92@gmail.tw'];
+var fs = require('fs');
+var whiteListArr;
+var whiteListArr_email=[];
+
+loadWhiteListArr(whiteListArr);
+
+function loadWhiteListArr(listArr){
+  fs.readFile('./database/white_list.json', 'utf8', function (err,data) {
+        if (err) throw err;
+        whiteListArr = JSON.parse(data);
+        whiteListArr.forEach(function(item){
+          whiteListArr_email.push(item.email);
+
+        });
+        // console.log(data);
+        console.log("wList:"+whiteListArr);
+   });
+
+}
+function saveWhiteListArr(){
+  fs.writeFile("./database/white_list.json", JSON.stringify(whiteListArr), function(err) {
+            if(err){
+                return console.log(err);
+            }
+            console.log("The file was saved!");
+  }); 
+
+}
+exports.postDeleteLastWhitelist = function(req, res, next) {
+  whiteListArr.pop();
+  whiteListArr_email.pop();
+  saveWhiteListArr();
+  return res.redirect('/account');
+};
+
+exports.postEmailToWhitelist = function(req, res, next) {
+  // console.log("status:"+req.body.whitelist_status);
+  req.assert('whitelist', 'Email is not valid').isEmail();
+  // req.assert('uname', 'User name must be at least 1 characters long').len(1);
+  // req.assert('password', 'Password must be at least 4 characters long').len(4);
+  // req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
+
+  var errors = req.validationErrors();
+
+  if (errors) {
+    req.flash('errors', errors);
+    return res.redirect('/account');
+  }
+  
+  if(req.body.whitelist.indexOf('@')>-1){
+    var newItem = {
+      status: req.body.whitelist_status,
+      email: req.body.whitelist
+    }
+    whiteListArr.push(newItem);
+    whiteListArr_email.push(whiteListArr.email);
+    // console.log("whitelist:"+req.body.whitelist);
+    saveWhiteListArr();
+    return res.redirect('/account');
+  }
+  else{
+    req.flash('errors', { msg: 'This is not a email address.' });
+    return res.redirect('/account');
+
+  }
+};
 /**
  * GET /login
  * Login page.
@@ -90,47 +156,57 @@ exports.postSignup = function(req, res, next) {
     req.flash('errors', errors);
     return res.redirect('/signup');
   }
-  // console.log(adminList.indexOf(req.body.email));
-  if(adminList.indexOf(req.body.email)>-1){
-    console.log("same");
-    var user = new User({
-      email: req.body.email,
-      IsAdmin: true,
-      profile: {
-        name: req.body.uname,
-      },
-      password: req.body.password
+  
+  // console.log('email:'+whiteListArr_email);
+  var findWlistIndex = whiteListArr_email.indexOf(req.body.email);
+  if(findWlistIndex>-1){
+    console.log('--'+whiteListArr[findWlistIndex].status);
+    // console.log(adminList.indexOf(req.body.email));
+    if(adminList.indexOf(req.body.email)>-1){
+      console.log("same");
+      var user = new User({
+        email: req.body.email,
+        IsAdmin: true,
+        profile: {
+          name: req.body.uname,
+          status: whiteListArr[findWlistIndex].status
+        },
+        password: req.body.password
+      });
+    }
+    else{
+      var user = new User({
+        email: req.body.email,
+        profile: {
+          name: req.body.uname,
+          status: whiteListArr[findWlistIndex].status
+        },
+        password: req.body.password
+      });
+
+    }
+    User.findOne({ email: req.body.email }, function(err, existingUser) {
+            if (existingUser) {
+              req.flash('errors', { msg: 'Account with that email address already exists.' });
+              return res.redirect('/signup');
+            }
+            user.save(function(err) {
+              if (err) {
+                return next(err);
+              }
+              req.logIn(user, function(err) {
+                if (err) {
+                  return next(err);
+                }
+                return res.redirect('/');
+              });
+            });
     });
   }
   else{
-    var user = new User({
-      email: req.body.email,
-      profile: {
-        name: req.body.uname,
-      },
-      password: req.body.password
-    });
-
+          req.flash('errors', { msg: 'Account Forbbiden' });
+          return res.redirect('/signup');
   }
-  
-
-  User.findOne({ email: req.body.email }, function(err, existingUser) {
-    if (existingUser) {
-      req.flash('errors', { msg: 'Account with that email address already exists.' });
-      return res.redirect('/signup');
-    }
-    user.save(function(err) {
-      if (err) {
-        return next(err);
-      }
-      req.logIn(user, function(err) {
-        if (err) {
-          return next(err);
-        }
-        res.redirect('/');
-      });
-    });
-  });
 };
 
 /**
@@ -156,7 +232,8 @@ exports.getAccount = function(req, res) {
       if(index==users.length-1){
           res.render('account/profile', {
             title: 'Account Management',
-            ulist: usersList
+            ulist: usersList,
+            wList: whiteListArr
           });
       }
     });

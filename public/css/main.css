@@ -11837,3 +11837,12 @@ footer p, footer ul {
   font-weight: 700;
   padding-right: 20px;
 }
+
+.panelContainer {
+  list-style-type: decimal;
+  padding: 30px;
+  line-height: 30px;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
