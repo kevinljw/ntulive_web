@@ -14,7 +14,9 @@ exports.getIntro = function(req, res) {
 
       var formatedData = {
           'name': thisUser.profile.name,
-          'picture': thisUser.profile.picture
+          'picture': thisUser.profile.picture,
+          'job': thisUser.profile.job,
+          'statement': thisUser.profile.statement
       }
 
       res.render('intro', {

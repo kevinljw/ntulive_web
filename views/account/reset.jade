@@ -1,7 +1,7 @@
-extends ../layout
+extends ../layoutHidden
 
 block content
-  .col-sm-8.col-sm-offset-2
+  .col-sm-8.col-sm-offset-2.container
     form(method='POST')
       legend Reset Password
       input(type='hidden', name='_csrf', value=_csrf)

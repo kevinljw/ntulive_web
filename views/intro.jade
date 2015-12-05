@@ -1,16 +1,97 @@
-extends layout
+extends layoutGray
 
 block content
-  h2 Intro
-  p
-  p Meet the team behind NTU LIVE
-  p
-  
-  p #{thisProfile.name}
-  if thisProfile.picture
-    img(src="/uploadPImg/#{thisProfile.picture}", height=155)
-  else
-    img(src='https://graph.facebook.com/964466123603712/picture?type=large', height=155)
-  p
-  
-  
+  .container.containerIntro
+    .row
+      .col-sm-3
+        if thisProfile.picture
+          img.propic(src="/uploadPImg/#{thisProfile.picture}", alt='')
+        else
+          img.propic(src='https://graph.facebook.com/964466123603712/picture?type=large')
+        //- photo end
+      .col-sm-9
+        .cv-title
+          .row
+            .col-sm-7
+              h1 #{thisProfile.name}
+            |                         
+            .col-sm-5.text-right.dl-share
+              //- AddToAny BEGIN
+              //- a.a2a_dd.btn.btn-default(href='')
+              //-   span.fa.fa-share
+              //-   |  Share
+              //- |                             
+              //- script(type='text/javascript').
+              //-   var a2a_config = a2a_config || {};
+              //-   a2a_config.linkname = "Minimal CV by EvenFly";
+              //-   a2a_config.num_services = 6;
+              //-   a2a_config.prioritize = ["facebook", "twitter", "google_plus", "linkedin", "pinterest", "email"];
+              //- |                             
+              //- script(type='text/javascript', src='//static.addtoany.com/menu/page.js')
+              //- AddToAny END
+              a.btn.btn-success(href='')
+                span.fa.fa-comment
+                |  FB Message
+          |                     
+          h2 #{thisProfile.job}
+
+        //- Title end
+        //-
+          ===========================
+          SOCIAL & CONTACT
+          ============================
+        .row
+          .col-sm-4
+            ul.list-unstyled
+              li
+                a(href='')
+                  span.social.fa.fa-home
+                  | My Website
+              |                                                    
+              li
+                a(href='mailto:support@evenfly.com')
+                  span.social.fa.fa-envelope-o
+                  | My E-mail
+          //- social 1st col end
+          .col-sm-4
+            ul.list-unstyled
+              li
+                a(href='')
+                  span.social.fa.fa-facebook
+                  | Facebook
+              |                             
+              li
+                a(href='')
+                  span.social.fa.fa-twitter
+                  | Twitter
+              |                             
+              
+          //- social 2nd col end
+          .col-sm-4
+            ul.list-unstyled
+              li
+                a(href='')
+                  span.social.fa.fa-linkedin
+                  | Linkedin                                                 
+              li
+                a(href='')
+                  span.social.fa.fa-instagram
+                  | Instagram
+    p
+    hr
+    p       
+
+    .col-md-9.mainleft
+      .row.mobmid
+        .col-sm-1
+          span.secicon.fa.fa-user
+        //- icon end
+        .col-sm-11
+          h3 Personal statement 
+          |                     
+          p #{thisProfile.statement}
+          p
+        //- info end
+      //- personal statement end
+      hr
+      |             

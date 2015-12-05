@@ -50,6 +50,7 @@ var contactController = require('./controllers/contact');
 var introController = require('./controllers/intro');
 var shareController = require('./controllers/sharing');
 var announcementsController = require('./controllers/announcements');
+var adminController = require('./controllers/admin');
 /**
  * API keys and Passport configuration.
  */
@@ -161,6 +162,7 @@ app.post('/account/delete', passportConf.isAuthenticated, userController.postDel
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
 app.post('/account/uploadPImg/:id', passportConf.isAuthenticated, uploadPImg.single('userPImg'), userController.postPImg);
 
+app.post('/account/whitelist', passportConf.isAuthenticated, adminController.postEmailToWhitelist);
 /**
  * API examples routes.
  */

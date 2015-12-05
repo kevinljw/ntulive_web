@@ -21,7 +21,9 @@ var userSchema = new mongoose.Schema({
     status: { type: String, default: 'student' },
     location: { type: String, default: '' },
     website: { type: String, default: '' },
-    picture: { type: String, default: '' }
+    picture: { type: String, default: '' },
+    job: { type: String, default: 'Student' },
+    statement: { type: String, default: '' }
   },
 
   resetPasswordToken: String,

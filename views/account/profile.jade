@@ -1,156 +1,194 @@
 extends ../layout
 
 block content
-  .page-header
-    h3 Profile Information
-  script.
-    userPic="#{user.profile.picture}"
-    usersList="#{ulist}"
-  form.form-horizontal(action='account/uploadPImg/'+user.id, method='POST', enctype='multipart/form-data')
-    input(type='hidden', name='_csrf', value=_csrf)
-    .form-group
-      label.col-sm-3.control-label(for='gravatar') Profile Image
-      .col-sm-4
-        if user.profile.picture
-          img(src="/uploadPImg/#{user.profile.picture}", class='profile', width='180', height='180')
-        else 
-          img(src="img/default_profile.png", class='profile', width='180', height='180')
-    .form-group
-      label.col-sm-3.control-label(for='userPImg') Image Upload
-      .col-sm-7
-        input.file(id='input-1', type='file', data-preview-file-type='text', name='userPImg')
-  form.form-horizontal(action='/account/profile', method='POST')
-    input(type='hidden', name='_csrf', value=_csrf)
-    .form-group
-      label.col-sm-3.control-label(for='status') Status
-      .col-sm-7
-        input.form-control(type='status', name='status', id='status', disabled='disabled', value='#{user.profile.status}')  
-    .form-group
-      label.col-sm-3.control-label(for='email') Email
-      .col-sm-7
-        input.form-control(type='email', name='email', id='email', value='#{user.email}')
-    .form-group
-      label.col-sm-3.control-label(for='name') Name
-      .col-sm-7
-        input.form-control(type='text', name='name', id='name', value='#{user.profile.name}')
-    .form-group
-      label.col-sm-3.control-label(for='gender') Gender
-      .col-sm-4
-        label.radio.col-sm-4
-          input(type='radio', checked=user.profile.gender=='male', name='gender', value='male', data-toggle='radio')
-          span Male
-        label.radio.col-sm-4
-          input(type='radio', checked=user.profile.gender=='female', name='gender', value='female', data-toggle='radio')
-          span Female
-    .form-group
-      label.col-sm-3.control-label(for='location') Location
-      .col-sm-7
-        input.form-control(type='text', name='location', id='location', value='#{user.profile.location}')
-    .form-group
-      label.col-sm-3.control-label(for='website') Website
-      .col-sm-7
-        input.form-control(type='text', name='website', id='website', value='#{user.profile.website}')
-    .form-group
-      .col-sm-offset-3.col-sm-4
-        button.btn.btn.btn-primary(type='submit')
-          i.fa.fa-pencilr
-          | Update Profile
-  .page-header
-    h3 Change Password
+  .row.jumbotron
+    .container
+      h2 User Profile
+      p
+      p 
+      p 
 
-  form.form-horizontal(action='/account/password', method='POST')
-    input(type='hidden', name='_csrf', value=_csrf)
-    .form-group
-      label.col-sm-3.control-label(for='password') New Password
-      .col-sm-7
-        input.form-control(type='password', name='password', id='password')
-    .form-group
-      label.col-sm-3.control-label(for='confirmPassword') Confirm Password
-      .col-sm-7
-        input.form-control(type='password', name='confirmPassword', id='confirmPassword')
-    .form-group
-      .col-sm-offset-3.col-sm-4
-        button.btn.btn-primary(type='submit')
-          i.fa.fa-lock
-          | Change Password
-
-  .page-header
-    h3 Delete Account
-
-  form.form-horizontal(action='/account/delete', method='POST')
-    .form-group
-      p.col-sm-offset-3.col-sm-4 You can delete your account, but keep in mind this action is irreversible.
-      input(type='hidden', name='_csrf', value=_csrf)
-      .col-sm-offset-3.col-sm-4
-        button.btn.btn-danger(type='submit')
-          i.fa.fa-trash
-          | Delete my account
-
-  if user.IsAdmin
+  .container
     .page-header
-      h3 Administration
+      h3 Profile Information
+    script.
+      userPic="#{user.profile.picture}"
+      usersList="#{ulist}"
+    form.form-horizontal(action='account/uploadPImg/'+user.id, method='POST', enctype='multipart/form-data')
+      input(type='hidden', name='_csrf', value=_csrf)
+      .form-group
+        label.col-sm-3.control-label(for='gravatar') Profile Image
+        .col-sm-4
+          if user.profile.picture
+            img(src="/uploadPImg/#{user.profile.picture}", class='profile', width='180', height='180')
+          else 
+            img(src="img/default_profile.png", class='profile', width='180', height='180')
+      .form-group
+        label.col-sm-3.control-label(for='userPImg') Image Upload
+        .col-sm-7
+          input.file(id='input-1', type='file', data-preview-file-type='text', name='userPImg')
+    form.form-horizontal(action='/account/profile', method='POST')
+      input(type='hidden', name='_csrf', value=_csrf)
+      .form-group
+        label.col-sm-3.control-label(for='status') Status
+        .col-sm-7
+          input.form-control(type='status', name='status', id='status', disabled='disabled', value='#{user.profile.status}')  
+      .form-group
+        label.col-sm-3.control-label(for='email') Email
+        .col-sm-7
+          input.form-control(type='email', name='email', id='email', value='#{user.email}')
+      .form-group
+        label.col-sm-3.control-label(for='name') Name
+        .col-sm-7
+          input.form-control(type='text', name='name', id='name', value='#{user.profile.name}')
+      .form-group
+        label.col-sm-3.control-label(for='gender') Gender
+        .col-sm-4
+          label.radio.col-sm-4
+            input(type='radio', checked=user.profile.gender=='male', name='gender', value='male', data-toggle='radio')
+            span Male
+          label.radio.col-sm-4
+            input(type='radio', checked=user.profile.gender=='female', name='gender', value='female', data-toggle='radio')
+            span Female
+      .form-group
+        label.col-sm-3.control-label(for='location') Location
+        .col-sm-7
+          input.form-control(type='text', name='location', id='location', value='#{user.profile.location}')
+      .form-group
+        label.col-sm-3.control-label(for='website') Website
+        .col-sm-7
+          input.form-control(type='text', name='website', id='website', value='#{user.profile.website}')
+      .form-group
+        label.col-sm-3.control-label(for='job') Job
+        .col-sm-7
+          input.form-control(type='text', name='job', id='job', value='#{user.profile.job}')
+      .form-group
+        label.col-sm-3.control-label(for='statement') Personal Statement
+        .col-sm-7
+          textarea.form-control(type='text', name='statement', id='statement', rows='10') #{user.profile.statement}
+      .form-group
+        .col-sm-offset-3.col-sm-4
+          button.btn.btn.btn-primary(type='submit')
+            i.fa.fa-pencilr
+            | Update Profile
+    .page-header
+      h3 Change Password
 
-    .panel(class='panel-default')
-      .panel-heading: | User List
-      select#NameSelect(name='NameSelect',form='adminUsers', onchange='nameSelectFoo()')
-        each val in ulist
-          option(value='#{val.name}') #{val.name}
-      #demo
-      table(class='table-bordered')
-        thead
-          tr
-            th Name
-            th Email
-            th Admin
-            th Status
-        tbody
+    form.form-horizontal(action='/account/password', method='POST')
+      input(type='hidden', name='_csrf', value=_csrf)
+      .form-group
+        label.col-sm-3.control-label(for='password') New Password
+        .col-sm-7
+          input.form-control(type='password', name='password', id='password')
+      .form-group
+        label.col-sm-3.control-label(for='confirmPassword') Confirm Password
+        .col-sm-7
+          input.form-control(type='password', name='confirmPassword', id='confirmPassword')
+      .form-group
+        .col-sm-offset-3.col-sm-4
+          button.btn.btn-primary(type='submit')
+            i.fa.fa-lock
+            | Change Password
+
+    .page-header
+      h3 Delete Account
+
+    form.form-horizontal(action='/account/delete', method='POST')
+      .form-group
+        p.col-sm-offset-3.col-sm-4 You can delete your account, but keep in mind this action is irreversible.
+        input(type='hidden', name='_csrf', value=_csrf)
+        .col-sm-offset-3.col-sm-4
+          button.btn.btn-danger(type='submit')
+            i.fa.fa-trash
+            | Delete my account
+
+    if user.IsAdmin
+      .page-header
+        h3 Administration
+      .panel(class='panel-default')
+        .panel-heading: | White List (Email)
+        form.form-horizontal(action='/account/whitelist', method='POST')
+          input(type='hidden', name='_csrf', value=_csrf)
+          .form-group
+            label.col-sm-3.control-label(for='whitelist') Add Email
+            .col-sm-7
+              input.form-control(type='text', name='whitelist', id='whitelist')
+          .form-group
+            .col-sm-offset-3.col-sm-4
+              button.btn.btn-primary(type='submit') Post This Email
+          //- form.form-horizontal(action='/account/whitelist', method='POST')
+          //-   input(type='hidden', name='_csrf', value=_csrf)
+          //-   .form-group
+          //-     label.col-sm-3.control-label(for='whitelist') Add Email
+          //-     .col-sm-7
+          //-       input.form-control(type='whitelist', name='whitelist', id='whitelist', value='#{admin.whitelist}')
+          //-   .form-group
+          //-     .col-sm-offset-3.col-sm-4
+          //-       button.btn.btn.btn-primary(type='submit')
+          //-         i.fa.fa-pencilr
+          //-         | Update Profile
+
+      .panel(class='panel-default')
+        .panel-heading: | User List
+        select#NameSelect(name='NameSelect',form='adminUsers', onchange='nameSelectFoo()')
           each val in ulist
+            option(value='#{val.name}') #{val.name}
+        #demo
+        table(class='table-bordered')
+          thead
             tr
-              td #{val.name}
-              td #{val.email}
-              td 
-                select(name='adminSelect',form='adminUsers', value='#{val.IsAdmin}')
-                  option(value='true') true
-                  option(value='false') false
-              td
-                select(name='statusSelect',form='adminUsers', value='#{val.status}')
-                  option(value='mentor') mentor
-                  option(value='student') student
-                  option(value='ta') ta
-                  option(value='faculty') faculty
+              th Name
+              th Email
+              th Admin
+              th Status
+          tbody
+            each val in ulist
+              tr
+                td #{val.name}
+                td #{val.email}
+                td 
+                  select(name='adminSelect',form='adminUsers', value='#{val.IsAdmin}')
+                    option(value='true') true
+                    option(value='false') false
+                td
+                  select(name='statusSelect',form='adminUsers', value='#{val.status}')
+                    option(value='mentor') mentor
+                    option(value='student') student
+                    option(value='ta') ta
+                    option(value='faculty') faculty
+                  
                 
-              
-  //- .page-header
-  //-   h3 Linked Accounts
-  //- .form-horizontal
-  //-   .form-group
-  //-     .col-sm-offset-3.col-sm-4
-  //-       if user.instagram
-  //-         p: a.text-danger(href='/account/unlink/instagram') Unlink your Instagram account
-  //-       else
-  //-         p: a(href='/auth/instagram') Link your Instagram account
-  //-     .col-sm-offset-3.col-sm-4
-  //-       if user.google
-  //-         p: a.text-danger(href='/account/unlink/google') Unlink your Google account
-  //-       else
-  //-         p: a(href='/auth/google') Link your Google account
-  //-     .col-sm-offset-3.col-sm-4
-  //-       if user.facebook
-  //-         p: a.text-danger(href='/account/unlink/facebook') Unlink your Facebook account
-  //-       else
-  //-         p: a(href='/auth/facebook') Link your Facebook account
-  //-     .col-sm-offset-3.col-sm-4
-  //-       if user.twitter
-  //-         p: a.text-danger(href='/account/unlink/twitter') Unlink your Twitter account
-  //-       else
-  //-         p: a(href='/auth/twitter') Link your Twitter account
-  //-     .col-sm-offset-3.col-sm-4
-  //-       if user.github
-  //-         p: a.text-danger(href='/account/unlink/github') Unlink your GitHub account
-  //-       else
-  //-         p: a(href='/auth/github') Link your GitHub account
-  //-     .col-sm-offset-3.col-sm-4
-  //-       if user.linkedin
-  //-         p: a.text-danger(href='/account/unlink/linkedin') Unlink your LinkedIn account
-  //-       else
-  //-         p: a(href='/auth/linkedin') Link your LinkedIn account
+    //- .page-header
+    //-   h3 Linked Accounts
+    //- .form-horizontal
+    //-   .form-group
+    //-     .col-sm-offset-3.col-sm-4
+    //-       if user.instagram
+    //-         p: a.text-danger(href='/account/unlink/instagram') Unlink your Instagram account
+    //-       else
+    //-         p: a(href='/auth/instagram') Link your Instagram account
+    //-     .col-sm-offset-3.col-sm-4
+    //-       if user.google
+    //-         p: a.text-danger(href='/account/unlink/google') Unlink your Google account
+    //-       else
+    //-         p: a(href='/auth/google') Link your Google account
+    //-     .col-sm-offset-3.col-sm-4
+    //-       if user.facebook
+    //-         p: a.text-danger(href='/account/unlink/facebook') Unlink your Facebook account
+    //-       else
+    //-         p: a(href='/auth/facebook') Link your Facebook account
+    //-     .col-sm-offset-3.col-sm-4
+    //-       if user.twitter
+    //-         p: a.text-danger(href='/account/unlink/twitter') Unlink your Twitter account
+    //-       else
+    //-         p: a(href='/auth/twitter') Link your Twitter account
+    //-     .col-sm-offset-3.col-sm-4
+    //-       if user.github
+    //-         p: a.text-danger(href='/account/unlink/github') Unlink your GitHub account
+    //-       else
+    //-         p: a(href='/auth/github') Link your GitHub account
+    //-     .col-sm-offset-3.col-sm-4
+    //-       if user.linkedin
+    //-         p: a.text-danger(href='/account/unlink/linkedin') Unlink your LinkedIn account
+    //-       else
+    //-         p: a(href='/auth/linkedin') Link your LinkedIn account
