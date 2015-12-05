@@ -7,3 +7,8 @@ exports.index = function(req, res) {
     title: 'Home'
   });
 };
+exports.indexHidden = function(req, res) {
+  res.render('homeHidden', {
+    title: 'Home'
+  });
+};

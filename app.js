@@ -22,6 +22,9 @@ var storage = multer.diskStorage({
   }
 })
 var uploadPImg = multer({ storage: storage });
+// var img = require('easyimage');
+// var imgs = ['png', 'jpg', 'jpeg', 'gif', 'bmp']; // only make thumbnail for these
+
 
 var lusca = require('lusca');
 var csrf = lusca.csrf();
@@ -46,7 +49,7 @@ var peopleController = require('./controllers/people');
 var contactController = require('./controllers/contact');
 var introController = require('./controllers/intro');
 var shareController = require('./controllers/sharing');
-
+var announcementsController = require('./controllers/announcements');
 /**
  * API keys and Passport configuration.
  */
@@ -128,7 +131,8 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 /**
  * Primary app routes.
  */
-app.get('/', homeController.index);
+app.get('/', passportConf.isAuthenticated, homeController.index);
+app.get('/home', homeController.indexHidden);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
@@ -148,7 +152,7 @@ app.get('/people/:id', passportConf.isAuthenticated, peopleController.getPeopleI
 // app.get('/people/faculty', passportConf.isAuthenticated, peopleController.getFaculty);
 app.get('/intro/:id', passportConf.isAuthenticated, introController.getIntro);
 app.get('/sharing', passportConf.isAuthenticated, shareController.getSharing);
-
+app.get('/announcements', passportConf.isAuthenticated, announcementsController.getAnnouncements);
 
 app.get('/account', passportConf.isAuthenticated, userController.getAccount);
 app.post('/account/profile', passportConf.isAuthenticated, userController.postUpdateProfile);
