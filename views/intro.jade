@@ -29,9 +29,14 @@ block content
               //- |                             
               //- script(type='text/javascript', src='//static.addtoany.com/menu/page.js')
               //- AddToAny END
-              a.btn.btn-success(href='')
-                span.fa.fa-comment
-                |  FB Message
+              if thisProfile.facebook
+                a.btn.btn-success(href='https://www.facebook.com/#{thisProfile.facebook}')
+                  span.fa.fa-comment
+                  |  FB Message
+              else
+                a.btn.btn-success.disabled(href='', alt='Facebook Account Not Available.')
+                  span.fa.fa-comment
+                  |  FB Message
           |                     
           h2 #{thisProfile.job}
 
@@ -44,39 +49,65 @@ block content
           .col-sm-4
             ul.list-unstyled
               li
-                a(href='')
+                if thisProfile.website
+                  a(href='#{thisProfile.website}')
+                    span.social.fa.fa-home
+                    | My Website
+                else
                   span.social.fa.fa-home
-                  | My Website
+                    |   My Website
               |                                                    
               li
-                a(href='mailto:support@evenfly.com')
+                if thisProfile.email
+                  a(href='mailto:#{thisProfile.email}')
+                    span.social.fa.fa-envelope-o
+                    | My E-mail
+                else
                   span.social.fa.fa-envelope-o
-                  | My E-mail
+                    |   My E-mail
           //- social 1st col end
           .col-sm-4
             ul.list-unstyled
               li
-                a(href='')
+                if thisProfile.facebook
+                  a(href='https://www.facebook.com/#{thisProfile.facebook}')
+                    span.social.fa.fa-facebook
+                    | Facebook
+                else
                   span.social.fa.fa-facebook
-                  | Facebook
+                    |   Facebook
               |                             
               li
-                a(href='')
+                if thisProfile.twitter
+                  a(href='')
+                    span.social.fa.fa-twitter
+                    | Twitter
+                else
                   span.social.fa.fa-twitter
-                  | Twitter
+                    |   Twitter
+
               |                             
               
           //- social 2nd col end
           .col-sm-4
             ul.list-unstyled
               li
-                a(href='')
+                if thisProfile.linkedin
+                  a(href='')
+                    span.social.fa.fa-linkedin
+                    | Linkedin   
+                else
                   span.social.fa.fa-linkedin
-                  | Linkedin                                                 
+                    |   Linkedin 
+
               li
-                a(href='')
+                if thisProfile.instagram
+                  a(href='')
+                    span.social.fa.fa-instagram
+                    | Instagram
+                else
                   span.social.fa.fa-instagram
-                  | Instagram
+                    |   Instagram
     p
     hr
     p       

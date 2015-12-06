@@ -20,8 +20,20 @@ var storage = multer.diskStorage({
   filename: function (req, file, cb) {
     cb(null, req.params.id + file.originalname.substr(file.originalname.lastIndexOf('.')));
   }
-})
+});
 var uploadPImg = multer({ storage: storage });
+
+var storageFiles = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/uploadFiles/'); // Absolute path. Folder must exist, will not be created for you.
+  },
+  filename: function (req, file, cb) {
+    // console.log('req.body:');
+    // console.log(file);
+    cb(null, req.params.id + "-"+ Date.now() + file.originalname.substr(file.originalname.lastIndexOf('.')));
+  }
+});
+var uploadFiles = multer({ storage: storageFiles });
 // var img = require('easyimage');
 // var imgs = ['png', 'jpg', 'jpeg', 'gif', 'bmp']; // only make thumbnail for these
 
@@ -153,6 +165,9 @@ app.get('/people/:id', passportConf.isAuthenticated, peopleController.getPeopleI
 // app.get('/people/faculty', passportConf.isAuthenticated, peopleController.getFaculty);
 app.get('/intro/:id', passportConf.isAuthenticated, introController.getIntro);
 app.get('/sharing', passportConf.isAuthenticated, shareController.getSharing);
+app.post('/sharing/uploadfiles/:id', passportConf.isAuthenticated, uploadFiles.any(), shareController.postSharingFiles);
+app.get('/files/:id', passportConf.isAuthenticated, shareController.getFile);
+
 app.get('/announcements', passportConf.isAuthenticated, announcementsController.getAnnouncements);
 
 app.get('/account', passportConf.isAuthenticated, userController.getAccount);
@@ -164,6 +179,10 @@ app.post('/account/uploadPImg/:id', passportConf.isAuthenticated, uploadPImg.sin
 
 app.post('/account/whitelist', passportConf.isAuthenticated, userController.postEmailToWhitelist);
 app.post('/account/delete_whitelist', passportConf.isAuthenticated, userController.postDeleteLastWhitelist);
+
+app.get('/article', passportConf.isAuthenticated, announcementsController.getArticle);
+app.post('/article/new/:id', passportConf.isAuthenticated, announcementsController.postNewArticle);
+
 /**
  * API examples routes.
  */

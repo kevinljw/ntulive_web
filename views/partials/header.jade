@@ -16,8 +16,20 @@
           a(href='/') Home
         //- li(class=title=='API Examples'?'active':undefined)
         //-   a(href='/api') API
-        li(class=title=='People'?'active':undefined)
-          a(href='/people') People
+        li.dropdown(class=title=='People'?'active':undefined)
+          a.dropdown-toggle(href='/people') People
+          ul.dropdown-menu
+            li
+              a(href='/people/student') Student
+            li.divider
+            li
+              a(href='/people/mentor') Mentor
+            li.divider
+            li
+              a(href='/people/ta') TA
+            li.divider
+            li
+              a(href='/people/faculty') Faculty
         li(class=title=='Sharing'?'active':undefined)
           a(href='/sharing') Sharing
         li(class=title=='Announcements'?'active':undefined)
@@ -43,5 +55,9 @@
               li
                 a(href='/account') My Account
               li.divider
+              if user.profile.status != "student"
+                li 
+                  a(href='/article') Edit Articles
+                li.divider
               li
                 a(href='/logout') Logout

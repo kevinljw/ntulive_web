@@ -1,11 +1,30 @@
-extends layout
+extends layoutGray
 
 block content
-  .row.jumbotron
-    .container
-      h2 Announcements
-      p
-      p 
-      p 
-
-  .container
+	.row.jumbotron
+		.container
+			h2 Announcements
+			p
+			p
+			p
+	.container
+		.row
+			.col-md-10
+				each val in allArticles
+					.post.post-quote
+						.post-head
+							h3	#{val.title}
+							.post-meta
+								div
+									i.fa.fa-user
+									| BY:
+									a(href='#')	#{val.author}
+								div
+									i.fa.fa-clock-o	#{val.timestamp}
+							.clearfix
+						.post-wrap
+							.post-inner
+								p #{val.content}
+								.clearfix
+									//- on September 18, 2014
+				

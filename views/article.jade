@@ -1,0 +1,33 @@
+extends layout
+
+block content
+		.row.jumbotron
+			.container
+				h2 Article Management
+				p 
+				p 
+				p 
+
+		.container
+			.page-header
+				h3 New Article
+
+			form.form-horizontal(action='/article/new/'+user.id, method='POST')
+				input(type='hidden', name='_csrf', value=_csrf)
+				.form-group
+					label.col-sm-3.control-label(for='title') Title
+					.col-sm-7
+						input.form-control(type='text', name='title', id='title')
+				.form-group
+					label.col-sm-3.control-label(for='content') Content
+					.col-sm-7
+						textarea.form-control(type='text', name='content', id='content', rows='15')
+				.form-group
+					label.col-sm-3.control-label(for='link') Link
+					.col-sm-7
+						input.form-control(type='text', name='link', id='link')
+				.form-group
+					.col-sm-offset-3.col-sm-4
+						button.btn.btn-primary(type='submit')
+							i.fa.fa-pencil
+							| Post this article

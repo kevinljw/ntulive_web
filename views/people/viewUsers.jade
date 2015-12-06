@@ -1,10 +1,25 @@
 .row
+	
 	each val in userData
+
 		.col-sm-3(style='text-align: center;min-height: 250px;')
 			a.eachPeoplePic(href='/intro/'+val.id)
-				if val.picture
-					img(src="/uploadPImg/#{val.picture}", width='180')
-				else
-					img(src="/img/default_profile.png", class='profile', width='180', height='180')
-			.eachPeopleText(style='padding-top: 23px; font-size: 16px;font-weight: 500; list-style-type:none; text-decoration:none; color: #000;')
+				.flip-container
+					.card
+						.front 
+							.cubeContain #{val.statement}
+						.back
+							if val.picture
+								img(src="/uploadPImg/#{val.picture}", width='180')
+							else
+								img(src="/img/default_profile.png", class='profile', width='180', height='180')
+			.eachPeopleText
 				li= val.name
+
+			//- .flip-container
+			//- 	.card
+			//-         .front
+			//-           // front side content
+			//-         |             
+			//-         .back
+			//-           // back side content

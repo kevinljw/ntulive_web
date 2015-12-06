@@ -13,8 +13,14 @@ exports.getIntro = function(req, res) {
       if (err) throw err;
 
       var formatedData = {
+          'email': thisUser.email,
           'name': thisUser.profile.name,
           'picture': thisUser.profile.picture,
+          'website': thisUser.profile.website,
+          'facebook': thisUser.facebook,
+          'twitter': thisUser.twitter,
+          'linkedin': thisUser.linkedin,
+          'instagram': thisUser.instagram,
           'job': thisUser.profile.job,
           'statement': thisUser.profile.statement
       }

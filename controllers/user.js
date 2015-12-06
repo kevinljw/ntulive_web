@@ -5,7 +5,7 @@ var nodemailer = require('nodemailer');
 var passport = require('passport');
 var User = require('../models/User');
 var secrets = require('../config/secrets');
-var adminList = ['evin92@gmail.tw'];
+var adminList = ['evin92@gmail.com'];
 var fs = require('fs');
 var whiteListArr;
 var whiteListArr_email=[];
@@ -54,7 +54,7 @@ exports.postEmailToWhitelist = function(req, res, next) {
     req.flash('errors', errors);
     return res.redirect('/account');
   }
-  
+
   if(req.body.whitelist.indexOf('@')>-1){
     var newItem = {
       status: req.body.whitelist_status,
@@ -160,10 +160,10 @@ exports.postSignup = function(req, res, next) {
   // console.log('email:'+whiteListArr_email);
   var findWlistIndex = whiteListArr_email.indexOf(req.body.email);
   if(findWlistIndex>-1){
-    console.log('--'+whiteListArr[findWlistIndex].status);
+    // console.log('--'+whiteListArr[findWlistIndex].status);
     // console.log(adminList.indexOf(req.body.email));
-    if(adminList.indexOf(req.body.email)>-1){
-      console.log("same");
+    if(adminList.indexOf(req.body.email)>-1 || whiteListArr[findWlistIndex].status=="admin"){
+      console.log("admin!");
       var user = new User({
         email: req.body.email,
         IsAdmin: true,

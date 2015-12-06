@@ -27,7 +27,8 @@ function getFormatedData(showStatus,callback){
           'id': eachUser._id,
           'email': eachUser.email,
           'name': eachUser.profile.name,
-          'picture': eachUser.profile.picture
+          'picture': eachUser.profile.picture,
+          'statement': eachUser.profile.statement
         };
         formatedUserData.push(formatedItem);
         // console.log("formatedUserData: "+formatedUserData);
