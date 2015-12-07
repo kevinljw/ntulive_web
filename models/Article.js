@@ -7,7 +7,9 @@ var articleSchema = new mongoose.Schema({
   title: { type: String, default: '' },
   content: { type: String, default: '' },
   author: { type: String, default: '' },
-  timestamp: { type: String, default: '' }
+  authorId: { type: String, default: '' },
+  timestamp: { type: String, default: '' },
+  link: { type: String, default: '' },
 });
 
 /**

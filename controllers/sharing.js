@@ -1,4 +1,6 @@
 var secrets = require('../config/secrets');
+var moment = require('moment');
+var User = require('../models/User');
 var nodemailer = require("nodemailer");
 var Share = require('../models/Share');
 var transporter = nodemailer.createTransport({
@@ -18,7 +20,7 @@ exports.getSharing = function(req, res) {
     if (err) throw err;
     res.render('sharing', {
     	title: 'Sharing',
-    	shareList: shares
+    	shareList: shares.reverse()
   	});
   });
   
@@ -34,36 +36,44 @@ exports.postSharingFiles = function(req, res, next) {
   	console.log(req.files); //form files
   	console.log(req.files.filename);
   	console.log(req.body.title);
-  	console.log(req.body.discription);
-  	
-  	var filenameArr = [];
-	var filepathArr = [];
+  	console.log(req.body.description);
 
-  	req.files.forEach(function(eachFILE, index){
-  		filenameArr.push(eachFILE.filename);
-  		filepathArr.push(eachFILE.originalname);
-  		if(index==req.files.length-1){
-  			var newShare = new Share({
-		        upload_user: req.params.id,
-		        filespath: filepathArr,
-		        filesname: filenameArr,
-		        timestamp: Date()
-		    });
-		    newShare.save(function(err) {
-		    	if(err){
-		    		req.flash('errors', { msg: 'Files Upload Error'});
-		    	}
-		    	else{
-		    		req.flash('info', { msg: 'Files uploaded.' });
-		    	}
-	            res.redirect('/sharing');
-		    	
-	        });
-		 //    console.log(newShare);
-			// req.flash('success', { msg: 'Files uploaded.' });
-		 //    res.redirect('/sharing');
-  		}
-  	});  	
-    
+  	var filenameArr = [];
+	  var filepathArr = [];
+
+    User.findById(req.params.id, function(err, thisUser) {
+        if (!thisUser) {
+          req.flash('errors', { msg: 'No account with that id exists.' });
+          return res.redirect('/');
+        }
+      	req.files.forEach(function(eachFILE, index){
+      		filenameArr.push(eachFILE.filename);
+      		filepathArr.push(eachFILE.originalname);
+      		if(index==req.files.length-1){
+      			var newShare = new Share({
+    		        upload_user: thisUser.profile.name,
+                upload_userId: req.params.id,
+    		        filespath: filepathArr,
+    		        filesname: filenameArr,
+    		        timestamp: moment().format('MMMM Do YYYY, h:mm:ss a'),
+                title: req.body.title,
+                description: req.body.description
+    		    });
+    		    newShare.save(function(err) {
+    		    	if(err){
+    		    		req.flash('errors', { msg: 'Files Upload Error'});
+    		    	}
+    		    	else{
+    		    		req.flash('info', { msg: 'Files uploaded.' });
+    		    	}
+    	            res.redirect('/sharing');
+    		    	
+    	        });
+    		 //    console.log(newShare);
+    			// req.flash('success', { msg: 'Files uploaded.' });
+    		 //    res.redirect('/sharing');
+      		}
+      	});  	
+    });
 };
 

@@ -1,5 +1,7 @@
 var secrets = require('../config/secrets');
+var moment = require('moment');
 var Article = require('../models/Article');
+
 var User = require('../models/User');
 var nodemailer = require("nodemailer");
 var transporter = nodemailer.createTransport({
@@ -19,7 +21,7 @@ exports.getAnnouncements = function(req, res) {
     	if (err) throw err;
 		res.render('announcements', {
 			title: 'Announcements',
-			allArticles: articles
+			allArticles: articles.reverse()
 		});
 
 	});
@@ -45,11 +47,21 @@ exports.postNewArticle = function(req, res, next) {
           req.flash('errors', { msg: 'No account with that id exists.' });
           return res.redirect('/');
         }
+        var LinkIsOn = false;
+        var videoLink = req.body.link;
+        
+        if(videoLink != "" && (videoLink.indexOf("youtu.be")>-1 || videoLink.indexOf("youtube")>-1)){
+        	videoLink = videoLink.replace("watch?v=", "v/");
+        	console.log(videoLink);
+        	LinkIsOn = true;
+        }
         var thisArticle = new Article({
 	      title: req.body.title,
 		  content: req.body.content,
 		  author: user.profile.name,
-		  timestamp: Date()
+		  authorId: req.params.id,
+		  timestamp: moment().format('MMMM Do YYYY, h:mm:ss a'),
+		  link: LinkIsOn?videoLink:''
 	    });
 	    console.log(thisArticle);
 	    thisArticle.save(function(err) {

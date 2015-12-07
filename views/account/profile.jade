@@ -24,36 +24,46 @@ block content
           else 
             img(src="img/default_profile.png", class='profile', width='180', height='180')
       .form-group
-        label.col-sm-3.control-label(for='userPImg') Image Upload
+        label.col-sm-3.control-label(for='userPImg') Upload Photo
         .col-sm-7
           input.file(id='input-1', type='file', data-preview-file-type='text', name='userPImg')
     form.form-horizontal(action='/account/profile', method='POST')
       input(type='hidden', name='_csrf', value=_csrf)
       .form-group
-        label.col-sm-3.control-label(for='status') Status
+        label.col-sm-3.control-label(for='cname') Chinese Name
         .col-sm-7
-          input.form-control(type='status', name='status', id='status', disabled='disabled', value='#{user.profile.status}')  
+          input.form-control(type='text', name='cname', id='cname', value='#{user.profile.cname}')
+      .form-group
+        label.col-sm-3.control-label(for='name') English Name
+        .col-sm-7
+          input.form-control(type='text', name='name', id='name', value='#{user.profile.name}')
+      .form-group
+        label.col-sm-3.control-label(for='birth') Birth Date
+        .col-sm-7
+          input.form-control(type='date', name='birth', id='birth', min='1900-01-01' max='1999-12-31', value='#{user.profile.birth}')
       .form-group
         label.col-sm-3.control-label(for='email') Email
         .col-sm-7
           input.form-control(type='email', name='email', id='email', value='#{user.email}')
       .form-group
-        label.col-sm-3.control-label(for='name') Name
+        label.col-sm-3.control-label(for='status') Status
         .col-sm-7
-          input.form-control(type='text', name='name', id='name', value='#{user.profile.name}')
-      .form-group
-        label.col-sm-3.control-label(for='gender') Gender
-        .col-sm-4
-          label.radio.col-sm-4
-            input(type='radio', checked=user.profile.gender=='male', name='gender', value='male', data-toggle='radio')
-            span Male
-          label.radio.col-sm-4
-            input(type='radio', checked=user.profile.gender=='female', name='gender', value='female', data-toggle='radio')
-            span Female
-      .form-group
-        label.col-sm-3.control-label(for='location') Location
-        .col-sm-7
-          input.form-control(type='text', name='location', id='location', value='#{user.profile.location}')
+          input.form-control(type='status', name='status', id='status', disabled='disabled', value='#{user.profile.status}')  
+      
+
+      //- .form-group
+      //-   label.col-sm-3.control-label(for='gender') Gender
+      //-   .col-sm-4
+      //-     label.radio.col-sm-4
+      //-       input(type='radio', checked=user.profile.gender=='male', name='gender', value='male', data-toggle='radio')
+      //-       span Male
+      //-     label.radio.col-sm-4
+      //-       input(type='radio', checked=user.profile.gender=='female', name='gender', value='female', data-toggle='radio')
+      //-       span Female
+      //- .form-group
+      //-   label.col-sm-3.control-label(for='location') Location
+      //-   .col-sm-7
+      //-     input.form-control(type='text', name='location', id='location', value='#{user.profile.location}')
       .form-group
         label.col-sm-3.control-label(for='website') Website
         .col-sm-7
@@ -63,7 +73,31 @@ block content
         .col-sm-7
           input.form-control(type='text', name='job', id='job', value='#{user.profile.job}')
       .form-group
-        label.col-sm-3.control-label(for='statement') Personal Statement
+        label.col-sm-3.control-label(for='selfThreeWords') How would you describe your self in three words?
+        .col-sm-7
+          textarea.form-control(type='text', name='selfThreeWords', id='selfThreeWords', rows='4') #{user.profile.selfThreeWords}
+      .form-group
+        label.col-sm-3.control-label(for='threeInterests') Name three interests outside of school and work
+        .col-sm-7
+          textarea.form-control(type='text', name='threeInterests', id='threeInterests', rows='4') #{user.profile.threeInterests}
+      .form-group
+        label.col-sm-3.control-label(for='sixThings') The Six things I can never do without
+        .col-sm-7
+          textarea.form-control(type='text', name='sixThings', id='sixThings', rows='7') #{user.profile.sixThings}
+      .form-group
+        label.col-sm-3.control-label(for='bestAdvice') Best piece of advice ever received
+        .col-sm-7
+          textarea.form-control(type='text', name='bestAdvice', id='bestAdvice', rows='5') #{user.profile.bestAdvice}
+      .form-group
+        label.col-sm-3.control-label(for='oneBook') One book you would recommend to others
+        .col-sm-7
+          textarea.form-control(type='text', name='oneBook', id='oneBook', rows='4') #{user.profile.oneBook}
+      .form-group
+        label.col-sm-3.control-label(for='favoritePlace') Where is your favorite place to hang out in Taiwan?
+        .col-sm-7
+          textarea.form-control(type='text', name='favoritePlace', id='favoritePlace', rows='3') #{user.profile.favoritePlace}
+      .form-group
+        label.col-sm-3.control-label(for='statement') My self-summary:
         .col-sm-7
           textarea.form-control(type='text', name='statement', id='statement', rows='10') #{user.profile.statement}
       .form-group
@@ -125,10 +159,11 @@ block content
             label.col-sm-3.control-label(for='whitelist_status') Status
             .col-sm-7
               select(name='whitelist_status', id='whitelist_status')
-                    option(value='student') Student
-                    option(value='mentor') Mentor
+                    option(value='fellow') Fellow
                     option(value='ta') TA
-                    option(value='faculty') Faculty
+                    option(value='mentor') Mentor
+                    option(value='advisor') Advisor
+                    option(value='founder') Founder
                     option(value='admin') Admin
                     option(value='guest') Guest
           .form-group
@@ -192,16 +227,16 @@ block content
       h3 Linked Accounts
     .form-horizontal
       .form-group
-        .col-sm-offset-3.col-sm-4
-          if user.instagram
-            p: a.text-danger(href='/account/unlink/instagram') Unlink your Instagram account
-          else
-            p: a(href='/auth/instagram') Link your Instagram account
-        .col-sm-offset-3.col-sm-4
-          if user.google
-            p: a.text-danger(href='/account/unlink/google') Unlink your Google account
-          else
-            p: a(href='/auth/google') Link your Google account
+        //- .col-sm-offset-3.col-sm-4
+        //-   if user.instagram
+        //-     p: a.text-danger(href='/account/unlink/instagram') Unlink your Instagram account
+        //-   else
+        //-     p: a(href='/auth/instagram') Link your Instagram account
+        //- .col-sm-offset-3.col-sm-4
+        //-   if user.google
+        //-     p: a.text-danger(href='/account/unlink/google') Unlink your Google account
+        //-   else
+        //-     p: a(href='/auth/google') Link your Google account
         .col-sm-offset-3.col-sm-4
           if user.facebook
             p: a.text-danger(href='/account/unlink/facebook') Unlink your Facebook account
@@ -212,11 +247,11 @@ block content
             p: a.text-danger(href='/account/unlink/twitter') Unlink your Twitter account
           else
             p: a(href='/auth/twitter') Link your Twitter account
-        .col-sm-offset-3.col-sm-4
-          if user.github
-            p: a.text-danger(href='/account/unlink/github') Unlink your GitHub account
-          else
-            p: a(href='/auth/github') Link your GitHub account
+        //- .col-sm-offset-3.col-sm-4
+        //-   if user.github
+        //-     p: a.text-danger(href='/account/unlink/github') Unlink your GitHub account
+        //-   else
+        //-     p: a(href='/auth/github') Link your GitHub account
         .col-sm-offset-3.col-sm-4
           if user.linkedin
             p: a.text-danger(href='/account/unlink/linkedin') Unlink your LinkedIn account

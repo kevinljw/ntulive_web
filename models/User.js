@@ -17,13 +17,21 @@ var userSchema = new mongoose.Schema({
 
   profile: {
     name: { type: String, default: '' },
-    gender: { type: String, default: '' },
-    status: { type: String, default: 'student' },
-    location: { type: String, default: '' },
+    cname: { type: String, default: '' },
+    birth: { type: String, default: '' },
+    // gender: { type: String, default: '' },
+    status: { type: String, default: 'fellow' },
+    // location: { type: String, default: '' },
     website: { type: String, default: '' },
     picture: { type: String, default: '' },
-    job: { type: String, default: 'Student' },
-    statement: { type: String, default: '' }
+    job: { type: String, default: 'Student' }, 
+    selfThreeWords: { type: String, default: '' },
+    threeInterests: { type: String, default: '' },
+    sixThings: { type: String, default: '' },
+    bestAdvice: { type: String, default: '' },
+    oneBook: { type: String, default: '' },
+    favoritePlace: { type: String, default: '' },
+    statement: { type: String, default: '' },
   },
 
   resetPasswordToken: String,

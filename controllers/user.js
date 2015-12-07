@@ -253,10 +253,18 @@ exports.postUpdateProfile = function(req, res, next) {
     }
     user.email = req.body.email || '';
     user.profile.name = req.body.name || '';
-    user.profile.gender = req.body.gender || '';
-    user.profile.location = req.body.location || '';
+    user.profile.cname = req.body.cname || '';
+    user.profile.birth = req.body.birth || '';
+    // user.profile.gender = req.body.gender || '';
+    // user.profile.location = req.body.location || '';
     user.profile.website = req.body.website || '';
     user.profile.job = req.body.job || '';
+    user.profile.selfThreeWords = req.body.selfThreeWords || '';
+    user.profile.threeInterests = req.body.threeInterests || '';
+    user.profile.sixThings = req.body.sixThings || '';
+    user.profile.bestAdvice = req.body.bestAdvice || '';
+    user.profile.oneBook = req.body.oneBook || '';
+    user.profile.favoritePlace = req.body.favoritePlace || '';
     user.profile.statement = req.body.statement || '';
     user.save(function(err) {
       if (err) {

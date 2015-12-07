@@ -157,7 +157,7 @@ app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
 app.get('/contact', passportConf.isAuthenticated, contactController.getContact);
 app.post('/contact', passportConf.isAuthenticated, contactController.postContact);
-app.get('/people', passportConf.isAuthenticated, peopleController.getPeople);
+// app.get('/people', passportConf.isAuthenticated, peopleController.getPeople);
 app.post('/people', passportConf.isAuthenticated, peopleController.postPeople);
 app.get('/people/:id', passportConf.isAuthenticated, peopleController.getPeopleId);
 // app.get('/people/mentors', passportConf.isAuthenticated, peopleController.getMentors);
