@@ -12,7 +12,7 @@ block content
 			.col-md-10
 				each val in allArticles
 					if val.link
-						.post.post-youtube
+						.post.post-youtube(id='#{val.timestamp}')
 							.post-head
 								h3 #{val.title}
 								.post-meta
@@ -30,7 +30,7 @@ block content
 									.clearfix
 										//- on September 18, 2014
 					else
-						.post.post-quote
+						.post.post-quote(id='#{val.timestamp}')
 							.post-head
 								h3 #{val.title}
 								.post-meta

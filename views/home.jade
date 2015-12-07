@@ -12,36 +12,30 @@ block content
       .col-sm-8
         .page-header
           h3 Announcements
-        //- each val in nArticles
-          li=val.title
-        h2 Heading
-        p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        p 
-          a.btn.btn-default(href='#', role='button') View details »
-        h2 Heading
-        p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        p 
-          a.btn.btn-default(href='#', role='button') View details »
-        h2 Heading
-        p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        p 
-          a.btn.btn-default(href='#', role='button') View details »
-        h2 Heading
-        p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        p 
-          a.btn.btn-default(href='#', role='button') View details »
+        each val in nArticles
+          .homeAnn
+            h3 #{val.title}
+            p.homeAnnContent #{val.content}
+            .homeSubTag 
+              i.fa.fa-user  #{val.author}
+            .homeSubTag
+              i.fa.fa-clock-o  #{val.timestamp}
+            
+            p 
+              a.btn.btn-default(href='announcements/\##{val.timestamp}', role='button') View details »
+            hr
+        
       .col-sm-4
         .page-header
           h3 Sharing
-        h2 Heading
-        p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        p 
-          a.btn.btn-default(href='#', role='button') View details »
-        h2 Heading
-        p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        p 
-          a.btn.btn-default(href='#', role='button') View details »
-        h2 Heading
-        p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        p 
-          a.btn.btn-default(href='#', role='button') View details »
+        each val in nShares
+          .homeSha
+            h4 #{val.title}
+            p #{val.description}
+            .homeSubTag 
+              i.fa.fa-user  #{val.upload_user}
+            .homeSubTag
+              i.fa.fa-clock-o  #{val.timestamp}
+            p 
+              a.btn.btn-default(href='sharing/\##{val.timestamp}', role='button') View details »
+            hr

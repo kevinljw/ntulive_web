@@ -11,7 +11,7 @@ block content
 		.container
 			.row
 				each val in shareList
-					.post.post-quote
+					.post.post-quote(id='#{val.timestamp}')
 								.post-head
 									h3 #{val.title}
 									.post-meta
