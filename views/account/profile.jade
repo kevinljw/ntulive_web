@@ -34,9 +34,13 @@ block content
         .col-sm-7
           input.form-control(type='text', name='cname', id='cname', value='#{user.profile.cname}')
       .form-group
-        label.col-sm-3.control-label(for='name') English Name
+        label.col-sm-3.control-label(for='name') First Name
         .col-sm-7
           input.form-control(type='text', name='name', id='name', value='#{user.profile.name}')
+      .form-group
+        label.col-sm-3.control-label(for='lname') Last Name
+        .col-sm-7
+          input.form-control(type='text', name='lname', id='lname', value='#{user.profile.lname}')
       .form-group
         label.col-sm-3.control-label(for='birth') Birth Date
         .col-sm-7
@@ -69,17 +73,33 @@ block content
         .col-sm-7
           input.form-control(type='text', name='website', id='website', value='#{user.profile.website}')
       .form-group
-        label.col-sm-3.control-label(for='job') Job
+        label.col-sm-3.control-label(for='job') Describe your current role in one word
         .col-sm-7
           input.form-control(type='text', name='job', id='job', value='#{user.profile.job}')
       .form-group
-        label.col-sm-3.control-label(for='selfThreeWords') How would you describe your self in three words?
-        .col-sm-7
-          textarea.form-control(type='text', name='selfThreeWords', id='selfThreeWords', rows='4') #{user.profile.selfThreeWords}
+        label.col-sm-3.control-label(for='selfThreeWords1') How would you describe your self in three words?
+        .col-sm-2
+          input.form-control(type='text', name='selfThreeWords1', id='selfThreeWords1', placeholder='One', value='#{user.profile.selfThreeWords1}')
+        .col-sm-2
+          input.form-control(type='text', name='selfThreeWords2', id='selfThreeWords2', placeholder='Two', value='#{user.profile.selfThreeWords2}')
+        .col-sm-2
+          input.form-control(type='text', name='selfThreeWords3', id='selfThreeWords3', placeholder='Three', value='#{user.profile.selfThreeWords3}')
       .form-group
-        label.col-sm-3.control-label(for='threeInterests') Name three interests outside of school and work
-        .col-sm-7
-          textarea.form-control(type='text', name='threeInterests', id='threeInterests', rows='4') #{user.profile.threeInterests}
+        label.col-sm-3.control-label(for='threeInterests1') Name three interests outside of school and work
+        .col-sm-2
+          input.form-control(type='text', name='threeInterests1', id='threeInterests1', placeholder='One', value='#{user.profile.threeInterests1}')
+        .col-sm-2
+          input.form-control(type='text', name='threeInterests2', id='threeInterests2', placeholder='Two', value='#{user.profile.threeInterests2}')
+        .col-sm-2
+          input.form-control(type='text', name='threeInterests3', id='threeInterests3', placeholder='Three', value='#{user.profile.threeInterests3}')
+      .form-group
+        label.col-sm-3.control-label(for='threeKeySkill1') What are your three key skill sets?
+        .col-sm-2
+          input.form-control(type='text', name='threeKeySkill1', id='threeKeySkill1', placeholder='One', value='#{user.profile.threeKeySkill1}')
+        .col-sm-2
+          input.form-control(type='text', name='threeKeySkill2', id='threeKeySkill2', placeholder='Two', value='#{user.profile.threeKeySkill2}')
+        .col-sm-2
+          input.form-control(type='text', name='threeKeySkill3', id='threeKeySkill3', placeholder='Three', value='#{user.profile.threeKeySkill3}')
       .form-group
         label.col-sm-3.control-label(for='sixThings') The Six things I can never do without
         .col-sm-7

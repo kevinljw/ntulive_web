@@ -115,29 +115,31 @@ block content
     .col-md-10.mainleft
       .row.mobmid
         .col-sm-1
-          span.secicon.fa.fa-list-ol
+          span.secicon.fa.fa-list-ol(style='color:#f7a61b')
         //- icon end
         .col-sm-11
           h3 How would you describe your self in three words? 
           |                     
-          p !{thisProfile.selfThreeWords}
-          p
+          p #{thisProfile.selfThreeWords1}
+          p #{thisProfile.selfThreeWords2}
+          p #{thisProfile.selfThreeWords3}
         //- info end
       //- personal statement end
       hr  
       .row.mobmid
         .col-sm-1
-          span.secicon.fa.fa-plane
+          span.secicon.fa.fa-plane(style='color:#7cbf42')
         //- icon end
         .col-sm-11
           h3 Name three interests outside of school and work 
           |                     
-          p !{thisProfile.threeInterests}
-          p       
+          p #{thisProfile.threeInterests1}
+          p #{thisProfile.threeInterests2}
+          p #{thisProfile.threeInterests3}     
       hr  
       .row.mobmid
         .col-sm-1
-          span.secicon.fa.fa-check-square
+          span.secicon.fa.fa-check-square(style='color:#eb4a24')
         //- icon end
         .col-sm-11
           h3 The Six things I can never do without 
@@ -147,7 +149,18 @@ block content
       hr  
       .row.mobmid
         .col-sm-1
-          span.secicon.fa.fa-thumbs-up
+          span.secicon.fa.fa-rocket(style='color:#34a8c8')
+        //- icon end
+        .col-sm-11
+          h3 What are your three key skill sets?
+          |                     
+          p #{thisProfile.threeKeySkill1}
+          p #{thisProfile.threeKeySkill2}
+          p #{thisProfile.threeKeySkill3}
+      hr  
+      .row.mobmid
+        .col-sm-1
+          span.secicon.fa.fa-thumbs-up(style='color:#30a443')
         //- icon end
         .col-sm-11
           h3 Best piece of advice ever received 
@@ -157,7 +170,7 @@ block content
       hr  
       .row.mobmid
         .col-sm-1
-          span.secicon.fa.fa-book
+          span.secicon.fa.fa-book(style='color:#948077')
         //- icon end
         .col-sm-11
           h3 One book you would recommend to others
@@ -167,7 +180,7 @@ block content
       hr  
       .row.mobmid
         .col-sm-1
-          span.secicon.fa.fa-map-marker
+          span.secicon.fa.fa-map-marker(style='color:#f6cd4c')
         //- icon end
         .col-sm-11
           h3 Where is your favorite place to hang out in Taiwan? 
@@ -177,7 +190,7 @@ block content
       hr  
       .row.mobmid
         .col-sm-1
-          span.secicon.fa.fa-user
+          span.secicon.fa.fa-user(style='color:#40b0f9')
         //- icon end
         .col-sm-11
           h3 My self-summary: 

@@ -28,7 +28,9 @@ function getFormatedData(showStatus,callback){
           'email': eachUser.email,
           'name': eachUser.profile.name,
           'picture': eachUser.profile.picture,
-          'threeInterests': eachUser.profile.threeInterests.replace(/\r?\n/g, '<br />')
+          'threeInterests1': eachUser.profile.threeInterests1,
+          'threeInterests2': eachUser.profile.threeInterests2,
+          'threeInterests3': eachUser.profile.threeInterests3
         };
         formatedUserData.push(formatedItem);
         // console.log("formatedUserData: "+formatedUserData);

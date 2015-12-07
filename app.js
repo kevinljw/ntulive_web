@@ -156,7 +156,8 @@ app.post('/reset/:token', userController.postReset);
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
 app.get('/contact', passportConf.isAuthenticated, contactController.getContact);
-app.post('/contact', passportConf.isAuthenticated, contactController.postContact);
+app.get('/contact2', contactController.getContact2);
+app.post('/contact', contactController.postContact);
 // app.get('/people', passportConf.isAuthenticated, peopleController.getPeople);
 app.post('/people', passportConf.isAuthenticated, peopleController.postPeople);
 app.get('/people/:id', passportConf.isAuthenticated, peopleController.getPeopleId);
@@ -164,7 +165,7 @@ app.get('/people/:id', passportConf.isAuthenticated, peopleController.getPeopleI
 // app.get('/people/ta', passportConf.isAuthenticated, peopleController.getTA);
 // app.get('/people/faculty', passportConf.isAuthenticated, peopleController.getFaculty);
 app.get('/intro/:id', passportConf.isAuthenticated, introController.getIntro);
-app.get('/sharing', passportConf.isAuthenticated, shareController.getSharing);
+app.get('/sharing/:id', passportConf.isAuthenticated, shareController.getSharing);
 app.post('/sharing/uploadfiles/:id', passportConf.isAuthenticated, uploadFiles.any(), shareController.postSharingFiles);
 app.get('/files/:id', passportConf.isAuthenticated, shareController.getFile);
 

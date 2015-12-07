@@ -23,7 +23,7 @@
               a(href='/people/fellow') Fellow
             li.divider
             li
-              a(href='/people/ta') TA
+              a(href='/people/ta') Staff
             li.divider
             li
               a(href='/people/mentor') Mentor
@@ -33,8 +33,17 @@
             li.divider
             li
               a(href='/people/faculty') Founder
-        li(class=title=='Sharing'?'active':undefined)
-          a(href='/sharing') Sharing
+        li.dropdown(class=title=='Sharing'?'active':undefined)
+          a.dropdown-toggle(href='/sharing/photo') Sharing
+          ul.dropdown-menu
+            li
+              a(href='/sharing/photo') Photo
+            li.divider
+            li
+              a(href='/sharing/video') Video
+            li.divider
+            li
+              a(href='/sharing/document') Document
         li(class=title=='Announcements'?'active':undefined)
           a(href='/announcements') Announcements
         li(class=title=='Contact'?'active':undefined)

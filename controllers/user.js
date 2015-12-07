@@ -146,7 +146,8 @@ exports.getSignup = function(req, res) {
  */
 exports.postSignup = function(req, res, next) {
   req.assert('email', 'Email is not valid').isEmail();
-  req.assert('uname', 'User name must be at least 1 characters long').len(1);
+  req.assert('uname', 'User first name must be at least 1 characters long').len(1);
+  req.assert('lname', 'User last name must be at least 1 characters long').len(1);
   req.assert('password', 'Password must be at least 4 characters long').len(4);
   req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
 
@@ -169,6 +170,7 @@ exports.postSignup = function(req, res, next) {
         IsAdmin: true,
         profile: {
           name: req.body.uname,
+          lname: req.body.lname,
           status: whiteListArr[findWlistIndex].status
         },
         password: req.body.password
@@ -179,6 +181,7 @@ exports.postSignup = function(req, res, next) {
         email: req.body.email,
         profile: {
           name: req.body.uname,
+          lname: req.body.lname,
           status: whiteListArr[findWlistIndex].status
         },
         password: req.body.password
@@ -222,6 +225,7 @@ exports.getAccount = function(req, res) {
 
       var thisOneData = {
           'name': eachUser.profile.name,
+          'lname': eachUser.profile.lame,
           'email':  eachUser.email,
           'IsAdmin': eachUser.IsAdmin,
           'status': eachUser.profile.status
@@ -253,15 +257,23 @@ exports.postUpdateProfile = function(req, res, next) {
     }
     user.email = req.body.email || '';
     user.profile.name = req.body.name || '';
+    user.profile.lname = req.body.lname || '';
     user.profile.cname = req.body.cname || '';
     user.profile.birth = req.body.birth || '';
     // user.profile.gender = req.body.gender || '';
     // user.profile.location = req.body.location || '';
     user.profile.website = req.body.website || '';
     user.profile.job = req.body.job || '';
-    user.profile.selfThreeWords = req.body.selfThreeWords || '';
-    user.profile.threeInterests = req.body.threeInterests || '';
+    user.profile.selfThreeWords1 = req.body.selfThreeWords1 || '';
+    user.profile.selfThreeWords2 = req.body.selfThreeWords2 || '';
+    user.profile.selfThreeWords3 = req.body.selfThreeWords3 || '';
+    user.profile.threeInterests1 = req.body.threeInterests1 || '';
+    user.profile.threeInterests2 = req.body.threeInterests2 || '';
+    user.profile.threeInterests3 = req.body.threeInterests3 || '';
     user.profile.sixThings = req.body.sixThings || '';
+    user.profile.threeKeySkill1 = req.body.threeKeySkill1 || '';
+    user.profile.threeKeySkill2 = req.body.threeKeySkill2 || '';
+    user.profile.threeKeySkill3 = req.body.threeKeySkill3 || '';
     user.profile.bestAdvice = req.body.bestAdvice || '';
     user.profile.oneBook = req.body.oneBook || '';
     user.profile.favoritePlace = req.body.favoritePlace || '';

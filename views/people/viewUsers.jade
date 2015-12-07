@@ -7,7 +7,10 @@
 				.flip-container
 					.card
 						.front 
-							.cubeContain !{val.threeInterests}
+							.cubeContain 
+								p #{val.threeInterests1} 
+								p #{val.threeInterests2} 
+								p #{val.threeInterests3}
 						.back
 							if val.picture
 								img(src="/uploadPImg/#{val.picture}", width='180')

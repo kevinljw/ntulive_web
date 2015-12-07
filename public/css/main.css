@@ -11759,6 +11759,7 @@ footer p, footer ul {
   background: url("/img/22911258384_13d3dd1bac_k_c.jpg") no-repeat;
   background-size: 100% auto;
   background-attachment: fixed;
+  padding: 80px 0;
 }
 
 .jumbotron h1 {
@@ -11773,7 +11774,7 @@ footer p, footer ul {
 }
 
 #hero-area {
-  background: url("/img/23513410876_21894c801e_k_b.jpg") no-repeat;
+  background: url("/img/23513410876_21894c801e_k.jpg") no-repeat;
   background-size: cover;
   background-attachment: fixed;
   padding: 13% 0 18% 0;
@@ -12367,4 +12368,8 @@ article.post .post-inner iframe {
   padding: 6px 10px;
   font-size: 18px;
   color: #605d5d;
+}
+
+.afterHeroArea {
+  margin-top: 25px;
 }

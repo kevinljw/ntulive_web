@@ -18,6 +18,12 @@ exports.getContact = function(req, res) {
   });
 };
 
+exports.getContact2 = function(req, res) {
+  res.render('contact2', {
+    title: 'Contact'
+  });
+};
+
 /**
  * POST /contact
  * Send a contact form via Nodemailer.
@@ -37,8 +43,8 @@ exports.postContact = function(req, res) {
   var from = req.body.email;
   var name = req.body.name;
   var body = req.body.message;
-  var to = 'your@email.com';
-  var subject = 'Contact Form | Hackathon Starter';
+  var to = 'evin92@email.com';
+  var subject = 'Contact Form | NTU LIVE';
 
   var mailOptions = {
     to: to,
