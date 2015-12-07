@@ -17,7 +17,7 @@ block content
 									.post-meta
 										div
 											i.fa.fa-user  BY:
-											a(href='intro/#{val.upload_userId}') #{val.upload_user}
+											a(href='../intro/#{val.upload_userId}') #{val.upload_user}
 										div
 											i.fa.fa-clock-o	#{val.timestamp}
 									.clearfix
@@ -25,7 +25,7 @@ block content
 									.post-inner
 										p #{val.description}
 										ul
-										each eachFileVal,indexOfEachFile in val.filespath
+										each eachFileVal, indexOfEachFile in val.filespath
 											li
 												a(href='files/#{val.filesname[indexOfEachFile]}') #{eachFileVal}
 										.clearfix

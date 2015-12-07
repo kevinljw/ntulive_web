@@ -44,7 +44,7 @@ exports.postSharingFiles = function(req, res, next) {
     User.findById(req.params.id, function(err, thisUser) {
         if (!thisUser) {
           req.flash('errors', { msg: 'No account with that id exists.' });
-          return res.redirect('sharing/photo');
+          return res.redirect('/');
         }
       	req.files.forEach(function(eachFILE, index){
       		filenameArr.push(eachFILE.filename);
@@ -66,7 +66,7 @@ exports.postSharingFiles = function(req, res, next) {
     		    	else{
     		    		req.flash('info', { msg: 'Files uploaded.' });
     		    	}
-    	            res.redirect('sharing/photo');
+    	            res.redirect('../../sharing/photo');
     		    	
     	        });
     		 //    console.log(newShare);

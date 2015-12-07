@@ -167,7 +167,7 @@ app.get('/people/:id', passportConf.isAuthenticated, peopleController.getPeopleI
 app.get('/intro/:id', passportConf.isAuthenticated, introController.getIntro);
 app.get('/sharing/:id', passportConf.isAuthenticated, shareController.getSharing);
 app.post('/sharing/uploadfiles/:id', passportConf.isAuthenticated, uploadFiles.any(), shareController.postSharingFiles);
-app.get('/files/:id', passportConf.isAuthenticated, shareController.getFile);
+app.get('/sharing/files/:id', passportConf.isAuthenticated, shareController.getFile);
 
 app.get('/announcements', passportConf.isAuthenticated, announcementsController.getAnnouncements);
 
