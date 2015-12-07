@@ -18,7 +18,7 @@ var transporter = nodemailer.createTransport({
 exports.getSharing = function(req, res) {
   Share.find({}, function(err, shares) {
     if (err) throw err;
-    res.render('sharing/'+req.params.id, {
+    res.render('sharing/photo'+req.params.id, {
     	title: 'Sharing',
     	shareList: shares.reverse()
   	});
@@ -66,7 +66,7 @@ exports.postSharingFiles = function(req, res, next) {
     		    	else{
     		    		req.flash('info', { msg: 'Files uploaded.' });
     		    	}
-    	            res.redirect('/sharing');
+    	            res.redirect('/sharing/photo');
     		    	
     	        });
     		 //    console.log(newShare);
