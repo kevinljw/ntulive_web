@@ -216,6 +216,8 @@ footer {
     display: inline-block;
 }
 .flip-container:hover .card {
+    -ms-transform: rotateY(180deg); /* IE 9 */
+    -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
 .card, .front, .back {
@@ -224,6 +226,7 @@ footer {
 }
 .card {
     transition: 0.5s;
+    -webkit-transform-style: preserve-3d; /* Chrome, Safari, Opera */
     transform-style: preserve-3d;
     position: relative;
 }
@@ -233,11 +236,15 @@ footer {
 }
 .front {
     z-index: 1;
+    -ms-transform: rotateY(180deg); /* IE 9 */
+    -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
     background-color: #931D34;
 }
 .back {
     z-index: 2; /* back side, placed above front */
+    -ms-transform: rotateY(0deg); /* IE 9 */
+    -webkit-transform: rotateY(0deg);
     transform: rotateY(0deg);
     background-color: #481e26;
 }
@@ -254,11 +261,14 @@ footer {
     margin-right: auto;
 }
 .cubeContain{
-    padding: 20px 0;
+    padding: 30px 0;
     width: 150px;
     color: #fff;
     margin-left: auto;
     margin-right: auto;
+    letter-spacing: 2px;
+    line-height: 30px;
+    font-size: 23px;
 }
 .eachShareItem{
     list-style: none;

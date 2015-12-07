@@ -61,7 +61,7 @@ exports.postEmailToWhitelist = function(req, res, next) {
       email: req.body.whitelist
     }
     whiteListArr.push(newItem);
-    whiteListArr_email.push(whiteListArr.email);
+    whiteListArr_email.push(newItem.email);
     // console.log("whitelist:"+req.body.whitelist);
     saveWhiteListArr();
     return res.redirect('/account');

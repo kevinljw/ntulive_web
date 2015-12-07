@@ -28,7 +28,7 @@ function getFormatedData(showStatus,callback){
           'email': eachUser.email,
           'name': eachUser.profile.name,
           'picture': eachUser.profile.picture,
-          'threeInterests': eachUser.profile.threeInterests
+          'threeInterests': eachUser.profile.threeInterests.replace(/\r?\n/g, '<br />')
         };
         formatedUserData.push(formatedItem);
         // console.log("formatedUserData: "+formatedUserData);

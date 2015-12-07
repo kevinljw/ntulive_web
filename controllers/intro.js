@@ -22,13 +22,13 @@ exports.getIntro = function(req, res) {
           'linkedin': thisUser.linkedin,
           'instagram': thisUser.instagram,
           'job': thisUser.profile.job,
-          'statement': thisUser.profile.statement,
-          'selfThreeWords': thisUser.profile.selfThreeWords,
-          'threeInterests': thisUser.profile.threeInterests,
-          'sixThings': thisUser.profile.sixThings,
-          'bestAdvice': thisUser.profile.bestAdvice,
-          'oneBook': thisUser.profile.oneBook,
-          'favoritePlace': thisUser.profile.favoritePlace
+          'statement': thisUser.profile.statement.replace(/\r?\n/g, '<br />'),
+          'selfThreeWords': thisUser.profile.selfThreeWords.replace(/\r?\n/g, '<br />'),
+          'threeInterests': thisUser.profile.threeInterests.replace(/\r?\n/g, '<br />'),
+          'sixThings': thisUser.profile.sixThings.replace(/\r?\n/g, '<br />'),
+          'bestAdvice': thisUser.profile.bestAdvice.replace(/\r?\n/g, '<br />'),
+          'oneBook': thisUser.profile.oneBook.replace(/\r?\n/g, '<br />'),
+          'favoritePlace': thisUser.profile.favoritePlace.replace(/\r?\n/g, '<br />')
       }
 
       res.render('intro', {
