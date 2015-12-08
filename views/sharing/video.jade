@@ -17,7 +17,7 @@ block content
 									.post-meta
 										div
 											i.fa.fa-user  BY:
-											a(href='intro/#{val.upload_userId}') #{val.upload_user}
+											a(href='../intro/#{val.upload_userId}') #{val.upload_user}
 										div
 											i.fa.fa-clock-o	#{val.timestamp}
 									.clearfix
@@ -27,7 +27,7 @@ block content
 										ul
 										each eachFileVal,indexOfEachFile in val.filespath
 											li
-												a(href='../files/#{val.filesname[indexOfEachFile]}') #{eachFileVal}
+												a(href='files/#{val.filesname[indexOfEachFile]}') #{eachFileVal}
 										.clearfix
 			//- .row
 			//- 	.col-sm-12
@@ -57,6 +57,6 @@ block content
 							.form-group
 								label.col-sm-3.control-label(for='userFiles') Uploader
 								.col-sm-7
-									input.file(id='input-3', type='file', data-preview-file-type='text', multiple, name='userFiles')
+									input.file(id='input-3', type='file', data-preview-file-type='text', accept='video/*', multiple, name='userFiles')
 
 				
