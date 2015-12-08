@@ -32,11 +32,11 @@ exports.getFile = function(req, res) {
 };
 
 exports.postSharingFiles = function(req, res, next) {
-  	console.log('req.files'); //form fields
-  	console.log(req.files); //form files
-  	console.log(req.files.filename);
-  	console.log(req.body.title);
-  	console.log(req.body.description);
+  	// console.log('req.files'); //form fields
+  	// console.log(req.files); //form files
+  	// console.log(req.files.filename);
+  	// console.log(req.body.title);
+  	// console.log(req.body.description);
 
   	var filenameArr = [];
 	  var filepathArr = [];

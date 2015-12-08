@@ -9,11 +9,11 @@ block content
         else
           img.propic(src='/img/default_profile.png')
         //- photo end
-      .col-sm-9
+      .col-sm-8
         .cv-title
           .row
             .col-sm-7
-              h1 #{thisProfile.name}
+              h1 #{thisProfile.name} #{thisProfile.lname}
             |                         
             .col-sm-5.text-right.dl-share
               //- AddToAny BEGIN
@@ -39,161 +39,158 @@ block content
                   |  FB Message
           |                     
           h2 #{thisProfile.job}
-
-        //- Title end
-        //-
-          ===========================
-          SOCIAL & CONTACT
-          ============================
-        .row
-          .col-sm-4
-            ul.list-unstyled
-              li
-                if thisProfile.website
-                  a(href='#{thisProfile.website}')
+          .row
+            .col-sm-4
+              ul.list-unstyled
+                li
+                  if thisProfile.website
+                    a(href='#{thisProfile.website}')
+                      span.social.fa.fa-home
+                      | My Website
+                  else
                     span.social.fa.fa-home
-                    | My Website
-                else
-                  span.social.fa.fa-home
-                    |   My Website
-              |                                                    
-              li
-                if thisProfile.email
-                  a(href='mailto:#{thisProfile.email}')
+                      |   My Website
+                |                                                    
+                li
+                  if thisProfile.email
+                    a(href='mailto:#{thisProfile.email}')
+                      span.social.fa.fa-envelope-o
+                      | My E-mail
+                  else
                     span.social.fa.fa-envelope-o
-                    | My E-mail
-                else
-                  span.social.fa.fa-envelope-o
-                    |   My E-mail
-          //- social 1st col end
-          .col-sm-4
-            ul.list-unstyled
-              li
-                if thisProfile.facebook
-                  a(href='https://www.facebook.com/#{thisProfile.facebook}')
+                      |   My E-mail
+            .col-sm-4
+              ul.list-unstyled
+                li
+                  if thisProfile.facebook
+                    a(href='https://www.facebook.com/#{thisProfile.facebook}')
+                      span.social.fa.fa-facebook
+                      | Facebook
+                  else
                     span.social.fa.fa-facebook
-                    | Facebook
-                else
-                  span.social.fa.fa-facebook
-                    |   Facebook
-              |                             
-              li
-                if thisProfile.twitter
-                  a(href='')
+                      |   Facebook
+                |                             
+                li
+                  if thisProfile.twitter
+                    a(href='')
+                      span.social.fa.fa-twitter
+                      | Twitter
+                  else
                     span.social.fa.fa-twitter
-                    | Twitter
-                else
-                  span.social.fa.fa-twitter
-                    |   Twitter
-
-              |                             
-              
-          //- social 2nd col end
-          .col-sm-4
-            ul.list-unstyled
-              li
-                if thisProfile.linkedin
-                  a(href='')
+                      |   Twitter
+            .col-sm-4
+              ul.list-unstyled
+                li
+                  if thisProfile.linkedin
+                    a(href='')
+                      span.social.fa.fa-linkedin
+                      | Linkedin   
+                  else
                     span.social.fa.fa-linkedin
-                    | Linkedin   
-                else
-                  span.social.fa.fa-linkedin
-                    |   Linkedin 
+                      |   Linkedin 
 
-              li
-                if thisProfile.instagram
-                  a(href='')
+                li
+                  if thisProfile.instagram
+                    a(href='')
+                      span.social.fa.fa-instagram
+                      | Instagram
+                  else
                     span.social.fa.fa-instagram
-                    | Instagram
-                else
-                  span.social.fa.fa-instagram
-                    |   Instagram
+                      |   Instagram
     p
     hr
     p       
 
     .col-md-10.mainleft
-      .row.mobmid
-        .col-sm-1
-          span.secicon.fa.fa-list-ol(style='color:#f7a61b')
-        //- icon end
-        .col-sm-11
-          h3 How would you describe your self in three words? 
-          |                     
-          p #{thisProfile.selfThreeWords1}
-          p #{thisProfile.selfThreeWords2}
-          p #{thisProfile.selfThreeWords3}
+      if thisProfile.selfThreeWords1 
+        .row.mobmid
+          .col-sm-1
+            span.secicon.fa.fa-list-ol(style='color:#f7a61b')
+          //- icon end
+          .col-sm-11
+            h3 I describe myself in three words:
+            |                    
+            p #{thisProfile.selfThreeWords1}
+            p #{thisProfile.selfThreeWords2}
+            p #{thisProfile.selfThreeWords3}
         //- info end
       //- personal statement end
-      hr  
-      .row.mobmid
-        .col-sm-1
-          span.secicon.fa.fa-plane(style='color:#7cbf42')
-        //- icon end
-        .col-sm-11
-          h3 Name three interests outside of school and work 
-          |                     
-          p #{thisProfile.threeInterests1}
-          p #{thisProfile.threeInterests2}
-          p #{thisProfile.threeInterests3}     
-      hr  
-      .row.mobmid
-        .col-sm-1
-          span.secicon.fa.fa-check-square(style='color:#eb4a24')
-        //- icon end
-        .col-sm-11
-          h3 The Six things I can never do without 
-          |                     
-          p !{thisProfile.sixThings}
-          p    
-      hr  
-      .row.mobmid
-        .col-sm-1
-          span.secicon.fa.fa-rocket(style='color:#34a8c8')
-        //- icon end
-        .col-sm-11
-          h3 What are your three key skill sets?
-          |                     
-          p #{thisProfile.threeKeySkill1}
-          p #{thisProfile.threeKeySkill2}
-          p #{thisProfile.threeKeySkill3}
-      hr  
-      .row.mobmid
-        .col-sm-1
-          span.secicon.fa.fa-thumbs-up(style='color:#30a443')
-        //- icon end
-        .col-sm-11
-          h3 Best piece of advice ever received 
-          |                     
-          p !{thisProfile.bestAdvice}
-          p    
-      hr  
-      .row.mobmid
-        .col-sm-1
-          span.secicon.fa.fa-book(style='color:#948077')
-        //- icon end
-        .col-sm-11
-          h3 One book you would recommend to others
-          |                     
-          p !{thisProfile.oneBook}
-          p    
-      hr  
-      .row.mobmid
-        .col-sm-1
-          span.secicon.fa.fa-map-marker(style='color:#f6cd4c')
-        //- icon end
-        .col-sm-11
-          h3 Where is your favorite place to hang out in Taiwan? 
-          |                     
-          p !{thisProfile.favoritePlace}
-          p      
-      hr  
-      .row.mobmid
-        .col-sm-1
-          span.secicon.fa.fa-user(style='color:#40b0f9')
-        //- icon end
-        .col-sm-11
-          h3 My self-summary: 
-          |                     
-          p !{thisProfile.statement}
-          p      
+      if thisProfile.threeInterests1  
+        hr  
+        .row.mobmid
+          .col-sm-1
+            span.secicon.fa.fa-plane(style='color:#7cbf42')
+          //- icon end
+          .col-sm-11
+            h3 Three interests outside of school and work are:
+            |                 
+            p #{thisProfile.threeInterests1}
+            p #{thisProfile.threeInterests2}
+            p #{thisProfile.threeInterests3}     
+      if thisProfile.sixThings
+        hr  
+        .row.mobmid
+          .col-sm-1
+            span.secicon.fa.fa-check-square(style='color:#eb4a24')
+          //- icon end
+          .col-sm-11
+            h3 The Six things I can never do without 
+            |                                
+            p !{thisProfile.sixThings}
+            p    
+      if thisProfile.threeKeySkill1
+        hr  
+        .row.mobmid
+          .col-sm-1
+            span.secicon.fa.fa-rocket(style='color:#34a8c8')
+          //- icon end
+          .col-sm-11
+            h3 My three key skill sets:
+            |                    
+            p #{thisProfile.threeKeySkill1}
+            p #{thisProfile.threeKeySkill2}
+            p #{thisProfile.threeKeySkill3}
+      if thisProfile.bestAdvice
+        hr  
+        .row.mobmid
+          .col-sm-1
+            span.secicon.fa.fa-thumbs-up(style='color:#30a443')
+          //- icon end
+          .col-sm-11
+            h3 Best piece of advice ever received:
+            |                                 
+            p !{thisProfile.bestAdvice}
+            p    
+      if thisProfile.oneBook
+        hr  
+        .row.mobmid
+          .col-sm-1
+            span.secicon.fa.fa-book(style='color:#948077')
+          //- icon end
+          .col-sm-11
+            h3 One book I would recommend to others:
+            |             
+            p !{thisProfile.oneBook}
+            p    
+      if thisProfile.favoritePlace
+        hr  
+        .row.mobmid
+          .col-sm-1
+            span.secicon.fa.fa-map-marker(style='color:#f6cd4c')
+          //- icon end
+          .col-sm-11
+            h3 My favorite place to hang out in Taiwan: 
+            |  
+            p !{thisProfile.favoritePlace}
+            p      
+      if thisProfile.statement
+        hr  
+        .row.mobmid
+          .col-sm-1
+            span.secicon.fa.fa-user(style='color:#40b0f9')
+          //- icon end
+          .col-sm-11
+            h3 My self-summary: 
+            |      
+            p !{thisProfile.statement}
+            p      

@@ -8,6 +8,7 @@ var shareSchema = new mongoose.Schema({
   description: { type: String, default: '' },
   upload_user: { type: String, default: '' },
   upload_userId: { type: String, default: '' },
+  type: { type: String, default: '' },
   filespath: [],
   filesname: [],
   timestamp: { type: String, default: '' }

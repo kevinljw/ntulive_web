@@ -26,6 +26,9 @@ $(document).ready(function() {
         overwriteInitial: true,
 	    maxFileSize: 10000,
 	    showClose: false,
+        allowedFileExtensions: ["jpg", "png", "gif"],
+        maxImageWidth: 250,
+        maxImageHeight: 250
         // initialPreview: [
         //     '<img src="uploadPImg/'+userPic+'" class="file-preview-image" alt="Your Avatar" title="Your Avatar">',
         // ],
@@ -37,6 +40,20 @@ $(document).ready(function() {
 	$("#input-2").fileinput({
         maxFileCount: 10,
         showPreview: false,
+        uploadUrl: "/sharing/uploadfiles/",
+        // allowedFileExtensions: ["txt", "md", "ini", "text"],
+    });
+    $("#input-3").fileinput({
+        maxFileCount: 10,
+        showPreview: false,
+        uploadUrl: "/sharing/uploadfiles/",
+        allowedFileExtensions: ["mp4", "mov", "avi"],
+    });
+    $("#input-4").fileinput({
+        maxFileCount: 10,
+        showPreview: false,
+        uploadUrl: "/sharing/uploadfiles/",
+        allowedFileExtensions: ["zip", "rar", "gz", "tgz"],
     });
     
 });
