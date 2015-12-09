@@ -16,7 +16,8 @@ var transporter = nodemailer.createTransport({
  * Contact form page.
  */
 exports.getSharing = function(req, res) {
-  Share.find({}, function(err, shares) {
+  // var FILESTYPE;
+  Share.find({type: req.params.id}, function(err, shares) {
     if (err) throw err;
     res.render('sharing/'+req.params.id, {
     	title: 'Sharing',
@@ -40,7 +41,7 @@ exports.postSharingFiles = function(req, res, next) {
 
   	var filenameArr = [];
 	  var filepathArr = [];
-
+    // console.log(req);
     User.findById(req.params.id, function(err, thisUser) {
         if (!thisUser) {
           req.flash('errors', { msg: 'No account with that id exists.' });
@@ -49,7 +50,19 @@ exports.postSharingFiles = function(req, res, next) {
       	req.files.forEach(function(eachFILE, index){
       		filenameArr.push(eachFILE.filename);
       		filepathArr.push(eachFILE.originalname);
+          
       		if(index==req.files.length-1){
+            var FILESTYPE = 'document';
+            if(eachFILE.mimetype.indexOf("image")>-1){
+              FILESTYPE = 'photo';
+            }
+            else if (eachFILE.mimetype.indexOf("video")>-1){
+              FILESTYPE = 'video';
+            }
+            else if (eachFILE.mimetype.indexOf("application")>-1){
+              FILESTYPE = 'document';
+            }
+            // console.log(FILESTYPE);
       			var newShare = new Share({
     		        upload_user: thisUser.profile.name,
                 upload_userId: req.params.id,
@@ -57,8 +70,10 @@ exports.postSharingFiles = function(req, res, next) {
     		        filesname: filenameArr,
     		        timestamp: moment().format('MMMM Do YYYY, h:mm:ss a'),
                 title: req.body.title,
-                description: req.body.description
+                description: req.body.description,
+                type: FILESTYPE
     		    });
+            console.log(newShare);
     		    newShare.save(function(err) {
     		    	if(err){
     		    		req.flash('errors', { msg: 'Files Upload Error'});
@@ -66,7 +81,7 @@ exports.postSharingFiles = function(req, res, next) {
     		    	else{
     		    		req.flash('info', { msg: 'Files uploaded.' });
     		    	}
-    	            res.redirect('../../sharing/photo');
+    	            res.redirect(req.headers.referer);
     		    	
     	        });
     		 //    console.log(newShare);

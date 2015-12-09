@@ -37,23 +37,23 @@ $(document).ready(function() {
         // layoutTemplates: {main2: '{preview} {remove} {upload} {browse}'},
         // uploadUrl: "/account/upload/"
     });
-	$("#input-2").fileinput({
-        maxFileCount: 10,
-        showPreview: false,
-        uploadUrl: "/sharing/uploadfiles/",
-        // allowedFileExtensions: ["txt", "md", "ini", "text"],
+    $("#input-2").fileinput({
+                maxFileCount: 10,
+                // showPreview: false,
+                // uploadUrl: "/sharing/uploadfiles/"+userUploadID,
+                // allowedFileExtensions: ["txt", "md", "ini", "text"],
     });
     $("#input-3").fileinput({
         maxFileCount: 10,
         showPreview: false,
-        uploadUrl: "/sharing/uploadfiles/",
+        uploadUrl: "/sharing/uploadfiles/"+userUploadID,
         allowedFileExtensions: ["mp4", "mov", "avi"],
     });
     $("#input-4").fileinput({
         maxFileCount: 10,
         showPreview: false,
-        uploadUrl: "/sharing/uploadfiles/",
-        allowedFileExtensions: ["zip", "rar", "gz", "tgz"],
+        uploadUrl: "/sharing/uploadfiles/"+userUploadID,
+        // allowedFileExtensions: ["zip", "rar", "gz", "tgz"],
     });
     
 });

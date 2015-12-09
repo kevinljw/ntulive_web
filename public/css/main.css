@@ -11945,8 +11945,7 @@ footer p, footer ul {
 }
 
 .eachPeopleText {
-  padding-top: 10px;
-  padding-left: 20px;
+  padding-top: 4px;
   font-size: 16px;
   font-weight: 300;
   list-style-type: none;
@@ -11958,13 +11957,13 @@ footer p, footer ul {
 }
 
 .cubeContain {
-  padding: 30px 0;
-  width: 150px;
+  padding: 30px 5px;
+  width: 180px;
   color: #fff;
   margin-left: auto;
   margin-right: auto;
-  letter-spacing: 2px;
-  line-height: 30px;
+  letter-spacing: 1px;
+  line-height: 28px;
   font-size: 23px;
 }
 

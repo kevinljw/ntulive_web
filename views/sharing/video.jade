@@ -7,7 +7,8 @@ block content
 				p 
 				p 
 				p 
-
+		script.
+			userUploadID="#{user.id}"
 		.container
 			.row
 				each val in shareList
@@ -47,16 +48,16 @@ block content
 						form.form-horizontal(action='uploadfiles/'+user.id, method='POST', enctype='multipart/form-data')
 							input(type='hidden', name='_csrf', value=_csrf)
 							.form-group
-								label.col-sm-3.control-label(for='title') Title
-								.col-sm-7
+								label.col-sm-4.control-label(for='title') Title
+								.col-sm-5
 									input.form-control(type='text', name='title', id='title')
 							.form-group
-								label.col-sm-3.control-label(for='description') Description
-								.col-sm-7
+								label.col-sm-4.control-label(for='description') Description
+								.col-sm-5
 									input.form-control(type='description', name='description', id='description')
 							.form-group
-								label.col-sm-3.control-label(for='userFiles') Uploader
-								.col-sm-7
+								label.col-sm-4.control-label(for='userFiles') Uploader
+								.col-sm-5
 									input.file(id='input-3', type='file', data-preview-file-type='text', accept='video/*', multiple, name='userFiles')
 
 				

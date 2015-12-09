@@ -13,35 +13,14 @@ var transporter = nodemailer.createTransport({
 
 function getFormatedData(showStatus,callback){
 
-  var formatedUserData=[];
+  // var formatedUserData=[];
+  // console.log(showStatus);
 
-  User.find({}, function(err, users) {
+  User.find({"profile.status": showStatus}, null, {sort: {"profile.name": 1}}, function(err, users) {
     if (err) throw err;
-
-    users.forEach(function(eachUser,index){
-      // console.log("showStatus: "+showStatus+" eachUser.profile.status: "+eachUser.profile.status);
-
-      if(eachUser.profile.status==showStatus){
-        // console.log("same status:"+eachUser.profile.name);
-        var formatedItem = {
-          'id': eachUser._id,
-          'email': eachUser.email,
-          'name': eachUser.profile.name,
-          'picture': eachUser.profile.picture,
-          'threeInterests1': eachUser.profile.threeInterests1,
-          'threeInterests2': eachUser.profile.threeInterests2,
-          'threeInterests3': eachUser.profile.threeInterests3
-        };
-        formatedUserData.push(formatedItem);
         // console.log("formatedUserData: "+formatedUserData);
-        
-      }
-      if(index==users.length-1){
-        // console.log("formatedUserData: "+formatedUserData);
-        callback(formatedUserData); 
-      }
-    });  
-    
+
+        callback(users); 
   });
   
 } 
