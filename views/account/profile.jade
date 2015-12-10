@@ -20,7 +20,7 @@ block content
         label.col-sm-5.control-label(for='gravatar') Profile Image
         .col-sm-4
           if user.profile.picture
-            img(src="/uploadPImg/#{user.profile.picture}", class='profile', width='180', height='180')
+            img(src="#{user.profile.picture}", class='profile', width='180', height='180')
           else 
             img(src="img/default_profile.png", class='profile', width='180', height='180')
       .form-group

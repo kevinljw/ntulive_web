@@ -525,13 +525,13 @@ exports.postForgot = function(req, res, next) {
 };
 
 exports.postPImg = function(req, res) {
-  console.log('req.body'); //form fields
-  console.log(req.body); //form fields
-  console.log('req.file'); //form fields
-  console.log(req.file); //form files
+  // console.log('req.body'); //form fields
+  // console.log(req.body); //form fields
+  // console.log('req.file'); //form fields
+  // console.log(req.file); //form files
   User.findById(req.params.id, function(err, thisUser) {
       if (err) throw err;
-      thisUser.profile.picture = req.file.filename;
+      thisUser.profile.picture = "/uploadPImg/"+req.file.filename;
       thisUser.save(function(err) {
         if (err) {
           return next(err);

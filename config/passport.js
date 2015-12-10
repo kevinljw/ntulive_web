@@ -37,7 +37,7 @@ passport.use(new InstagramStrategy(secrets.instagram,function(req, accessToken, 
           user.instagram = profile.id;
           user.tokens.push({ kind: 'instagram', accessToken: accessToken });
           user.profile.name = user.profile.name || profile.displayName;
-          user.profile.picture = user.profile.picture || profile._json.data.profile_picture;
+          // user.profile.picture = user.profile.picture || profile._json.data.profile_picture;
           user.profile.website = user.profile.website || profile._json.data.website;
           user.save(function(err) {
             req.flash('info', { msg: 'Instagram account has been linked.' });
@@ -60,7 +60,7 @@ passport.use(new InstagramStrategy(secrets.instagram,function(req, accessToken, 
       // to a valid e-mail address in Profile Management.
       user.email = profile.username + "@instagram.com";
       user.profile.website = profile._json.data.website;
-      user.profile.picture = profile._json.data.profile_picture;
+      // user.profile.picture = profile._json.data.profile_picture;
       user.save(function(err) {
         done(err, user);
       });
@@ -166,7 +166,7 @@ passport.use(new GitHubStrategy(secrets.github, function(req, accessToken, refre
           user.github = profile.id;
           user.tokens.push({ kind: 'github', accessToken: accessToken });
           user.profile.name = user.profile.name || profile.displayName;
-          user.profile.picture = user.profile.picture || profile._json.avatar_url;
+          // user.profile.picture = user.profile.picture || profile._json.avatar_url;
           user.profile.location = user.profile.location || profile._json.location;
           user.profile.website = user.profile.website || profile._json.blog;
           user.save(function(err) {
@@ -191,7 +191,7 @@ passport.use(new GitHubStrategy(secrets.github, function(req, accessToken, refre
           user.github = profile.id;
           user.tokens.push({ kind: 'github', accessToken: accessToken });
           user.profile.name = profile.displayName;
-          user.profile.picture = profile._json.avatar_url;
+          // user.profile.picture = profile._json.avatar_url;
           user.profile.location = profile._json.location;
           user.profile.website = profile._json.blog;
           user.save(function(err) {
@@ -217,7 +217,7 @@ passport.use(new TwitterStrategy(secrets.twitter, function(req, accessToken, tok
           user.tokens.push({ kind: 'twitter', accessToken: accessToken, tokenSecret: tokenSecret });
           user.profile.name = user.profile.name || profile.displayName;
           user.profile.location = user.profile.location || profile._json.location;
-          user.profile.picture = user.profile.picture || profile._json.profile_image_url_https;
+          // user.profile.picture = user.profile.picture || profile._json.profile_image_url_https;
           user.save(function(err) {
             req.flash('info', { msg: 'Twitter account has been linked.' });
             done(err, user);
@@ -240,7 +240,7 @@ passport.use(new TwitterStrategy(secrets.twitter, function(req, accessToken, tok
       user.tokens.push({ kind: 'twitter', accessToken: accessToken, tokenSecret: tokenSecret });
       user.profile.name = profile.displayName;
       user.profile.location = profile._json.location;
-      user.profile.picture = profile._json.profile_image_url_https;
+      // user.profile.picture = profile._json.profile_image_url_https;
       user.save(function(err) {
         done(err, user);
       });
@@ -263,7 +263,7 @@ passport.use(new GoogleStrategy(secrets.google, function(req, accessToken, refre
           user.tokens.push({ kind: 'google', accessToken: accessToken });
           user.profile.name = user.profile.name || profile.displayName;
           user.profile.gender = user.profile.gender || profile._json.gender;
-          user.profile.picture = user.profile.picture || profile._json.image.url;
+          // user.profile.picture = user.profile.picture || profile._json.image.url;
           user.save(function(err) {
             req.flash('info', { msg: 'Google account has been linked.' });
             done(err, user);
@@ -287,7 +287,7 @@ passport.use(new GoogleStrategy(secrets.google, function(req, accessToken, refre
           user.tokens.push({ kind: 'google', accessToken: accessToken });
           user.profile.name = profile.displayName;
           user.profile.gender = profile._json.gender;
-          user.profile.picture = profile._json.image.url;
+          // user.profile.picture = profile._json.image.url;
           user.save(function(err) {
             done(err, user);
           });
@@ -312,7 +312,7 @@ passport.use(new LinkedInStrategy(secrets.linkedin, function(req, accessToken, r
           user.tokens.push({ kind: 'linkedin', accessToken: accessToken });
           user.profile.name = user.profile.name || profile.displayName;
           user.profile.location = user.profile.location || profile._json.location.name;
-          user.profile.picture = user.profile.picture || profile._json.pictureUrl;
+          // user.profile.picture = user.profile.picture || profile._json.pictureUrl;
           user.profile.website = user.profile.website || profile._json.publicProfileUrl;
           user.save(function(err) {
             req.flash('info', { msg: 'LinkedIn account has been linked.' });
@@ -337,7 +337,7 @@ passport.use(new LinkedInStrategy(secrets.linkedin, function(req, accessToken, r
           user.email = profile._json.emailAddress;
           user.profile.name = profile.displayName;
           user.profile.location = profile._json.location.name;
-          user.profile.picture = profile._json.pictureUrl;
+          // user.profile.picture = profile._json.pictureUrl;
           user.profile.website = profile._json.publicProfileUrl;
           user.save(function(err) {
             done(err, user);

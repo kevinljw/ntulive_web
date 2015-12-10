@@ -17,8 +17,8 @@
 									p #{val.profile.threeInterests1}
 									p #{val.profile.threeInterests1}
 						.back
-							if val.picture
-								img(src="/uploadPImg/#{val.picture}", width='180')
+							if val.profile.picture
+								img(src="#{val.profile.picture}", width='180')
 							else
 								img(src="/img/default_profile.png", class='profile', width='180', height='180')
 			.eachPeopleText

@@ -10,7 +10,7 @@ block content
 
 		.container
 			.page-header
-				h3 Delete Article
+				h3 Delete Announcement
 			ul.list-group
 				.row
 					.col-sm-offset-3.col-sm-6
@@ -21,7 +21,7 @@ block content
 										i.fa.fa-minus-circle
 										| Delete
 			.page-header
-				h3 New Article
+				h3 New Announcement
 
 			form.form-horizontal(action='/article/new/'+user.id, method='POST')
 				input(type='hidden', name='_csrf', value=_csrf)

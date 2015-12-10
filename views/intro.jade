@@ -6,7 +6,7 @@ block content
     .row
       .col-sm-3
         if thisProfile.picture
-          img.propic(src="/uploadPImg/#{thisProfile.picture}", alt='')
+          img.propic(src="#{thisProfile.picture}", alt='')
         else
           img.propic(src='/img/default_profile.png')
         //- photo end
@@ -105,7 +105,7 @@ block content
           .col-sm-1
             span.secicon.fa.fa-list-ol(style='color:#f7a61b')
           //- icon end
-          .col-sm-11
+          .col-sm-9
             h3 I describe myself in three words:
             |                    
             p #{thisProfile.selfThreeWords1}
@@ -119,8 +119,8 @@ block content
           .col-sm-1
             span.secicon.fa.fa-plane(style='color:#7cbf42')
           //- icon end
-          .col-sm-11
-            h3 Three interests outside of school and work are:
+          .col-sm-9
+            h3 My three interests are:
             |                 
             p #{thisProfile.threeInterests1}
             p #{thisProfile.threeInterests2}
@@ -131,8 +131,8 @@ block content
           .col-sm-1
             span.secicon.fa.fa-check-square(style='color:#eb4a24')
           //- icon end
-          .col-sm-11
-            h3 The Six things I can never do without 
+          .col-sm-9
+            h3 The Six things I can never do without: 
             |                                
             p !{thisProfile.sixThings}
             p    
@@ -142,8 +142,8 @@ block content
           .col-sm-1
             span.secicon.fa.fa-rocket(style='color:#34a8c8')
           //- icon end
-          .col-sm-11
-            h3 My three key skill sets:
+          .col-sm-9
+            h3 My three key skill sets are:
             |                    
             p #{thisProfile.threeKeySkill1}
             p #{thisProfile.threeKeySkill2}
@@ -154,7 +154,7 @@ block content
           .col-sm-1
             span.secicon.fa.fa-thumbs-up(style='color:#30a443')
           //- icon end
-          .col-sm-11
+          .col-sm-9
             h3 Best piece of advice ever received:
             |                                 
             p !{thisProfile.bestAdvice}
@@ -165,7 +165,7 @@ block content
           .col-sm-1
             span.secicon.fa.fa-book(style='color:#948077')
           //- icon end
-          .col-sm-11
+          .col-sm-9
             h3 One book I would recommend to others:
             |             
             p !{thisProfile.oneBook}
@@ -176,7 +176,7 @@ block content
           .col-sm-1
             span.secicon.fa.fa-map-marker(style='color:#f6cd4c')
           //- icon end
-          .col-sm-11
+          .col-sm-9
             h3 My favorite place to hang out in Taiwan: 
             |  
             p !{thisProfile.favoritePlace}
@@ -187,12 +187,12 @@ block content
           .col-sm-1
             span.secicon.fa.fa-user(style='color:#40b0f9')
           //- icon end
-          .col-sm-11
+          .col-sm-9
             h3 My self-summary: 
             |      
             p !{thisProfile.statement}
             p   
-    .col-md-offset-7.col-md-2.introBackBtn
+    .col-md-1.introBackBtn
         a.a2a_dd.btn.btn-default(href='#introHead')
           span.fa.fa-arrow-up
           |  Top
