@@ -72,7 +72,7 @@ block content
                 |                             
                 li
                   if thisProfile.twitter
-                    a(href='')
+                    a(href='https://twitter.com/intent/user?user_id=#{thisProfile.twitter}')
                       span.social.fa.fa-twitter
                       | Twitter
                   else
@@ -82,7 +82,7 @@ block content
               ul.list-unstyled
                 li
                   if thisProfile.linkedin
-                    a(href='')
+                    a(href='http://www.linkedin.com/profile/view?id=#{thisProfile.linkedin}')
                       span.social.fa.fa-linkedin
                       | Linkedin   
                   else

@@ -128,7 +128,7 @@ block content
           button.btn.btn.btn-primary(type='submit')
             i.fa.fa-pencilr
             | Update Profile
-    .page-header
+    .page-header#linkAcnt
       h3 Linked Accounts
     .form-horizontal
       .form-group
@@ -142,26 +142,37 @@ block content
         //-     p: a.text-danger(href='/account/unlink/google') Unlink your Google account
         //-   else
         //-     p: a(href='/auth/google') Link your Google account
-        .col-sm-offset-5.col-sm-4
-          if user.facebook
-            p: a.text-danger(href='/account/unlink/facebook') Unlink your Facebook account
-          else
-            p: a(href='/auth/facebook') Link your Facebook account
-        .col-sm-offset-5.col-sm-4
-          if user.twitter
-            p: a.text-danger(href='/account/unlink/twitter') Unlink your Twitter account
-          else
-            p: a(href='/auth/twitter') Link your Twitter account
-        //- .col-sm-offset-3.col-sm-4
-        //-   if user.github
-        //-     p: a.text-danger(href='/account/unlink/github') Unlink your GitHub account
-        //-   else
-        //-     p: a(href='/auth/github') Link your GitHub account
-        .col-sm-offset-5.col-sm-4
-          if user.linkedin
-            p: a.text-danger(href='/account/unlink/linkedin') Unlink your LinkedIn account
-          else
-            p: a(href='/auth/linkedin') Link your LinkedIn account
+        .col-sm-offset-2.col-sm-8
+          .col-sm-4
+            .linkAcnt
+              if user.facebook
+                a.text-danger(href='/account/unlink/facebook')
+                  span.fa.fa-facebook-square
+                  p Unlink your Facebook account
+              else
+                a(href='/auth/facebook')
+                  span.fa.fa-facebook-square
+                  p Link your Facebook account
+          .col-sm-4
+            .linkAcnt
+              if user.twitter
+                a.text-danger(href='/account/unlink/twitter')
+                  span.fa.fa-twitter-square
+                  p Unlink your Twitter account
+              else
+                a(href='/auth/twitter')
+                  span.fa.fa-twitter-square
+                  p Link your Twitter account
+          .col-sm-4
+            .linkAcnt
+              if user.linkedin
+                a.text-danger(href='/account/unlink/linkedin')
+                  span.fa.fa-linkedin-square
+                  p Unlink your LinkedIn account
+              else
+                a(href='/auth/linkedin')
+                  span.fa.fa-linkedin-square
+                  p Link your LinkedIn account
     .page-header
       h3 Change Password
 

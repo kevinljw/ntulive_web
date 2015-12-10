@@ -50,8 +50,11 @@ exports.postNewArticle = function(req, res, next) {
         var LinkIsOn = false;
         var videoLink = req.body.link;
         
-        if(videoLink != "" && (videoLink.indexOf("youtu.be")>-1 || videoLink.indexOf("youtube")>-1)){
+        if(videoLink != "" && (videoLink.indexOf("vimeo.com")>-1 || videoLink.indexOf("youtu.be")>-1 || videoLink.indexOf("youtube")>-1)){
         	videoLink = videoLink.replace("watch?v=", "v/");
+        	videoLink = videoLink.replace("youtu.be", "www.youtube.com/v");
+        	videoLink = videoLink.replace("vimeo.com", "player.vimeo.com/video");
+        	// https://player.vimeo.com/video/10881014
         	console.log(videoLink);
         	LinkIsOn = true;
         }

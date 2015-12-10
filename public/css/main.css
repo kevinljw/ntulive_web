@@ -12382,3 +12382,14 @@ article.post .post-inner iframe {
   vertical-align: bottom;
   margin-top: 18px;
 }
+
+.linkAcnt .fa {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 90px;
+}
+
+.linkAcnt p {
+  text-align: center;
+}
