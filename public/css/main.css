@@ -11749,30 +11749,6 @@ footer p, footer ul {
   z-index: 0;
 }
 
-.jumbotronHome {
-  background: url("/img/23513388126_6b8fcaf3c5_k_b.jpg") no-repeat;
-  background-size: 100% auto;
-  background-attachment: fixed;
-}
-
-.jumbotronPeople {
-  background: url("/img/22911258384_13d3dd1bac_k_c.jpg") no-repeat;
-  background-size: 100% auto;
-  background-attachment: fixed;
-  padding: 80px 0;
-}
-
-.jumbotron h1 {
-  color: #931D34;
-  text-shadow: 2px 2px 20px #f5f5f5;
-}
-
-.jumbotron p, .jumbotron h2 {
-  font-weight: 500;
-  color: #fff;
-  text-shadow: 2px 2px 5px #212121;
-}
-
 #hero-area {
   background: url("/img/23513410876_21894c801e_k.jpg") no-repeat;
   background-size: cover;
@@ -11804,10 +11780,6 @@ footer p, footer ul {
   font-weight: 800;
   text-shadow: 2px 2px 5px #212121;
   color: #cccbcb;
-}
-
-.jumbotron {
-  margin-top: -10px;
 }
 
 .body_gray {
@@ -12333,6 +12305,10 @@ article.post .post-inner iframe {
   transition: all 0.2s linear;
 }
 
+.navbar-default .navbar-nav > li > a {
+  font-weight: 500;
+}
+
 .navbar-default .navbar-nav > li > a:hover {
   color: #931D34;
   background-color: #e7e7e7;
@@ -12348,9 +12324,48 @@ article.post .post-inner iframe {
   background-color: #931D34;
 }
 
+.jumbotronHome {
+  background: url("/img/23513388126_6b8fcaf3c5_k_b.jpg") no-repeat;
+  background-size: 100% auto;
+  background-attachment: fixed;
+}
+
+.jumbotronPeople {
+  background: url("/img/22911258384_13d3dd1bac_k_c.jpg") no-repeat;
+  background-size: 100% auto;
+  background-attachment: fixed;
+  padding: 80px 0;
+}
+
+.jumbotron h1 {
+  color: #931D34;
+  text-shadow: 2px 2px 20px #f5f5f5;
+}
+
+.jumbotron p, .jumbotron h2 {
+  font-weight: 500;
+  color: #fff;
+  text-shadow: 2px 2px 5px #212121;
+}
+
 .jumbotron {
   background-color: #931D34;
   color: #fff;
+  margin-top: -10px;
+}
+
+@media screen and (max-width: 767px) {
+  .jumbotron .container {
+    margin-left: 10px;
+  }
+  .jumbotronPeople {
+    background-size: auto 52%;
+    background-position: -220px 0px;
+  }
+  .jumbotronHome {
+    background-size: auto 70%;
+    background-position: 0px 0px;
+  }
 }
 
 .navbar-default {
@@ -12392,4 +12407,22 @@ article.post .post-inner iframe {
 
 .linkAcnt p {
   text-align: center;
+}
+
+.introBackBtn {
+  margin-top: 10px;
+}
+
+.alignRight {
+  float: right;
+}
+
+.alignRight .btn {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 1px 6px;
+}
+
+.alignRight h4 {
+  font-size: 10px;
 }

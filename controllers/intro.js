@@ -16,6 +16,7 @@ exports.getIntro = function(req, res) {
           'email': thisUser.email,
           'name': thisUser.profile.name,
           'lname': thisUser.profile.lname,
+          'status': thisUser.profile.status,
           'picture': thisUser.profile.picture,
           'website': thisUser.profile.website,
           'facebook': thisUser.facebook,

@@ -28,9 +28,13 @@ exports.getAnnouncements = function(req, res) {
   
 };
 exports.getArticle = function(req, res) {
-	res.render('article', {
-	    title: 'Account Management',
-	  });
+	Article.find({},function(err, articles) {
+    	if (err) throw err;
+		res.render('article', {
+		    title: 'Account Management',
+		    allArticles: articles.reverse()
+		  });
+	});
   
 };
 exports.postNewArticle = function(req, res, next) {

@@ -34,13 +34,10 @@ block content
         .col-sm-4
           input.form-control(type='text', name='cname', id='cname', value='#{user.profile.cname}')
       .form-group
-        label.col-sm-5.control-label(for='name') English First Name
+        label.col-sm-5.control-label(for='name') English Name
         .col-sm-4
-          input.form-control(type='text', name='name', id='name', value='#{user.profile.name}')
-      .form-group
-        label.col-sm-5.control-label(for='lname') Last Name
-        .col-sm-4
-          input.form-control(type='text', name='lname', id='lname', value='#{user.profile.lname}')
+          input.form-control(type='text', name='name', id='name', placeholder='First Name', value='#{user.profile.name}')
+          input.form-control(type='text', name='lname', id='lname', placeholder='Last Name', value='#{user.profile.lname}')          
       .form-group
         label.col-sm-5.control-label(for='birth') Birth Date
         .col-sm-4
@@ -73,7 +70,7 @@ block content
         .col-sm-4
           input.form-control(type='text', name='website', id='website', value='#{user.profile.website}')
       .form-group
-        label.col-sm-5.control-label(for='job') Describe your current role in one word
+        label.col-sm-5.control-label(for='job') Describe your current role in one word:
         .col-sm-4
           input.form-control(type='text', name='job', id='job', value='#{user.profile.job}')
       .form-group
@@ -86,15 +83,6 @@ block content
           .col-sm-4
             input.form-control(type='text', name='selfThreeWords3', id='selfThreeWords3', placeholder='Three', value='#{user.profile.selfThreeWords3}')
       .form-group
-        label.col-sm-5.control-label(for='threeInterests1') Name three interests outside of school and work
-        .col-sm-4
-          .col-sm-4
-            input.form-control(type='text', name='threeInterests1', id='threeInterests1', placeholder='One', value='#{user.profile.threeInterests1}')
-          .col-sm-4
-            input.form-control(type='text', name='threeInterests2', id='threeInterests2', placeholder='Two', value='#{user.profile.threeInterests2}')
-          .col-sm-4
-            input.form-control(type='text', name='threeInterests3', id='threeInterests3', placeholder='Three', value='#{user.profile.threeInterests3}')
-      .form-group
         label.col-sm-5.control-label(for='threeKeySkill1') What are your three key skill sets?
         .col-sm-4
           .col-sm-4
@@ -103,6 +91,15 @@ block content
             input.form-control(type='text', name='threeKeySkill2', id='threeKeySkill2', placeholder='Two', value='#{user.profile.threeKeySkill2}')
           .col-sm-4
             input.form-control(type='text', name='threeKeySkill3', id='threeKeySkill3', placeholder='Three', value='#{user.profile.threeKeySkill3}')
+      .form-group
+        label.col-sm-5.control-label(for='threeInterests1') Name three interests outside of school and work
+        .col-sm-4
+          .col-sm-4
+            input.form-control(type='text', name='threeInterests1', id='threeInterests1', placeholder='One', value='#{user.profile.threeInterests1}')
+          .col-sm-4
+            input.form-control(type='text', name='threeInterests2', id='threeInterests2', placeholder='Two', value='#{user.profile.threeInterests2}')
+          .col-sm-4
+            input.form-control(type='text', name='threeInterests3', id='threeInterests3', placeholder='Three', value='#{user.profile.threeInterests3}')
       .form-group
         label.col-sm-5.control-label(for='sixThings') The Six things I can never do without
         .col-sm-4

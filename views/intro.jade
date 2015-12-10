@@ -1,6 +1,7 @@
 extends layoutGray
 
 block content
+  #introHead
   .container.containerIntro
     .row
       .col-sm-3
@@ -12,15 +13,12 @@ block content
       .col-sm-8
         .cv-title
           .row
-            .col-sm-7
+            .col-sm-6
               h1 #{thisProfile.name} #{thisProfile.lname}
             |                         
-            .col-sm-5.text-right.dl-share
+            .col-sm-6.text-right.dl-share
               //- AddToAny BEGIN
-              //- a.a2a_dd.btn.btn-default(href='')
-              //-   span.fa.fa-share
-              //-   |  Share
-              //- |                             
+                                        
               //- script(type='text/javascript').
               //-   var a2a_config = a2a_config || {};
               //-   a2a_config.linkname = "Minimal CV by EvenFly";
@@ -30,11 +28,11 @@ block content
               //- script(type='text/javascript', src='//static.addtoany.com/menu/page.js')
               //- AddToAny END
               if thisProfile.facebook
-                a.btn.btn-success(href='https://www.facebook.com/#{thisProfile.facebook}')
+                a.btn.btn-primary(href='https://www.facebook.com/#{thisProfile.facebook}', target='_blank')
                   span.fa.fa-comment
                   |  FB Message
               else
-                a.btn.btn-success.disabled(href='', alt='Facebook Account Not Available.')
+                a.btn.btn-primary.disabled(href='', alt='Facebook Account Not Available.')
                   span.fa.fa-comment
                   |  FB Message
           |                     
@@ -44,7 +42,7 @@ block content
               ul.list-unstyled
                 li
                   if thisProfile.website
-                    a(href='#{thisProfile.website}')
+                    a(href='#{thisProfile.website}', target='_blank')
                       span.social.fa.fa-home
                       | My Website
                   else
@@ -63,7 +61,7 @@ block content
               ul.list-unstyled
                 li
                   if thisProfile.facebook
-                    a(href='https://www.facebook.com/#{thisProfile.facebook}')
+                    a(href='https://www.facebook.com/#{thisProfile.facebook}', target='_blank')
                       span.social.fa.fa-facebook
                       | Facebook
                   else
@@ -72,7 +70,7 @@ block content
                 |                             
                 li
                   if thisProfile.twitter
-                    a(href='https://twitter.com/intent/user?user_id=#{thisProfile.twitter}')
+                    a(href='https://twitter.com/intent/user?user_id=#{thisProfile.twitter}', target='_blank')
                       span.social.fa.fa-twitter
                       | Twitter
                   else
@@ -82,7 +80,7 @@ block content
               ul.list-unstyled
                 li
                   if thisProfile.linkedin
-                    a(href='http://www.linkedin.com/profile/view?id=#{thisProfile.linkedin}')
+                    a(href='http://www.linkedin.com/profile/view?id=#{thisProfile.linkedin}', target='_blank')
                       span.social.fa.fa-linkedin
                       | Linkedin   
                   else
@@ -101,7 +99,7 @@ block content
     hr
     p       
 
-    .col-md-10.mainleft
+    .col-md-12.mainleft
       if thisProfile.selfThreeWords1 
         .row.mobmid
           .col-sm-1
@@ -193,4 +191,12 @@ block content
             h3 My self-summary: 
             |      
             p !{thisProfile.statement}
-            p      
+            p   
+    .col-md-offset-7.col-md-2.introBackBtn
+        a.a2a_dd.btn.btn-default(href='#introHead')
+          span.fa.fa-arrow-up
+          |  Top
+    .col-md-2.introBackBtn
+      a.a2a_dd.btn.btn-default(href='../people/#{thisProfile.status}')
+        span.fa.fa-share
+        |  See others   

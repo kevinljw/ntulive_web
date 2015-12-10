@@ -10,6 +10,17 @@ block content
 
 		.container
 			.page-header
+				h3 Delete Article
+			ul.list-group
+				.row
+					.col-sm-offset-3.col-sm-6
+						each val,index in allArticles
+							li.list-group-item #{index} | #{val.title}
+								span.alignRight
+									a(href='/deleteArticle/#{val.id}').btn.btn-default(type='submit')
+										i.fa.fa-minus-circle
+										| Delete
+			.page-header
 				h3 New Article
 
 			form.form-horizontal(action='/article/new/'+user.id, method='POST')
