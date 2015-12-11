@@ -243,18 +243,21 @@ footer {
     margin-right: auto;
 }
 .cubeContain{
-    
-    padding: 30px 5px;
-    width: 180px;
+    padding: 9px;
+//    width: 170px;
     color: #fff;
     margin-left: auto;
     margin-right: auto;
 //    vertical-align: middle;
-    letter-spacing: 1px;
-    line-height: 26px;
-    font-size: 14px;
-    font-weight: 400;
+//    letter-spacing: 1px;
+//    line-height: 26px;
+//    text-align: center;
     word-wrap:break-word; 
+}
+.cubeContain p{
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
 }
 .eachShareItem{
     list-style: none;
@@ -597,7 +600,13 @@ article.post .post-inner iframe {
     background-size: 100% auto;
     background-attachment: fixed;
     padding: 80px 0;
-    
+}
+.jumbotronPeopleMentor{
+     background: url('/img/S5316610.jpg') no-repeat;
+    background-size: 100% auto;
+    background-attachment: fixed;
+    background-position: 0 -160px;
+    padding: 80px 0;
 }
 .jumbotron h1{
     color: #931D34;
@@ -624,6 +633,11 @@ article.post .post-inner iframe {
   .jumbotronHome{
     background-size: auto 70%;
     background-position: 0px 0px;
+  }
+  .jumbotronPeopleMentor{
+    background-size: auto 100%;
+    background-position: -180px -200px;
+//    padding: 80px 0;
   }
   #hero-area{
     background-position: -125px 0px;

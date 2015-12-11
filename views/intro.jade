@@ -123,18 +123,7 @@ block content
             |                 
             p #{thisProfile.threeInterests1}
             p #{thisProfile.threeInterests2}
-            p #{thisProfile.threeInterests3}     
-      if thisProfile.sixThings
-        hr  
-        .row.mobmid
-          .col-sm-1
-            span.secicon.fa.fa-check-square(style='color:#eb4a24')
-          //- icon end
-          .col-sm-9
-            h3 The Six things I can never do without: 
-            |                                
-            p !{thisProfile.sixThings}
-            p    
+            p #{thisProfile.threeInterests3} 
       if thisProfile.threeKeySkill1
         hr  
         .row.mobmid
@@ -146,7 +135,18 @@ block content
             |                    
             p #{thisProfile.threeKeySkill1}
             p #{thisProfile.threeKeySkill2}
-            p #{thisProfile.threeKeySkill3}
+            p #{thisProfile.threeKeySkill3}    
+      if thisProfile.sixThings
+        hr  
+        .row.mobmid
+          .col-sm-1
+            span.secicon.fa.fa-check-square(style='color:#eb4a24')
+          //- icon end
+          .col-sm-9
+            h3 The Six things I can never do without: 
+            |                                
+            p !{thisProfile.sixThings}
+            p    
       if thisProfile.bestAdvice
         hr  
         .row.mobmid
@@ -154,7 +154,7 @@ block content
             span.secicon.fa.fa-thumbs-up(style='color:#30a443')
           //- icon end
           .col-sm-9
-            h3 Best piece of advice ever received:
+            h3 Best piece of advice I ever received:
             |                                 
             p !{thisProfile.bestAdvice}
             p    

@@ -11926,16 +11926,17 @@ footer p, footer ul {
 }
 
 .cubeContain {
-  padding: 30px 5px;
-  width: 180px;
+  padding: 9px;
   color: #fff;
   margin-left: auto;
   margin-right: auto;
-  letter-spacing: 1px;
-  line-height: 26px;
-  font-size: 14px;
-  font-weight: 400;
   word-wrap: break-word;
+}
+
+.cubeContain p {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .eachShareItem {
@@ -12336,6 +12337,14 @@ article.post .post-inner iframe {
   padding: 80px 0;
 }
 
+.jumbotronPeopleMentor {
+  background: url("/img/S5316610.jpg") no-repeat;
+  background-size: 100% auto;
+  background-attachment: fixed;
+  background-position: 0 -160px;
+  padding: 80px 0;
+}
+
 .jumbotron h1 {
   color: #931D34;
   text-shadow: 2px 2px 20px #f5f5f5;
@@ -12364,6 +12373,10 @@ article.post .post-inner iframe {
   .jumbotronHome {
     background-size: auto 70%;
     background-position: 0px 0px;
+  }
+  .jumbotronPeopleMentor {
+    background-size: auto 100%;
+    background-position: -180px -200px;
   }
   #hero-area {
     background-position: -125px 0px;
