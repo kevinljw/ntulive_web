@@ -28,7 +28,10 @@ $(document).ready(function() {
 	    showClose: false,
         allowedFileExtensions: ["jpg", "png", "gif"],
         maxImageWidth: 250,
-        maxImageHeight: 250
+        maxImageHeight: 250,
+        // maxImageWidth: 200,
+        // maxFileCount: 1,
+        // resizeImage: true
         // initialPreview: [
         //     '<img src="uploadPImg/'+userPic+'" class="file-preview-image" alt="Your Avatar" title="Your Avatar">',
         // ],
@@ -48,7 +51,10 @@ $(document).ready(function() {
         showPreview: false,
         uploadUrl: "/sharing/uploadfiles/"+userUploadID,
         allowedFileExtensions: ["mp4", "mov", "avi"],
+
+
     });
+
     $("#input-4").fileinput({
         maxFileCount: 10,
         showPreview: false,

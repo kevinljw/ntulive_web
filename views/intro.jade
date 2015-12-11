@@ -14,6 +14,7 @@ block content
         .cv-title
           .row
             .col-sm-6
+              h1 #{thisProfile.cname}
               h1 #{thisProfile.name} #{thisProfile.lname}
             |                         
             .col-sm-6.text-right.dl-share
@@ -47,8 +48,7 @@ block content
                       | My Website
                   else
                     span.social.fa.fa-home
-                      |   My Website
-                |                                                    
+                      |   My Website 
                 li
                   if thisProfile.email
                     a(href='mailto:#{thisProfile.email}')
@@ -62,12 +62,11 @@ block content
                 li
                   if thisProfile.facebook
                     a(href='https://www.facebook.com/#{thisProfile.facebook}', target='_blank')
-                      span.social.fa.fa-facebook
+                      span.social.fa.fa-facebook-square
                       | Facebook
                   else
-                    span.social.fa.fa-facebook
-                      |   Facebook
-                |                             
+                    span.social.fa.fa-facebook-square
+                      |   Facebook                        
                 li
                   if thisProfile.twitter
                     a(href='https://twitter.com/intent/user?user_id=#{thisProfile.twitter}', target='_blank')
@@ -75,7 +74,7 @@ block content
                       | Twitter
                   else
                     span.social.fa.fa-twitter
-                      |   Twitter
+                      |  Twitter
             .col-sm-4
               ul.list-unstyled
                 li
@@ -87,14 +86,14 @@ block content
                     span.social.fa.fa-linkedin
                       |   Linkedin 
 
-                li
-                  if thisProfile.instagram
-                    a(href='')
-                      span.social.fa.fa-instagram
-                      | Instagram
-                  else
-                    span.social.fa.fa-instagram
-                      |   Instagram
+                //- li
+                //-   if thisProfile.instagram
+                //-     a(href='')
+                //-       span.social.fa.fa-instagram
+                //-       | Instagram
+                //-   else
+                //-     span.social.fa.fa-instagram
+                //-       |   Instagram
     p
     hr
     p       

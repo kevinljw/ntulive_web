@@ -14,6 +14,7 @@ exports.getIntro = function(req, res) {
 
       var formatedData = {
           'email': thisUser.email,
+          'cname': thisUser.profile.cname,
           'name': thisUser.profile.name,
           'lname': thisUser.profile.lname,
           'status': thisUser.profile.status,
