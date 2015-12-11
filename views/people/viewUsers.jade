@@ -6,7 +6,7 @@
 			a.eachPeoplePic(href='/intro/'+val.id)
 				.flip-container
 					.card
-						.front 
+						.front.propic
 							.cubeContain
 								p #{val.profile.selfThreeWords1}
 								p #{val.profile.selfThreeWords2}
@@ -14,11 +14,11 @@
 								p #{val.profile.threeInterests1}
 								p #{val.profile.threeInterests2}
 								p #{val.profile.threeInterests3}
-						.back
+						.back.propic
 							if val.profile.picture
-								img(src="#{val.profile.picture}", width='180')
+								img.propic(src="#{val.profile.picture}", width='180')
 							else
-								img(src="/img/default_profile.png", class='profile', width='180', height='180')
+								img.propic(src="/img/default_profile.png", class='profile', width='180', height='180')
 			.eachPeopleText
 				li= val.profile.name+" "+val.profile.lname
 

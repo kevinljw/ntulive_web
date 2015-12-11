@@ -21,7 +21,7 @@ function loadWhiteListArr(listArr){
 
         });
         // console.log(data);
-        console.log("wList:"+whiteListArr);
+        console.log("wList:"+whiteListArr.length);
    });
 
 }
@@ -270,12 +270,18 @@ exports.postUpdateProfile = function(req, res, next) {
     user.profile.threeInterests1 = req.body.threeInterests1 || '';
     user.profile.threeInterests2 = req.body.threeInterests2 || '';
     user.profile.threeInterests3 = req.body.threeInterests3 || '';
-    user.profile.sixThings = req.body.sixThings || '';
+    user.profile.sixThings1 = req.body.sixThings1 || '';
+    user.profile.sixThings2 = req.body.sixThings2 || '';
+    user.profile.sixThings3 = req.body.sixThings3 || '';
+    user.profile.sixThings4 = req.body.sixThings4 || '';
+    user.profile.sixThings5 = req.body.sixThings5 || '';
+    user.profile.sixThings6 = req.body.sixThings6 || '';
     user.profile.threeKeySkill1 = req.body.threeKeySkill1 || '';
     user.profile.threeKeySkill2 = req.body.threeKeySkill2 || '';
     user.profile.threeKeySkill3 = req.body.threeKeySkill3 || '';
     user.profile.bestAdvice = req.body.bestAdvice || '';
     user.profile.oneBook = req.body.oneBook || '';
+    user.profile.oneUrl = req.body.oneUrl || '';
     user.profile.favoritePlace = req.body.favoritePlace || '';
     user.profile.statement = req.body.statement || '';
     user.save(function(err) {

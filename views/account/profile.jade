@@ -103,7 +103,18 @@ block content
       .form-group
         label.col-sm-5.control-label(for='sixThings') The Six things I can never do without
         .col-sm-4
-          textarea.form-control(type='text', name='sixThings', id='sixThings', rows='7') #{user.profile.sixThings}
+          .col-sm-6
+            input.form-control(type='text', name='sixThings1', id='sixThings1', placeholder='One', value='#{user.profile.sixThings1}')
+          .col-sm-6
+            input.form-control(type='text', name='sixThings2', id='sixThings2', placeholder='Two', value='#{user.profile.sixThings2}')
+          .col-sm-6
+            input.form-control(type='text', name='sixThings3', id='sixThings3', placeholder='Three', value='#{user.profile.sixThings3}')
+          .col-sm-6
+            input.form-control(type='text', name='sixThings4', id='sixThings4', placeholder='Four', value='#{user.profile.sixThings4}')
+          .col-sm-6
+            input.form-control(type='text', name='sixThings5', id='sixThings5', placeholder='Five', value='#{user.profile.sixThings5}')
+          .col-sm-6
+            input.form-control(type='text', name='sixThings6', id='sixThings6', placeholder='Six', value='#{user.profile.sixThings6}')
       .form-group
         label.col-sm-5.control-label(for='bestAdvice') Best piece of advice ever received
         .col-sm-4
@@ -112,6 +123,10 @@ block content
         label.col-sm-5.control-label(for='oneBook') One book you would recommend to others
         .col-sm-4
           textarea.form-control(type='text', name='oneBook', id='oneBook', rows='4') #{user.profile.oneBook}
+      .form-group
+        label.col-sm-5.control-label(for='oneUrl') One URL you would recommend to others
+        .col-sm-4
+          textarea.form-control(type='text', name='oneUrl', id='oneUrl', rows='4') #{user.profile.oneUrl}
       .form-group
         label.col-sm-5.control-label(for='favoritePlace') Where is your favorite place to hang out in Taiwan?
         .col-sm-4

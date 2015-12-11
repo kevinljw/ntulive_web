@@ -37,6 +37,17 @@ exports.getArticle = function(req, res) {
 	});
   
 };
+exports.postDeleteArticle = function(req, res, next) {
+	Article.remove({"_id": req.params.id}, function(err, article) {
+		if (!article) {
+          req.flash('errors', { msg: 'No account with that id exists.' });
+          return res.redirect('/');
+        }
+        req.flash('success', { msg: 'Done.' });
+	    res.redirect('/article');
+        
+	});
+}
 exports.postNewArticle = function(req, res, next) {
 	req.assert('title', 'Title must be at least 1 characters long').len(1);
 	req.assert('content', 'Content must be at least 1 characters long').len(1);

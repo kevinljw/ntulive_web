@@ -15,11 +15,12 @@ block content
 				.row
 					.col-sm-offset-3.col-sm-6
 						each val,index in allArticles
-							li.list-group-item #{index} | #{val.title}
-								span.alignRight
-									a(href='/deleteArticle/#{val.id}').btn.btn-default(type='submit')
-										i.fa.fa-minus-circle
-										| Delete
+							form.form-horizontal(action='deleteArticle/#{val.id}', method='POST')
+								li.list-group-item #{index} | #{val.title}
+									span.alignRight
+										button.btn.btn-default(type='submit')
+											i.fa.fa-minus-circle
+											| Delete
 			.page-header
 				h3 New Announcement
 
@@ -32,11 +33,15 @@ block content
 				.form-group
 					label.col-sm-5.control-label(for='content') Content
 					.col-sm-4
-						textarea.form-control(type='text', name='content', id='content', rows='10')
+						textarea.form-control(type='text', name='content', id='content', rows='6')
 				.form-group
 					label.col-sm-5.control-label(for='link') Video Link (Only Youtube and Vimeo)
 					.col-sm-4
 						input.form-control(type='text', name='link', id='link', placeholder='(Optional)')
+				.form-group
+					label.col-sm-5.control-label(for='IsSendEmail') Send Email
+					.col-sm-4
+						input.form-control(type='checkbox', name='IsSendEmail', id='IsSendEmail', checked)
 				.form-group
 					.col-sm-offset-5.col-sm-4
 						button.btn.btn-primary(type='submit')

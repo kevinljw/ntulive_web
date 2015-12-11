@@ -136,7 +136,7 @@ block content
             p #{thisProfile.threeKeySkill1}
             p #{thisProfile.threeKeySkill2}
             p #{thisProfile.threeKeySkill3}    
-      if thisProfile.sixThings
+      if thisProfile.sixThings1
         hr  
         .row.mobmid
           .col-sm-1
@@ -145,8 +145,12 @@ block content
           .col-sm-9
             h3 The Six things I can never do without: 
             |                                
-            p !{thisProfile.sixThings}
-            p    
+            p #{thisProfile.sixThings1}
+            p #{thisProfile.sixThings2}
+            p #{thisProfile.sixThings3}  
+            p #{thisProfile.sixThings4}
+            p #{thisProfile.sixThings5}
+            p #{thisProfile.sixThings6}      
       if thisProfile.bestAdvice
         hr  
         .row.mobmid
@@ -168,7 +172,18 @@ block content
             h3 One book I would recommend to others:
             |             
             p !{thisProfile.oneBook}
-            p    
+            p   
+      if thisProfile.oneUrl
+        hr  
+        .row.mobmid
+          .col-sm-1
+            span.secicon.fa.fa-link(style='color:#A569BD')
+          //- icon end
+          .col-sm-9
+            h3 One URL I would recommend to others:
+            |             
+            p !{thisProfile.oneUrl}
+            p 
       if thisProfile.favoritePlace
         hr  
         .row.mobmid
@@ -191,7 +206,7 @@ block content
             |      
             p !{thisProfile.statement}
             p   
-    .col-md-1.introBackBtn
+    .col-md-2.introBackBtn
         a.a2a_dd.btn.btn-default(href='#introHead')
           span.fa.fa-arrow-up
           |  Top

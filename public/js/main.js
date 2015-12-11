@@ -1,18 +1,13 @@
 $(document).ready(function() {
 
   // Place JavaScript code here...
-  $('#file-input').fileinput({
-	    resizeImage: true,
-	    maxImageWidth: 200,
-	    maxImageHeight: 200,
-	    resizePreference: 'width'
-	});
-  var btnCust = '<button type="button" class="btn btn-default" title="Add picture tags" ' + 
-    'onclick="alert(\'Call your custom code here.\')">' +
-    '<i class="glyphicon glyphicon-tag"></i>' +
-    '</button>'; 
-
-    $("#input-1").fileinput({
+ //  $('#file-input').fileinput({
+	//     resizeImage: true,
+	//     maxImageWidth: 200,
+	//     maxImageHeight: 200,
+	//     resizePreference: 'width'
+	// });
+    $('#input-1').fileinput({
         previewFileType: "image",
         browseClass: "btn btn-success",
         browseLabel: "Pick Image",
@@ -40,28 +35,31 @@ $(document).ready(function() {
         // layoutTemplates: {main2: '{preview} {remove} {upload} {browse}'},
         // uploadUrl: "/account/upload/"
     });
-    $("#input-2").fileinput({
+    $('#input-2').fileinput({
                 maxFileCount: 10,
                 // showPreview: false,
                 // uploadUrl: "/sharing/uploadfiles/"+userUploadID,
                 // allowedFileExtensions: ["txt", "md", "ini", "text"],
     });
-    $("#input-3").fileinput({
+    $('#input-3').fileinput({
         maxFileCount: 10,
         showPreview: false,
         uploadUrl: "/sharing/uploadfiles/"+userUploadID,
         allowedFileExtensions: ["mp4", "mov", "avi"],
-
-
     });
 
-    $("#input-4").fileinput({
+    $('input-4').fileinput({
         maxFileCount: 10,
         showPreview: false,
         uploadUrl: "/sharing/uploadfiles/"+userUploadID,
         // allowedFileExtensions: ["zip", "rar", "gz", "tgz"],
     });
-    
+    $('#input-5').fileinput({
+        // maxFileCount: 1,
+        showPreview: false,
+        // uploadUrl: "/sharing/uploadfiles/"+userUploadID,
+        // allowedFileExtensions: ["zip", "rar", "gz", "tgz"],
+    });
 });
 function nameSelectFoo() {
         var selIndex = document.getElementById("NameSelect").selectedIndex;

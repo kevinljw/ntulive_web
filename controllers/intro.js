@@ -32,12 +32,18 @@ exports.getIntro = function(req, res) {
           'threeInterests1': thisUser.profile.threeInterests1,
           'threeInterests2': thisUser.profile.threeInterests2,
           'threeInterests3': thisUser.profile.threeInterests3,
-          'sixThings': thisUser.profile.sixThings.replace(/\r?\n/g, '<br />'),
+          'sixThings1': thisUser.profile.sixThings1,
+          'sixThings2': thisUser.profile.sixThings2,
+          'sixThings3': thisUser.profile.sixThings3,
+          'sixThings4': thisUser.profile.sixThings4,
+          'sixThings5': thisUser.profile.sixThings5,
+          'sixThings6': thisUser.profile.sixThings6,
           'threeKeySkill1': thisUser.profile.threeKeySkill1,
           'threeKeySkill2': thisUser.profile.threeKeySkill2,
           'threeKeySkill3': thisUser.profile.threeKeySkill3,
           'bestAdvice': thisUser.profile.bestAdvice.replace(/\r?\n/g, '<br />'),
           'oneBook': thisUser.profile.oneBook.replace(/\r?\n/g, '<br />'),
+          'oneUrl': thisUser.profile.oneUrl.replace(/\r?\n/g, '<br />'),
           'favoritePlace': thisUser.profile.favoritePlace.replace(/\r?\n/g, '<br />')
       }
 
