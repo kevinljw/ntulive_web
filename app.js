@@ -185,6 +185,7 @@ app.get('/article', passportConf.isAuthenticated, announcementsController.getArt
 app.post('/article/new/:id', passportConf.isAuthenticated, announcementsController.postNewArticle);
 
 app.post('/deleteArticle/:id', passportConf.isAuthenticated, announcementsController.postDeleteArticle);
+app.post('/deleteShare/:id', passportConf.isAuthenticated, announcementsController.postDeleteShare);
 
 /**
  * API examples routes.

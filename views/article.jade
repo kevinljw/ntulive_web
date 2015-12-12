@@ -9,6 +9,7 @@ block content
 				p 
 
 		.container
+			
 			.page-header
 				h3 Delete Announcement
 			ul.list-group
@@ -47,3 +48,15 @@ block content
 						button.btn.btn-primary(type='submit')
 							i.fa.fa-pencil
 							| Post this article
+			.page-header
+				h3 Delete Sharing
+			ul.list-group
+				.row
+					.col-sm-offset-3.col-sm-6
+						each val,index in allShares
+							form.form-horizontal(action='deleteShare/#{val.id}', method='POST')
+								li.list-group-item #{val.type} | #{val.title}
+									span.alignRight
+										button.btn.btn-default(type='submit')
+											i.fa.fa-minus-circle
+											| Delete
