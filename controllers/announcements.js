@@ -83,6 +83,7 @@ exports.postNewArticle = function(req, res, next) {
         var PictureIsOn = false;
         var videoLink = req.body.link;
         var PicPath;
+
         
         if(req.file){
         	console.log(req.file);
@@ -97,7 +98,10 @@ exports.postNewArticle = function(req, res, next) {
         	console.log(videoLink);
         	LinkIsOn = true;
         }
-        
+        if(req.body.IsSendEmail){
+        	
+        	console.log("SendEmail!!");
+        }
         var thisArticle = new Article({
 	      title: req.body.title,
 		  content: req.body.content,

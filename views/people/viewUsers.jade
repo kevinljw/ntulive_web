@@ -16,7 +16,8 @@
 								p #{val.profile.threeInterests3}
 						.back.propic
 							if val.profile.picture
-								img.propic(src="#{val.profile.picture}", width='180')
+								.propic.profileGrid(style='background: url(\'#{user.profile.picture}\') no-repeat;background-size: auto 100%; background-position: 50% 0; border-radius: 5px;')
+								//- img(src="#{val.profile.picture}", width='180')
 							else
 								img.propic(src="/img/default_profile.png", class='profile', width='180', height='180')
 			.eachPeopleText

@@ -70,6 +70,8 @@ $(document).ready(function() {
         browseLabel: "Pick Image",
         browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
     });
+    
+    $('.bxslider').bxSlider();
 });
 $(document).on('ready', function() {
     

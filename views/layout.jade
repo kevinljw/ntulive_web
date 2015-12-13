@@ -7,7 +7,9 @@ html
     meta(name='csrf-token', content=_csrf)
     title #{title} - NTU LIVE
     link(rel='stylesheet', href='/css/fileinput.min.css')
+    //- link(rel='stylesheet', href='/css/jquery.bxslider.css')
     link(rel='stylesheet', href='/css/main.css')
+    
   body
     include partials/header
 
@@ -17,6 +19,8 @@ html
     include partials/footer
 
     script(src='/js/lib/jquery.min.js')
+
+    //- script(src='/js/lib/jquery.bxslider.min.js')
     
     script(src='/js/lib/canvas-to-blob.min.js', type='text/javascript')
 

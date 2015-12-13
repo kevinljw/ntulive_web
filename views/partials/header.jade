@@ -58,6 +58,7 @@
           li.dropdown(class=title=='Account Management'?'active':undefined)
             a.dropdown-toggle(href='#', data-toggle='dropdown')
               if user.profile.picture
+                //- .headerProfileGrid(style='background: url(\'#{user.profile.picture}\') no-repeat;background-size: auto 100%; background-position: 50% 0; ')
                 img(src='#{user.profile.picture}')
               else
                 img(src='#{user.gravatar(60)}')

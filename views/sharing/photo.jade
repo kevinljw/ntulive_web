@@ -13,7 +13,7 @@ block content
 			.row
 				.col-md-10
 					each val in shareList
-						.post.post-quote(id='#{val.timestamp}')
+						.post.post-img(id='#{val.timestamp}')
 									.post-head
 										h3 #{val.title}
 										.post-meta
@@ -24,6 +24,23 @@ block content
 												i.fa.fa-clock-o	#{val.timestamp}
 										.clearfix
 									.post-wrap
+										//- .post-img.post-img-8
+											//- .bx-wrapper(style='max-width: 1170px;')
+											//- 	.bx-viewport(style='width: 100%; overflow: hidden; position: relative; height: 296px;')
+											//- 		ul(style='width: 515%; position: relative; transition-timing-function: linear; transition-duration: 0s; transform: translate3d(-1578px, 0px, 0px);')
+											//- 			each eachFileVal,indexOfEachFile in val.filespath
+											//- 				li.bx-clone(style='float: left; list-style: none; position: relative; width: 526px;')
+											//- 					img(src='/uploadAnnPImg/#{val.filesname[indexOfEachFile]}')
+											//- 	.bx-controls.bx-has-pager.bx-has-controls-direction
+											//- 		.bx-pager.bx-default-pager
+											//- 			each eachFileVal,indexOfEachFile in val.filespath
+											//- 				.bx-pager-item
+											//- 					a.bx-pager-link(href, data-slide-index="0") 1
+											//- 		.bx-controls-direction
+											//- 			a.bx-prev(href)
+											//- 			a.bx-next(href)
+										.post-img
+											img(height='420', src='/uploadFiles/#{val.filesname[0]}')
 										.post-inner
 											p #{val.description}
 											ul
