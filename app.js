@@ -13,7 +13,7 @@ var logger = require('morgan');
 var errorHandler = require('errorhandler');
 
 var multer  = require('multer');
-var storage = multer.diskStorage({
+var storagePImg = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, './public/uploadPImg/'); // Absolute path. Folder must exist, will not be created for you.
   },
@@ -21,7 +21,16 @@ var storage = multer.diskStorage({
     cb(null, req.params.id + file.originalname.substr(file.originalname.lastIndexOf('.')));
   }
 });
-var uploadPImg = multer({ storage: storage });
+var storageAnnPImg = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/uploadAnnPImg/'); // Absolute path. Folder must exist, will not be created for you.
+  },
+  filename: function (req, file, cb) {
+    cb(null, req.params.id + "-"+ Date.now() + file.originalname.substr(file.originalname.lastIndexOf('.')));
+  }
+});
+var uploadPImg = multer({ storage: storagePImg });
+var uploadAnnPImg = multer({ storage: storageAnnPImg });
 
 var storageFiles = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -182,7 +191,7 @@ app.post('/account/whitelist', passportConf.isAuthenticated, userController.post
 app.post('/account/delete_whitelist', passportConf.isAuthenticated, userController.postDeleteLastWhitelist);
 
 app.get('/article', passportConf.isAuthenticated, announcementsController.getArticle);
-app.post('/article/new/:id', passportConf.isAuthenticated, announcementsController.postNewArticle);
+app.post('/article/new/:id', passportConf.isAuthenticated, uploadAnnPImg.single('AnnPImg'), announcementsController.postNewArticle);
 
 app.post('/deleteArticle/:id', passportConf.isAuthenticated, announcementsController.postDeleteArticle);
 app.post('/deleteShare/:id', passportConf.isAuthenticated, announcementsController.postDeleteShare);

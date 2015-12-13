@@ -1,6 +1,10 @@
 extends layout
 
 block content
+		//- script.
+		//- 	$(document).on('ready', function() {
+				
+		//- 	});
 		.row.jumbotron
 			.container
 				h2 Article Management
@@ -25,7 +29,13 @@ block content
 			.page-header
 				h3 New Announcement
 
-			form.form-horizontal(action='/article/new/'+user.id, method='POST')
+			//- form.form-horizontal(action='account/uploadAnnPImg/', method='POST', enctype='multipart/form-data')
+			//- 	input(type='hidden', name='_csrf', value=_csrf)
+			//- 	.form-group
+			//- 		label.col-sm-5.control-label(for='AnnPImg') Upload Photo
+			//- 		.col-sm-4
+			//- 			input#input-10(type='file', data-preview-file-type='text',accept='image/*', class='file-loading', name='AnnPImg')
+			form.form-horizontal(action='/article/new/'+user.id, method='POST',enctype='multipart/form-data')
 				input(type='hidden', name='_csrf', value=_csrf)
 				.form-group
 					label.col-sm-5.control-label(for='title') Title
@@ -35,6 +45,10 @@ block content
 					label.col-sm-5.control-label(for='content') Content
 					.col-sm-4
 						textarea.form-control(type='text', name='content', id='content', rows='6')
+				.form-group
+					label.col-sm-5.control-label(for='AnnPImg') Upload Photo
+					.col-sm-4
+						input#input-10(type='file', data-preview-file-type='text',accept='image/*', class='file-loading', name='AnnPImg')
 				.form-group
 					label.col-sm-5.control-label(for='link') Video Link (Only Youtube and Vimeo)
 					.col-sm-4

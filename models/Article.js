@@ -10,6 +10,7 @@ var articleSchema = new mongoose.Schema({
   authorId: { type: String, default: '' },
   timestamp: { type: String, default: '' },
   link: { type: String, default: '' },
+  picture: { type: String, default: '' },
 });
 
 /**

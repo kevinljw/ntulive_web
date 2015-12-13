@@ -71,15 +71,25 @@ exports.postNewArticle = function(req, res, next) {
 	    req.flash('errors', errors);
 	    return res.redirect('/article');
 	}
+
 	User.findById(req.params.id, function(err, user) {
         if (!user) {
           req.flash('errors', { msg: 'No account with that id exists.' });
           return res.redirect('/');
         }
+        // console.log(req.file);
+
         var LinkIsOn = false;
+        var PictureIsOn = false;
         var videoLink = req.body.link;
+        var PicPath;
         
-        if(videoLink != "" && (videoLink.indexOf("vimeo.com")>-1 || videoLink.indexOf("youtu.be")>-1 || videoLink.indexOf("youtube")>-1)){
+        if(req.file){
+        	console.log(req.file);
+        	PicPath = "/uploadAnnPImg/"+req.file.filename;
+        	PictureIsOn = true;
+        }
+        else if(videoLink != "" && (videoLink.indexOf("vimeo.com")>-1 || videoLink.indexOf("youtu.be")>-1 || videoLink.indexOf("youtube")>-1)){
         	videoLink = videoLink.replace("watch?v=", "v/");
         	videoLink = videoLink.replace("youtu.be", "www.youtube.com/v");
         	videoLink = videoLink.replace("vimeo.com", "player.vimeo.com/video");
@@ -87,13 +97,15 @@ exports.postNewArticle = function(req, res, next) {
         	console.log(videoLink);
         	LinkIsOn = true;
         }
+        
         var thisArticle = new Article({
 	      title: req.body.title,
 		  content: req.body.content,
 		  author: user.profile.name,
 		  authorId: req.params.id,
 		  timestamp: moment().format('MMMM Do YYYY, h:mm:ss a'),
-		  link: LinkIsOn?videoLink:''
+		  link: LinkIsOn?videoLink:'',
+		  picture: PictureIsOn?PicPath:''
 	    });
 	    console.log(thisArticle);
 	    thisArticle.save(function(err) {

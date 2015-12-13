@@ -7,7 +7,7 @@ $(document).ready(function() {
 	//     maxImageHeight: 200,
 	//     resizePreference: 'width'
 	// });
-    $('#input-1').fileinput({
+    $("#input-1").fileinput({
         previewFileType: "image",
         browseClass: "btn btn-success",
         browseLabel: "Pick Image",
@@ -35,31 +35,44 @@ $(document).ready(function() {
         // layoutTemplates: {main2: '{preview} {remove} {upload} {browse}'},
         // uploadUrl: "/account/upload/"
     });
-    $('#input-2').fileinput({
+    $("#input-2").fileinput({
                 maxFileCount: 10,
                 // showPreview: false,
                 // uploadUrl: "/sharing/uploadfiles/"+userUploadID,
                 // allowedFileExtensions: ["txt", "md", "ini", "text"],
     });
-    $('#input-3').fileinput({
+    $("#input-3").fileinput({
         maxFileCount: 10,
         showPreview: false,
-        uploadUrl: "/sharing/uploadfiles/"+userUploadID,
+        // uploadUrl: "/sharing/uploadfiles/"+userUploadID,
         allowedFileExtensions: ["mp4", "mov", "avi"],
     });
 
-    $('input-4').fileinput({
+    $("#input-4").fileinput({
         maxFileCount: 10,
-        showPreview: false,
-        uploadUrl: "/sharing/uploadfiles/"+userUploadID,
-        // allowedFileExtensions: ["zip", "rar", "gz", "tgz"],
-    });
-    $('#input-5').fileinput({
-        // maxFileCount: 1,
         showPreview: false,
         // uploadUrl: "/sharing/uploadfiles/"+userUploadID,
         // allowedFileExtensions: ["zip", "rar", "gz", "tgz"],
     });
+    // $("#input-10").fileinput({
+    //     // maxFileCount: 1,
+    //     showPreview: false,
+    //     showUpload: false,
+    //     // uploadUrl: "/sharing/uploadfiles/"+userUploadID,
+    //     // allowedFileExtensions: ["zip", "rar", "gz", "tgz"],
+    // });
+    $("#input-10").fileinput({
+        previewFileType: "image",
+        showUpload: false,
+        // showRemove: false,
+        showCaption: false,
+        // browseClass: "btn btn-success",
+        browseLabel: "Pick Image",
+        browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
+    });
+});
+$(document).on('ready', function() {
+    
 });
 function nameSelectFoo() {
         var selIndex = document.getElementById("NameSelect").selectedIndex;
