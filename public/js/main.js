@@ -71,7 +71,26 @@ $(document).ready(function() {
         browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
     });
     
-    $('.bxslider').bxSlider();
+    // $('.bxslider').bxSlider();
+    $('.postIdeaBtn').on('click', function(){
+        if( $('.postIdeaForm').is(':visible') ) {
+            // console.log("to be invisible");
+            $('.postIdeaForm').animate({ 'height': '0px' }, 'slow', function(){
+                $('.postIdeaForm').hide();
+            });
+            $('.postIdeaList').animate({ 'margin-top': '0px' }, 'slow');
+        }
+        else {
+            // console.log("to be visible");
+            $('.postIdeaForm').show();
+            $('.postIdeaForm').animate({ 'height': '360px' }, 'slow');
+            $('.postIdeaList').animate({ 'margin-top': '20px' }, 'slow');
+        }
+        // $('.postIdeaForm').toggle('slide', { direction: 'left' }, 1000);
+        // $('#main-content').animate({
+        //     'margin-left' : $('#main-content').css('margin-left') == '0px' ? '210px' : '0px'
+        // }, 1000);
+    });
 });
 $(document).on('ready', function() {
     
