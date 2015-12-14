@@ -74,3 +74,15 @@ block content
 										button.btn.btn-default(type='submit')
 											i.fa.fa-minus-circle
 											| Delete
+			.page-header
+				h3 Delete Idea
+			ul.list-group
+				.row
+					.col-sm-offset-3.col-sm-6
+						each val,index in allIdeas
+							form.form-horizontal(action='deleteIdea/#{val.id}', method='POST')
+								li.list-group-item #{index} | #{val.title}
+									span.alignRight
+										button.btn.btn-default(type='submit')
+											i.fa.fa-minus-circle
+											| Delete

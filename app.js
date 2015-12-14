@@ -72,6 +72,7 @@ var introController = require('./controllers/intro');
 var shareController = require('./controllers/sharing');
 var announcementsController = require('./controllers/announcements');
 var adminController = require('./controllers/admin');
+var ideaController = require('./controllers/idea');
 /**
  * API keys and Passport configuration.
  */
@@ -195,7 +196,11 @@ app.post('/article/new/:id', passportConf.isAuthenticated, uploadAnnPImg.single(
 
 app.post('/deleteArticle/:id', passportConf.isAuthenticated, announcementsController.postDeleteArticle);
 app.post('/deleteShare/:id', passportConf.isAuthenticated, announcementsController.postDeleteShare);
+app.post('/deleteIdea/:id', passportConf.isAuthenticated, announcementsController.postDeleteIdea);
 
+
+app.get('/idea', passportConf.isAuthenticated, ideaController.getIdea);
+app.post('/idea/new/:id', passportConf.isAuthenticated, ideaController.postIdea);
 /**
  * API examples routes.
  */

@@ -33,6 +33,8 @@
             li.divider
             li
               a(href='/people/founder') Founder
+        li(class=title=='Idea'?'active':undefined)
+          a(href='/idea') Idea
         li.dropdown(class=title=='Sharing'?'active':undefined)
           a.dropdown-toggle(href='/sharing/photo') Sharing
           ul.dropdown-menu
@@ -46,8 +48,8 @@
               a(href='/sharing/document') Document
         li(class=title=='Announcements'?'active':undefined)
           a(href='/announcements') Announcements
-        li(class=title=='Contact'?'active':undefined)
-          a(href='/contact') Contact
+        //- li(class=title=='Contact'?'active':undefined)
+        //-   a(href='/contact') Contact
       ul.nav.navbar-nav.navbar-right
         if !user
           li(class=title=='Login'?'active':undefined)

@@ -2,6 +2,7 @@ var secrets = require('../config/secrets');
 var moment = require('moment');
 var Article = require('../models/Article');
 var Share = require('../models/Share');
+var Idea = require('../models/Idea');
 var User = require('../models/User');
 var nodemailer = require("nodemailer");
 var transporter = nodemailer.createTransport({
@@ -28,21 +29,36 @@ exports.getAnnouncements = function(req, res) {
   
 };
 exports.getArticle = function(req, res) {
-	Share.find({},function(err, shares) {
+	Idea.find({},function(err, ideas) {
 		if (err) throw err;
-		Article.find({},function(err2, articles) {
-	    	if (err2) throw err2;
-			res.render('article', {
-			    title: 'Account Management',
-			    allArticles: articles,
-			    allShares: shares
-			  });
-		});
-  	});
+		Share.find({},function(err, shares) {
+			if (err) throw err;
+			Article.find({},function(err2, articles) {
+		    	if (err2) throw err2;
+				res.render('article', {
+				    title: 'Account Management',
+				    allArticles: articles,
+				    allShares: shares,
+				    allIdeas: ideas
+				  });
+			});
+	  	});
+	});
 };
 exports.postDeleteShare = function(req, res, next) {
 	Share.remove({"_id": req.params.id}, function(err, article) {
 		if (!article) {
+          req.flash('errors', { msg: 'No account with that id exists.' });
+          return res.redirect('/');
+        }
+        req.flash('success', { msg: 'Done.' });
+	    res.redirect('/article');
+        
+	});
+}
+exports.postDeleteIdea = function(req, res, next) {
+	Idea.remove({"_id": req.params.id}, function(err, idea) {
+		if (!idea) {
           req.flash('errors', { msg: 'No account with that id exists.' });
           return res.redirect('/');
         }
