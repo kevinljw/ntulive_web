@@ -1,6 +1,6 @@
 var secrets = require('../config/secrets');
-
 var User = require('../models/User');
+var moment = require('moment');
 
 /**
  * GET /intro/:id
@@ -15,8 +15,9 @@ exports.getIntro = function(req, res) {
       var formatedData = {
           'email': thisUser.email,
           'cname': thisUser.profile.cname,
-          'name': thisUser.profile.name,
+          'name': thisUser.profile.name, 
           'lname': thisUser.profile.lname,
+          'birth': moment(thisUser.profile.birth.toDateString).format("MM / DD"),
           'status': thisUser.profile.status,
           'picture': thisUser.profile.picture,
           'website': thisUser.profile.website,

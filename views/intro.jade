@@ -36,19 +36,14 @@ block content
                 a.btn.btn-primary.disabled(href='', alt='Facebook Account Not Available.')
                   span.fa.fa-comment
                   |  FB Message
-          |                     
+          |                   
           h2 #{thisProfile.job}
           .row
             .col-sm-4
               ul.list-unstyled
                 li
-                  if thisProfile.website
-                    a(href='#{thisProfile.website}', target='_blank')
-                      span.social.fa.fa-home
-                      | My Website
-                  else
-                    span.social.fa.fa-home
-                      |   My Website 
+                    span.social.fa.fa-calendar
+                    | #{thisProfile.birth} 
                 li
                   if thisProfile.email
                     a(href='mailto:#{thisProfile.email}')
@@ -66,7 +61,18 @@ block content
                       | Facebook
                   else
                     span.social.fa.fa-facebook-square
-                      |   Facebook                        
+                      |   Facebook
+                li
+                  if thisProfile.website
+                    a(href='#{thisProfile.website}', target='_blank')
+                      span.social.fa.fa-home
+                      | My Website
+                  else
+                    span.social.fa.fa-home
+                      |   My Website
+                
+            .col-sm-4
+              ul.list-unstyled
                 li
                   if thisProfile.twitter
                     a(href='https://twitter.com/intent/user?user_id=#{thisProfile.twitter}', target='_blank')
@@ -75,8 +81,6 @@ block content
                   else
                     span.social.fa.fa-twitter
                       |  Twitter
-            .col-sm-4
-              ul.list-unstyled
                 li
                   if thisProfile.linkedin
                     a(href='http://www.linkedin.com/profile/view?id=#{thisProfile.linkedin}', target='_blank')
