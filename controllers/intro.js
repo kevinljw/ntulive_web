@@ -17,7 +17,7 @@ exports.getIntro = function(req, res) {
           'cname': thisUser.profile.cname,
           'name': thisUser.profile.name, 
           'lname': thisUser.profile.lname,
-          'birth': moment(thisUser.profile.birth.toDateString).format("MM / DD"),
+          'birth': thisUser.profile.birth!=''?moment(Date.parse(thisUser.profile.birth)).format("MM / DD"):' - / - ',
           'status': thisUser.profile.status,
           'picture': thisUser.profile.picture,
           'website': thisUser.profile.website,
