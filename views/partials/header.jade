@@ -9,7 +9,7 @@
       a.navbar-brand(href='/')
         //- img(src='/svg/ntu_live_logo.svg', height='30px')
         //- i.fa.fa-cube
-        | NTU LIVE
+        | MEDxLIVE
     .collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-left
         li(class=title=='Home'?'active':undefined)
@@ -20,21 +20,29 @@
           a.dropdown-toggle(href='/people/fellow') People
           ul.dropdown-menu
             li
-              a(href='/people/fellow') Fellow
+              a(href='/people/founder') Founders
+            li.divider
+            li
+              a(href='/people/mentor') Mentors
+            li.divider
+            li
+              a(href='/people/advisor') Advisors
             li.divider
             li
               a(href='/people/ta') Staff
             li.divider
-            li
-              a(href='/people/mentor') Mentor
-            li.divider
-            li
-              a(href='/people/advisor') Advisor        
-            li.divider
-            li
-              a(href='/people/founder') Founder
-        li(class=title=='Idea'?'active':undefined)
-          a(href='/idea') Ideas
+            li.dropdown.dropdown-submenu
+              a.dropdown-toggle(href='#') Fellows
+              ul.dropdown-menu.initHide
+                li
+                  a(href='/people/fellow') 2015
+                li.divider
+                li
+                  a(href='/people/fellow_16') 2016
+            
+
+        //- li(class=title=='Idea'?'active':undefined)
+        //-   a(href='/idea') Ideas
         li.dropdown(class=title=='Sharing'?'active':undefined)
           a.dropdown-toggle(href='/sharing/photo') Sharing
           ul.dropdown-menu

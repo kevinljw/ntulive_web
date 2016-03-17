@@ -12334,15 +12334,16 @@ article.post .post-inner iframe {
   background: url("/img/22911258384_13d3dd1bac_k_c.jpg") no-repeat;
   background-size: 100% auto;
   background-attachment: fixed;
-  padding: 80px 0;
+  background-position: 0 40px;
+  padding: 100px 0;
 }
 
 .jumbotronPeopleMentor {
   background: url("/img/S5316610.jpg") no-repeat;
   background-size: 100% auto;
   background-attachment: fixed;
-  background-position: 0 -160px;
-  padding: 80px 0;
+  background-position: 0 -200px;
+  padding: 120px 0;
 }
 
 .jumbotron h1 {
@@ -12375,11 +12376,21 @@ article.post .post-inner iframe {
     background-position: 0px 0px;
   }
   .jumbotronPeopleMentor {
-    background-size: auto 100%;
-    background-position: -180px -200px;
+    background-size: auto 70%;
+    background-position: -70px -80px;
   }
   #hero-area {
     background-position: -125px 0px;
+  }
+}
+
+@media screen and (min-width: 1480px) {
+  .jumbotronPeopleMentor {
+    background-position: 0 -400px;
+  }
+  .jumbotronPeople {
+    background-position: 0 0px;
+    padding: 140px 0;
   }
 }
 
@@ -12452,4 +12463,114 @@ article.post .post-inner iframe {
 .forgotPass {
   margin-top: 12px;
   padding-left: 0;
+}
+
+.homeAnn {
+  width: 100%;
+  display: block;
+  padding: 0 0;
+}
+
+.hollowPic {
+  display: block;
+  height: 200px;
+  width: 200px;
+}
+
+.profileGrid {
+  height: 180px;
+  width: 180px;
+}
+
+.headerProfileGrid {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+}
+
+.postIdeaForm {
+  height: 0px;
+  background: #fff;
+  display: none;
+}
+
+.postIdeaList {
+  position: relative;
+}
+
+.postIdeaBtn {
+  border-top: 2px solid #fff;
+  margin-right: 25px;
+}
+
+.postIdeaBtn p {
+  cursor: pointer;
+  padding: 5px 10px;
+  background: #fff;
+  color: rgba(244, 244, 244, 0.7);
+  text-shadow: 1px 4px 6px #fff, 0 0 0 #000, 1px 4px 6px #fff;
+  font-weight: 800;
+  width: 150px;
+  text-align: center;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  box-shadow: 3px 3px 5px 0 #e2e3e4;
+  display: block;
+  float: right;
+}
+
+.jumbotronIdea {
+  margin-bottom: 0;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  -webkit-border-radius: 0 6px 6px 6px;
+  -moz-border-radius: 0 6px 6px 6px;
+  border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu > .dropdown-menu.initHide {
+  display: none;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+  display: block;
+}
+
+.dropdown-submenu > a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+
+.dropdown-submenu:hover > a:after {
+  border-left-color: #ffffff;
+}
+
+.dropdown-submenu.pull-left {
+  float: none;
+}
+
+.dropdown-submenu.pull-left > .dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  -webkit-border-radius: 6px 0 6px 6px;
+  -moz-border-radius: 6px 0 6px 6px;
+  border-radius: 6px 0 6px 6px;
 }

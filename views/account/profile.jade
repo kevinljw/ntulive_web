@@ -221,48 +221,189 @@ block content
     if user.profile.status == "ta" || user.profile.status == "founder" || user.profile.status == "admin"
       .page-header
         h3 Administration
-      .panel(class='panel-default')
-        .panel-heading: | White List (Email)
+      form.form-horizontal(action='/account/whitelist', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+        .form-group
+          label.col-sm-5.control-label(for='whitelist_status') Status
+          .col-sm-7
+            select(name='whitelist_status', id='whitelist_status',style="width: 180px;")
+                  option(value='fellow') Fellow
+                  option(value='ta') Staff
+                  option(value='mentor') Mentor
+                  option(value='advisor') Advisor
+                  option(value='founder') Founder
+                  option(value='admin') Admin
+                  option(value='guest') Guest
+        .form-group
+          label.col-sm-5.control-label(for='whitelist_statusYear') Join Year
+          .col-sm-7
+            select(name='whitelist_statusYear', id='whitelist_statusYear',style="width: 180px;")
+                  option(value='16') 2016
+                  option(value='15') 2015
+        .form-group
+          label.col-sm-5.control-label(for='whitelist') Add Email
+          .col-sm-3
+            input.form-control(type='text', name='whitelist', id='whitelist')
         
-        form.form-horizontal(action='/account/whitelist', method='POST')
+        .form-group
+          .col-sm-offset-5.col-sm-4
+            button.btn.btn-primary(type='submit')
+              i.fa.fa-cloud-upload
+                |  Post This Email
+      form.form-horizontal(action='/account/delete_whitelist', method='POST')
+        .form-group
           input(type='hidden', name='_csrf', value=_csrf)
-          .panelContainer
-            table(style='width:100%')
-              thead
-                tr
-                  th Status
-                  th Email
-              tbody
-                each val in wList
-                  tr
-                    td #{val.status}
+          .col-sm-offset-5.col-sm-4
+            button.btn.btn-danger(type='submit')
+              i.fa.fa-trash
+                |  Delete Lastest Item
+      .nav-tabs-navigation
+        .nav-tabs-wrapper
+          ul.nav.nav-tabs#tabs(data-tabs="tabs")
+            li(class='active')
+              a(href="#Fellows16" data-toggle="tab")
+                h5
+                  i.fa.fa-map-marker
+                  | Fellows'16
+            li
+              a(href="#Fellows15" data-toggle="tab")
+                h5
+                  i.fa.fa-map-marker
+                  | Fellows'15
+            li
+              a(href="#Staff" data-toggle="tab")
+                h5
+                  i.fa.fa-map-marker
+                  | Staff
+            li
+              a(href="#Mentor" data-toggle="tab")
+                h5
+                  i.fa.fa-map-marker
+                  | Mentor
+            li
+              a(href="#Advisor" data-toggle="tab")
+                h5
+                  i.fa.fa-map-marker
+                  | Advisor
+            li
+              a(href="#Founder" data-toggle="tab")
+                h5
+                  i.fa.fa-map-marker
+                  | Founder
+            li
+              a(href="#Admin" data-toggle="tab")
+                h5
+                  i.fa.fa-map-marker
+                  | Admin
+            li
+              a(href="#Guest" data-toggle="tab")
+                h5
+                  i.fa.fa-map-marker
+                  | Guest
+      #my-tab-content.tab-content(style='min-height:300px; margin-top:50px;')
+        #Fellows16.tab-pane(class='active')
+          table.col-md-offset-1.col-md-10.col-sm-12
+            thead
+              tr.col-sm-4
+                th Email
+            tbody
+              each val,index in wList
+                if val.status=='fellow' && val.statusYear=='16'
+                  tr.col-sm-4
                     td #{val.email}
-          .form-group
-            label.col-sm-5.control-label(for='whitelist_status') Status
-            .col-sm-7
-              select(name='whitelist_status', id='whitelist_status')
-                    option(value='fellow') Fellow
-                    option(value='ta') TA
-                    option(value='mentor') Mentor
-                    option(value='advisor') Advisor
-                    option(value='founder') Founder
-                    option(value='admin') Admin
-                    option(value='guest') Guest
-          .form-group
-            label.col-sm-5.control-label(for='whitelist') Add Email
-            .col-sm-4
-              input.form-control(type='text', name='whitelist', id='whitelist')
+        #Fellows15.tab-pane
+          table.col-md-offset-1.col-md-10.col-sm-12
+            thead
+              tr.col-sm-4
+                th Email
           
-          .form-group
-            .col-sm-offset-5.col-sm-4
-              button.btn.btn-primary(type='submit') Post This Email
-        form.form-horizontal(action='/account/delete_whitelist', method='POST')
-          .form-group
-            input(type='hidden', name='_csrf', value=_csrf)
-            .col-sm-offset-5.col-sm-4
-              button.btn.btn-danger(type='submit')
-                i.fa.fa-trash
-                | Delete lastest Item
+            tbody
+              each val in wList
+                if val.status=='fellow' && (val.statusYear==null || val.statusYear=='15')
+                  tr.col-sm-4
+                    td #{val.email}
+                  
+        #Staff.tab-pane
+          table.col-md-offset-1.col-md-10.col-sm-12
+            thead
+              tr.col-sm-6
+                th Email
+                th - Year
+            tbody
+              each val in wList
+                if val.status=='ta'
+                  tr.col-sm-6
+                    td #{val.email}
+                    if val.statusYear==null
+                      td - 2015
+                    else
+                      td - 20#{val.statusYear}
+        #Mentor.tab-pane
+          table.col-md-offset-1.col-md-10.col-sm-12
+            thead
+              tr.col-sm-6
+                th Email
+                th - Year
+            tbody
+              each val in wList
+                if val.status=='mentor'
+                  tr.col-sm-6
+                    td #{val.email}
+                    if val.statusYear==null
+                      td - 2015
+                    else
+                      td - 20#{val.statusYear}
+        #Advisor.tab-pane
+          table.col-md-offset-1.col-md-10.col-sm-12
+            thead
+              tr.col-sm-6
+                th Email
+                th - Year
+            tbody
+              each val in wList
+                if val.status=='advisor'
+                  tr.col-sm-6
+                    td #{val.email}
+                    if val.statusYear==null
+                      td - 2015
+                    else
+                      td - 20#{val.statusYear}
+        #Founder.tab-pane
+          table.col-md-offset-1.col-md-10.col-sm-12
+            thead
+              tr.col-sm-6
+                th Email
+                th - Year
+            tbody
+              each val in wList
+                if val.status=='founder'
+                  tr.col-sm-6
+                    td #{val.email}
+                    if val.statusYear==null
+                      td - 2015
+                    else
+                      td - 20#{val.statusYear}
+        #Admin.tab-pane
+          table.col-md-offset-1.col-md-10.col-sm-12
+            thead
+              tr.col-sm-6
+                th Email
+            tbody
+              each val in wList
+                if val.status=='admin'
+                  tr.col-sm-6
+                    td #{val.email}
+        #Guest.tab-pane
+          table.col-md-offset-1.col-md-10.col-sm-12
+            thead
+              tr.col-sm-6
+                th Email
+            tbody
+              each val in wList
+                if val.status=='guest'
+                  tr.col-sm-6
+                    td #{val.email}
+
           //- form.form-horizontal(action='/account/whitelist', method='POST')
           //-   input(type='hidden', name='_csrf', value=_csrf)
           //-   .form-group

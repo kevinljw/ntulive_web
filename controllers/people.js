@@ -15,13 +15,23 @@ function getFormatedData(showStatus,callback){
 
   // var formatedUserData=[];
   // console.log(showStatus);
+  var splitArr = showStatus.split('_');
+  // console.log(splitArr);
 
-  User.find({"profile.status": showStatus}, null, {sort: {"profile.name": 1}}, function(err, users) {
-    if (err) throw err;
-        // console.log("formatedUserData: "+formatedUserData);
-
-        callback(users); 
-  });
+  if(splitArr.length>1){
+    User.find({"profile.status": splitArr[0], "profile.statusYear": splitArr[1]}, null, {sort: {"profile.name": 1}}, function(err, users) {
+      if (err) throw err;
+          // console.log("formatedUserData: "+formatedUserData);
+          callback(users); 
+    });
+  }
+  else{
+    User.find({"profile.status": showStatus}, null, {sort: {"profile.name": 1}}, function(err, users) {
+      if (err) throw err;
+          // console.log("formatedUserData: "+formatedUserData);
+          callback(users); 
+    });
+  }
   
 } 
 /**
@@ -43,6 +53,7 @@ exports.getPeopleId = function(req, res) {
   // get all the users
   // console.log("getPeople");
   // console.log(req.params.id);
+
   getFormatedData(req.params.id,function(formatedUserData){
     res.render('people/'+req.params.id, {
       title: 'People',

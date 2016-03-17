@@ -21,7 +21,7 @@
 
 module.exports = {
 
-  db: process.env.MONGODB || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/test',
+  db: process.env.MONGODB || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/ntulive',
 
   sessionSecret: process.env.SESSION_SECRET || 'Your Session Secret goes here',
 
@@ -36,8 +36,8 @@ module.exports = {
   },
 
   sendgrid: {
-    user: process.env.SENDGRID_USER || 'hslogin',
-    password: process.env.SENDGRID_PASSWORD || 'hspassword00'
+    user: process.env.SENDGRID_USER || 'crawljw@gmail.com',
+    password: process.env.SENDGRID_PASSWORD || 'crawljw1414'
   },
 
   nyt: {
@@ -50,8 +50,10 @@ module.exports = {
   },
 
   facebook: {
-    clientID: process.env.FACEBOOK_ID || '754220301289665',
-    clientSecret: process.env.FACEBOOK_SECRET || '41860e58c256a3d7ad8267d3c1939a4a',
+    // clientID: process.env.FACEBOOK_ID || '754220301289665',
+    // clientSecret: process.env.FACEBOOK_SECRET || '41860e58c256a3d7ad8267d3c1939a4a',
+    clientID: process.env.FACEBOOK_ID || '1524340307877853',
+    clientSecret: process.env.FACEBOOK_SECRET || 'ed337bf69244ca4df72f1e9fbb38a5ca',
     callbackURL: '/auth/facebook/callback',
     passReqToCallback: true
   },
@@ -71,8 +73,11 @@ module.exports = {
   },
 
   twitter: {
-    consumerKey: process.env.TWITTER_KEY || '6NNBDyJ2TavL407A3lWxPFKBI',
-    consumerSecret: process.env.TWITTER_SECRET  || 'ZHaYyK3DQCqv49Z9ofsYdqiUgeoICyh6uoBgFfu7OeYC7wTQKa',
+    // consumerKey: process.env.TWITTER_KEY || '6NNBDyJ2TavL407A3lWxPFKBI',
+    // consumerSecret: process.env.TWITTER_SECRET  || 'ZHaYyK3DQCqv49Z9ofsYdqiUgeoICyh6uoBgFfu7OeYC7wTQKa',
+    consumerKey: process.env.TWITTER_KEY || '8c3oy6Q7YeimxIDesBjmGMDIf',
+    consumerSecret: process.env.TWITTER_SECRET  || 'J8Igobahw9BJI8ccpwmtsMmaGhsNKxEAoY6SXtb8U0WxWxsZZf',
+    
     callbackURL: '/auth/twitter/callback',
     passReqToCallback: true
   },
@@ -85,9 +90,12 @@ module.exports = {
   },
 
   linkedin: {
-    clientID: process.env.LINKEDIN_ID || '77chexmowru601',
-    clientSecret: process.env.LINKEDIN_SECRET || 'szdC8lN2s2SuMSy8',
-    callbackURL: process.env.LINKEDIN_CALLBACK_URL || 'http://localhost:3000/auth/linkedin/callback',
+    // clientID: process.env.LINKEDIN_ID || '77chexmowru601',
+    // clientSecret: process.env.LINKEDIN_SECRET || 'szdC8lN2s2SuMSy8',
+    
+    clientID: process.env.LINKEDIN_ID || '75vqacl1rrwczn',
+    clientSecret: process.env.LINKEDIN_SECRET || 'icsLkvTZhFoPkJ1Y',
+    callbackURL: process.env.LINKEDIN_CALLBACK_URL || '/auth/linkedin/callback',
     scope: ['r_basicprofile', 'r_emailaddress'],
     passReqToCallback: true
   },

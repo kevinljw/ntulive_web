@@ -18,7 +18,7 @@ function loadWhiteListArr(listArr){
         whiteListArr = JSON.parse(data);
         whiteListArr.forEach(function(item){
           whiteListArr_email.push(item.email);
-
+          
         });
         // console.log(data);
         console.log("wList:"+whiteListArr.length);
@@ -37,6 +37,7 @@ function saveWhiteListArr(){
 exports.postDeleteLastWhitelist = function(req, res, next) {
   whiteListArr.pop();
   whiteListArr_email.pop();
+  
   saveWhiteListArr();
   return res.redirect('/account');
 };
@@ -57,11 +58,13 @@ exports.postEmailToWhitelist = function(req, res, next) {
 
   if(req.body.whitelist.indexOf('@')>-1){
     var newItem = {
+      statusYear: req.body.whitelist_statusYear,
       status: req.body.whitelist_status,
       email: req.body.whitelist
     }
     whiteListArr.push(newItem);
     whiteListArr_email.push(newItem.email);
+    
     // console.log("whitelist:"+req.body.whitelist);
     saveWhiteListArr();
     return res.redirect('/account');
@@ -182,7 +185,8 @@ exports.postSignup = function(req, res, next) {
         profile: {
           name: req.body.uname,
           lname: req.body.lname,
-          status: whiteListArr[findWlistIndex].status
+          status: whiteListArr[findWlistIndex].status,
+          statusYear: whiteListArr[findWlistIndex].statusYear
         },
         password: req.body.password
       });
@@ -228,7 +232,8 @@ exports.getAccount = function(req, res) {
           'lname': eachUser.profile.lame,
           'email':  eachUser.email,
           'IsAdmin': eachUser.IsAdmin,
-          'status': eachUser.profile.status
+          'status': eachUser.profile.status,
+          'statusYear': eachUser.profile.statusYear,
       } 
 
       usersList.push(thisOneData);
