@@ -174,7 +174,7 @@ app.get('/people/:id', peopleController.getPeopleId);
 // app.get('/people/mentors', passportConf.isAuthenticated, peopleController.getMentors);
 // app.get('/people/ta', passportConf.isAuthenticated, peopleController.getTA);
 // app.get('/people/faculty', passportConf.isAuthenticated, peopleController.getFaculty);
-app.get('/intro/:id', passportConf.isAuthenticated, introController.getIntro);
+app.get('/intro/:id', introController.getIntro);
 app.get('/sharing/:id', shareController.getSharing);
 app.post('/sharing/uploadfiles/:id', uploadFiles.any(), shareController.postSharingFiles);
 app.get('/sharing/files/:id', shareController.getFile);
