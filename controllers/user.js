@@ -87,7 +87,7 @@ exports.postEmailToWhitelist = function(req, res, next) {
   
     // console.log("whitelist:"+req.body.whitelist);
     saveWhiteListArr();
-    return res.redirect('/account');
+    return res.redirect('/account/#admin');
   }
   else{
     req.flash('errors', { msg: 'This is not a email address.' });

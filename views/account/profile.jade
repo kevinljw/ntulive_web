@@ -219,7 +219,7 @@ block content
             | Delete my account
 
     if user.profile.status == "ta" || user.profile.status == "founder" || user.profile.status == "admin"
-      .page-header
+      .page-header#admin
         h3 Administration
       form.form-horizontal(action='/account/whitelist', method='POST')
         input(type='hidden', name='_csrf', value=_csrf)
