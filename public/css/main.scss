@@ -100,6 +100,8 @@ footer {
 }
 #hero-area h1{
 //    #931D34;
+    word-wrap: break-word;
+    word-break: break-all;
     font-size: 120px;
     font-weight: 600;
     color: #931D34;
@@ -644,6 +646,8 @@ article.post .post-inner iframe {
     background-position: -125px 0px;
   }
   #hero-area h1{
+    word-wrap: break-word;
+    word-break: break-all;
     font-size: 90px;
     
   }
