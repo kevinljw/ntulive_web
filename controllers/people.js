@@ -60,7 +60,8 @@ exports.getPeopleId = function(req, res) {
   getFormatedData(req.params.id,function(formatedUserData){
     res.render('people/'+req.params.id, {
       title: 'People',
-      userData: formatedUserData
+      userData: formatedUserData,
+      // yearFlg: req.params.id.indexOf('fellow')>-1?false:true
     });
   });
   
