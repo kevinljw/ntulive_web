@@ -12382,6 +12382,9 @@ article.post .post-inner iframe {
   #hero-area {
     background-position: -125px 0px;
   }
+  #hero-area h1 {
+    font-size: 90px;
+  }
 }
 
 @media screen and (min-width: 1480px) {

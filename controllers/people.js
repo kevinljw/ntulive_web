@@ -14,7 +14,7 @@ var transporter = nodemailer.createTransport({
 function getFormatedData(showStatus,callback){
 
   // var formatedUserData=[];
-  // console.log(showStatus);
+  console.log(showStatus);
   var splitArr = showStatus.split('_');
   // console.log(splitArr);
 
@@ -22,14 +22,17 @@ function getFormatedData(showStatus,callback){
     User.find({"profile.status": splitArr[0], "profile.statusYear": splitArr[1]}, null, {sort: {"profile.name": 1}}, function(err, users) {
       if (err) throw err;
           // console.log("formatedUserData: "+formatedUserData);
+          console.log('16',users)
           callback(users); 
     });
   }
   else{
-    User.find({"profile.status": showStatus}, null, {sort: {"profile.name": 1}}, function(err, users) {
+    User.find({"profile.status": showStatus, "profile.statusYear": { $ne: '16' }}, null, {sort: {"profile.name": 1}}, function(err, users) {
       if (err) throw err;
           // console.log("formatedUserData: "+formatedUserData);
+          console.log(users)
           callback(users); 
+          
     });
   }
   
@@ -41,7 +44,7 @@ function getFormatedData(showStatus,callback){
 exports.getPeople = function(req, res) {
   // get all the users
   // console.log("getPeople");
-  getFormatedData("student",function(formatedUserData){
+  getFormatedData("fellow",function(formatedUserData){
     res.render('people', {
       title: 'People',
       userData: formatedUserData

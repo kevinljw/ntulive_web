@@ -57,14 +57,34 @@ exports.postEmailToWhitelist = function(req, res, next) {
   }
 
   if(req.body.whitelist.indexOf('@')>-1){
-    var newItem = {
-      statusYear: req.body.whitelist_statusYear,
-      status: req.body.whitelist_status,
-      email: req.body.whitelist
-    }
-    whiteListArr.push(newItem);
-    whiteListArr_email.push(newItem.email);
     
+    var existIndex = whiteListArr_email.indexOf(req.body.whitelist); 
+    if(existIndex>-1){
+      whiteListArr[existIndex].status = req.body.whitelist_status;
+      whiteListArr[existIndex].statusYear = req.body.whitelist_statusYear;
+      User.findOne({ email: req.body.whitelist }, function(err, thisUser) {
+          if (thisUser) {
+            thisUser.profile.status = req.body.whitelist_status;
+            thisUser.profile.statusYear = req.body.whitelist_statusYear;
+            thisUser.save(function(err) {
+              if (err) {
+                return next(err);
+              }
+            });
+          }
+
+      });
+    }
+    else{
+      var newItem = {
+        statusYear: req.body.whitelist_statusYear,
+        status: req.body.whitelist_status,
+        email: req.body.whitelist
+      }
+      whiteListArr.push(newItem);
+      whiteListArr_email.push(newItem.email);
+    }
+  
     // console.log("whitelist:"+req.body.whitelist);
     saveWhiteListArr();
     return res.redirect('/account');
