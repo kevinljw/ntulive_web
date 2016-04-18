@@ -613,6 +613,13 @@ article.post .post-inner iframe {
     background-position: 0 40px;
     padding: 100px 0;
 }
+.jumbotronPeople16{
+    background: url('/img/S__10993669.jpg') no-repeat;
+    background-size: 100% auto;
+    background-attachment: fixed;
+    background-position: 0 -100px;
+    padding: 100px 0;
+}
 .jumbotronPeopleMentor{
      background: url('/img/S5316610.jpg') no-repeat;
     background-size: 100% auto;
@@ -642,6 +649,10 @@ article.post .post-inner iframe {
     background-size: auto 52%;
     background-position: -160px 0px;
   }
+  .jumbotronPeople16{
+    background-size: auto 100%;
+    background-position: -50px -40px;
+  }
   .jumbotronHome{
     background-size: auto 70%;
     background-position: 0px 0px;
@@ -666,6 +677,10 @@ article.post .post-inner iframe {
         background-position: 0 -400px;
     }
     .jumbotronPeople{
+        background-position: 0 0px;
+        padding: 140px 0;
+    }
+    .jumbotronPeople16{
         background-position: 0 0px;
         padding: 140px 0;
     }
