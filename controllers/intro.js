@@ -19,6 +19,7 @@ exports.getIntro = function(req, res) {
           'lname': thisUser.profile.lname,
           'birth': thisUser.profile.birth!=''?moment(Date.parse(thisUser.profile.birth)).format("MM / DD"):' - / - ',
           'status': thisUser.profile.status,
+          'statusYear': thisUser.profile.statusYear,
           'picture': thisUser.profile.picture,
           'website': thisUser.profile.website,
           'facebook': thisUser.facebook,

@@ -211,10 +211,10 @@ block content
             p !{thisProfile.statement}
             p   
     .col-md-2.introBackBtn
-        a.a2a_dd.btn.btn-default(href='#introHead')
+        a.col-md-12.a2a_dd.btn.btn-default(href='#introHead')
           span.fa.fa-arrow-up
           |  Top
-    .col-md-2.introBackBtn
-      a.a2a_dd.btn.btn-default(href='../people/#{thisProfile.status}')
+    .col-md-3.introBackBtn
+      a.col-md-12.a2a_dd.btn.btn-default(href="../people/#{thisProfile.status=='fellow'?(thisProfile.status+'_'+thisProfile.statusYear):thisProfile.status}")
         span.fa.fa-share
         |  See others   
