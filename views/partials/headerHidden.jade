@@ -13,7 +13,7 @@
     .collapse.navbar-collapse
       ul.nav.navbar-nav
         li.dropdown(class=title=='People'?'active':undefined)
-          a.dropdown-toggle(href='#') People
+          a.dropdown-toggle(href='#', data-toggle="dropdown", aria-haspopup="true", aria-expanded="false") People
           ul.dropdown-menu
             li
               a(href='/people/founder') Founders
@@ -35,7 +35,7 @@
         //- li(class=title=='Sharing'?'active':undefined)
         //-   a(href='/sharing') Sharing
         li.dropdown(class=title=='Sharing'?'active':undefined)
-          a.dropdown-toggle(href='/sharing/photo') Sharing
+          a.dropdown-toggle(href='/sharing/photo', data-toggle="dropdown", aria-haspopup="true", aria-expanded="false") Sharing
           ul.dropdown-menu
             li
               a(href='/sharing/photo') Photo
@@ -52,7 +52,7 @@
             a(href='/signup') Create Account
         else
           li.dropdown(class=title=='Account Management'?'active':undefined)
-            a.dropdown-toggle(href='#', data-toggle='dropdown')
+            a.dropdown-toggle(href='#', data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
               if user.profile.picture
                 img(src='/uploadPImg/#{user.profile.picture}')
               else
