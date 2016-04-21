@@ -526,17 +526,12 @@ exports.postForgot = function(req, res, next) {
       });
     },
     function(token, user, done) {
-      var transporter = nodemailer.createTransport({
-        service: 'SendGrid',
-        auth: {
-          user: secrets.sendgrid.user,
-          pass: secrets.sendgrid.password
-        }
-      });
+      var transporter = nodemailer.createTransport('smtps://crawl.jw+fb%40gmail.com:crawljw1414@smtp.gmail.com');
+        
       var mailOptions = {
         to: user.email,
-        from: 'hackathon@starter.com',
-        subject: 'Reset your password on Hackathon Starter',
+        from: 'server@medxlive.org',
+        subject: 'Reset your password on Medx Live @Taipei',
         text: 'You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
           'http://' + req.headers.host + '/reset/' + token + '\n\n' +
