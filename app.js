@@ -11,6 +11,8 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 var errorHandler = require('errorhandler');
+var dotenv = require('dotenv');
+dotenv.load({ path: '.env.example' });
 
 var multer  = require('multer');
 var storagePImg = multer.diskStorage({
