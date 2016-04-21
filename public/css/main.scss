@@ -857,3 +857,33 @@ article.post .post-inner iframe {
     -moz-border-radius:6px 0 6px 6px;
     border-radius:6px 0 6px 6px;
 }
+.nav-pills > li > a, .nav-pills > li > a:hover, .nav-pills > li > a:focus{
+    
+    color: #000;
+    font-weight: 300;
+    
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
+    background-color: #fff;
+    color: #931D39;
+    font-weight: 300;
+    border-color: #931D39;
+    border-style: solid;
+    border-width: 1px;
+}
+#fourWe{
+    min-height: 200px;
+    font-weight: 300;
+}
+#fourWe h4{
+    font-weight: 300;
+}
+#fourWe-content{
+    padding:50px;
+    margin-bottom: 50px;
+//    font-weight: 300;
+}
+#fourWe-content h4{
+    font-weight: 200;
+    line-height: 2em;
+}

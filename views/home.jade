@@ -9,26 +9,55 @@ block content
       p 打造台灣未來醫療科技CEO人才計劃
   .container
     .row.fourHeading
-      .col-sm-3
-        //- h2 What we do
-        //- p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        p
-          //- a.btn.btn-default(href='#', role='button') View details »
-      .col-sm-3
-        //- h2 Who we are
-        //- p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        p
-          //- a.btn.btn-default(href='#', role='button') View details »
-      .col-sm-3
-        //- h2 Why we do it
-        //- p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        p
-          //- a.btn.btn-default(href='#', role='button') View details »
-      .col-sm-3
-        //- h2 How we do it
-        //- p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        p
-          //- a.btn.btn-default(href='#', role='button') View details »
+      .profile-tabs#fourWe
+        .nav-tabs-navigation
+          .nav-tabs-wrapper
+            ul.nav.nav-pills.nav-justified.default-color#tabs(data-tabs="tabs")
+              li.active
+                a(href="#first" data-toggle="tab")
+                  h4 WHAT we do
+              li
+                a(href="#second" data-toggle="tab")
+                  h4 WHO we are
+              li
+                a(href="#third" data-toggle="tab")
+                  h4 WHY we do it
+              li
+                a(href="#fourth" data-toggle="tab")
+                  h4 HOW we do it
+        #fourWe-content.tab-content
+            #first.tab-pane.active
+              .row
+                .col-xs-12
+                  h4 Train and cultivate future executives for medtech startups.
+            #second.tab-pane
+              .row
+                .col-xs-12
+                  h4 At MEDx LIVE Taipei, we focus on
+                    br
+                    ul
+                      li
+                        h4 Leadership
+                      li
+                        h4 Innovation
+                      li
+                        h4 Value
+            #third.tab-pane
+              .row
+                .col-xs-12
+                  h4 The purpose of MEDx LIVE Taipei is to:
+                    br
+                    ul
+                      li
+                        h4 Provide a platform for entrepreneurs to network and exchange ideas
+                      li
+                        h4 Create opportunities for people to express their creativity
+            #fourth.tab-pane
+              .row
+                .col-xs-12
+                  h4 We offer project-based executive training which encourages our fellows to refine their skills through learning-by-doing. 
+
+      
     //- hr
     .row
       .col-sm-8
