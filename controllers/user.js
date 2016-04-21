@@ -9,6 +9,7 @@ var adminList = ['evin92@gmail.com'];
 var fs = require('fs');
 var whiteListArr;
 var whiteListArr_email=[];
+var transporter = nodemailer.createTransport('smtps://'+process.env.GOOGLE_MAIL_USER+':'+process.env.GOOGLE_MAIL_PASSWORD+'@'+process.env.GOOGLE_MAIL_SERVER);
 
 loadWhiteListArr(whiteListArr);
 
@@ -451,17 +452,11 @@ exports.postReset = function(req, res, next) {
         });
     },
     function(user, done) {
-      var transporter = nodemailer.createTransport({
-        service: 'SendGrid',
-        auth: {
-          user: secrets.sendgrid.user,
-          pass: secrets.sendgrid.password
-        }
-      });
+      
       var mailOptions = {
         to: user.email,
-        from: 'hackathon@starter.com',
-        subject: 'Your Hackathon Starter password has been changed',
+        from: 'Medx Live @Taipei <server@medxlive.com>',
+        subject: 'Your Medx Live password has been changed',
         text: 'Hello,\n\n' +
           'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
       };
@@ -526,11 +521,10 @@ exports.postForgot = function(req, res, next) {
       });
     },
     function(token, user, done) {
-      var transporter = nodemailer.createTransport('smtps://crawl.jw+fb%40gmail.com:crawljw1414@smtp.gmail.com');
-        
+       
       var mailOptions = {
         to: user.email,
-        from: 'server@medxlive.org',
+        from: 'Medx Live @Taipei <server@medxlive.com>',
         subject: 'Reset your password on Medx Live @Taipei',
         text: 'You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
