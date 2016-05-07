@@ -896,6 +896,9 @@ article.post .post-inner iframe {
     border:none;
     box-shadow:none;
 }
+#fourWe.nav-justified > li, #fourWe.nav-tabs.nav-justified > li{
+         width: 24.5%;
+}
 @media(min-width: 768px){
     #fourWe.nav-justified > li, #fourWe.nav-tabs.nav-justified > li{
          width: 24.5%;
