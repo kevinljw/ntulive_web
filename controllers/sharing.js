@@ -47,21 +47,33 @@ exports.postSharingFiles = function(req, res, next) {
           req.flash('errors', { msg: 'No account with that id exists.' });
           return res.redirect('/');
         }
+        
+        var HasPhoto = false;
+        var HasVideo = false;
+        var HasDoc = false;
+        var FILESTYPE = 'document';
+
       	req.files.forEach(function(eachFILE, index){
       		filenameArr.push(eachFILE.filename);
       		filepathArr.push(eachFILE.originalname);
-          
+
+          if(eachFILE.mimetype.indexOf("image")>-1){
+            HasPhoto = true;
+          }
+          else if (eachFILE.mimetype.indexOf("video")>-1){
+            HasVideo = true;
+          }
+          else if (eachFILE.mimetype.indexOf("application")>-1){
+            HasDoc = true;
+          }
       		if(index==req.files.length-1){
-            var FILESTYPE = 'document';
-            if(eachFILE.mimetype.indexOf("image")>-1){
+            if(HasPhoto & !HasDoc){
               FILESTYPE = 'photo';
             }
-            else if (eachFILE.mimetype.indexOf("video")>-1){
+            else if(HasPhoto & !HasDoc){
               FILESTYPE = 'video';
             }
-            else if (eachFILE.mimetype.indexOf("application")>-1){
-              FILESTYPE = 'document';
-            }
+            
             // console.log(FILESTYPE);
       			var newShare = new Share({
     		        upload_user: thisUser.profile.name,
