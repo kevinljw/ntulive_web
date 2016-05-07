@@ -1,7 +1,7 @@
 extends ../layoutGray
 
 block content
-		.row.jumbotron
+		.row.jumbotron.jumbotronIdea
 			.container
 				h2 Sharing - Video
 				p 
@@ -10,6 +10,28 @@ block content
 		if user
 			script.
 				userUploadID="#{user.id}"
+		if user		
+			.row
+				.postIdeaForm
+					.container
+						.col-sm-12
+							.uploadFilesForm
+								form.form-horizontal(action='uploadfiles/'+user.id, method='POST', enctype='multipart/form-data')
+									input(type='hidden', name='_csrf', value=_csrf)
+									.form-group
+										label.col-sm-4.control-label(for='title') Title
+										.col-sm-5
+											input.form-control(type='text', name='title', id='title')
+									.form-group
+										label.col-sm-4.control-label(for='description') Description
+										.col-sm-5
+											input.form-control(type='description', name='description', id='description')
+									.form-group
+										label.col-sm-4.control-label(for='userFiles') Uploader
+										.col-sm-5
+											input.file(id='input-3', type='file', data-preview-file-type='text', accept='video/*', multiple, name='userFiles')
+				.postIdeaBtn
+					p Share Your Video
 		.container
 			.row
 				.col-md-10
@@ -32,35 +54,3 @@ block content
 												li
 													a(href='files/#{val.filesname[indexOfEachFile]}') #{eachFileVal}
 											.clearfix
-			//- .row
-			//- 	.col-sm-12
-			//- 		each val in shareList
-			//- 			.panel(class='panel-default')
-			//- 				.panel-heading #{val.title}
-			//- 				.eachShareItem
-			//- 					li=val.timestamp
-			//- 					li=val.description
-			//- 					ul Files:
-			//- 						each eachFileVal,indexOfEachFile in val.filespath
-			//- 							li
-			//- 								a(href='files/#{val.filesname[indexOfEachFile]}') #{eachFileVal}
-			if user
-				.row
-					.col-sm-12
-						.uploadFilesForm
-							form.form-horizontal(action='uploadfiles/'+user.id, method='POST', enctype='multipart/form-data')
-								input(type='hidden', name='_csrf', value=_csrf)
-								.form-group
-									label.col-sm-4.control-label(for='title') Title
-									.col-sm-5
-										input.form-control(type='text', name='title', id='title')
-								.form-group
-									label.col-sm-4.control-label(for='description') Description
-									.col-sm-5
-										input.form-control(type='description', name='description', id='description')
-								.form-group
-									label.col-sm-4.control-label(for='userFiles') Uploader
-									.col-sm-5
-										input.file(id='input-3', type='file', data-preview-file-type='text', accept='video/*', multiple, name='userFiles')
-
-				

@@ -78,6 +78,49 @@ exports.postDeleteArticle = function(req, res, next) {
         
 	});
 }
+exports.postEditShare  = function(req, res, next) {
+  Share.findOne({"_id": req.params.id}, function(err, share) {
+    if (!share) {
+          req.flash('errors', { msg: 'No account with that id exists.' });
+          return res.redirect('/');
+        }
+      else{
+          share.title = req.body.title;
+          share.description = req.body.description;
+          
+          share.save(function(err) {
+            if (err) {
+              return next(err);
+            }
+            req.flash('success', { msg: 'Sharing Edit Done.' });
+          res.redirect('/article');
+        });
+        }
+        
+  });
+}
+exports.postEditArticle  = function(req, res, next) {
+	Article.findOne({"_id": req.params.id}, function(err, article) {
+		if (!article) {
+          req.flash('errors', { msg: 'No account with that id exists.' });
+          return res.redirect('/');
+        }
+	    else{
+	        article.title = req.body.title;
+	        article.content = req.body.content;
+	        article.link = req.body.link;
+
+	        article.save(function(err) {
+		        if (err) {
+		          return next(err);
+		        }
+		        req.flash('success', { msg: 'Article Edit Done.' });
+		    	res.redirect('/article');
+		    });
+        }
+        
+	});
+}
 exports.postNewArticle = function(req, res, next) {
 	req.assert('title', 'Title must be at least 1 characters long').len(1);
 	req.assert('content', 'Content must be at least 1 characters long').len(1);

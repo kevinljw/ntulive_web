@@ -1,0 +1,30 @@
+.modal.fade(tabindex='-1', role='dialog', aria-labelledby='ArticleLabel', id='editArticleModel_#{index}', aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+        h4#ArticleLabel.modal-title Article Editor
+      form.form-horizontal(action='/editArticleData/#{thisArticle.id}', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+        .modal-body
+          .form-group
+            label.col-sm-3.control-label(for='title') Title
+            .col-sm-7
+              input.form-control(type='text', name='title', id='title', value='#{thisArticle.title}')
+          .form-group
+            label.col-sm-3.control-label(for='content') Content
+            .col-sm-7
+              textarea.form-control(type='text', name='content', id='content', rows='5') #{thisArticle.content}
+          .form-group
+            label.col-sm-3.control-label(for='link') Link
+            .col-sm-7
+              input.form-control(type='text', name='link', id='link', value='#{thisArticle.link}')
+
+        .modal-footer
+          .col-sm-6
+            button.col-sm-12.btn.btn-default.btn-simple(type='button', data-dismiss='modal') 取消
+          .col-sm-6
+            .form-group
+              button.col-sm-12.btn.btn-default.btn-simple(type='submit')
+                i.fa.fa-paper-plane-o
+                | 送出修改

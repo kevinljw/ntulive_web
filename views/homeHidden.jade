@@ -17,30 +17,27 @@ block content
 								h4 打造台灣未來醫療科技CEO人才計劃
 	section.afterHeroArea
 		.container
-			.profile-tabs#fourWe
-				.nav-tabs-navigation
-					.nav-tabs-wrapper
-						ul.nav.nav-pills.nav-justified.default-color#tabs(data-tabs="tabs")
-							li.active
-								a(href="#first" data-toggle="tab")
-									h4 WHAT we do
-							li
-								a(href="#second" data-toggle="tab")
-									h4 WHO we are
-							li
-								a(href="#third" data-toggle="tab")
-									h4 WHY we do it
-							li
-								a(href="#fourth" data-toggle="tab")
-									h4 HOW we do it
-				#fourWe-content.tab-content
-					#first.tab-pane.active
-						.row
-							.col-xs-12
+			.navbar-collapse
+				ul#fourWe.nav.navbar-nav.nav-pills.nav-justified.default-color
+					li
+						a.dropdown-toggle(href='#', data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false")
+							h4 WHAT we do
+						ul.dropdown-menu
+							//- .row
+							//- 	.col-xs-12
+							//- 		h4 Train and cultivate future executives for medtech startups.
+							li#fourWe-content
 								h4 Train and cultivate future executives for medtech startups.
-					#second.tab-pane
-						.row
-							.col-xs-12
+							
+								
+					li
+						a.dropdown-toggle(href='#', data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false")
+							h4 WHO we are
+						ul.dropdown-menu
+							//- .row
+							//- 	.col-xs-12
+							//- 		h4 Train and cultivate future executives for medtech startups.
+							li#fourWe-content
 								h4 At MEDx LIVE Taipei, we focus on
 									br
 									ul
@@ -50,9 +47,15 @@ block content
 											h4 Innovation
 										li
 											h4 Value
-					#third.tab-pane
-						.row
-							.col-xs-12
+							
+					li
+						a.dropdown-toggle(href='#', data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false")
+							h4 WHY we do it
+						ul.dropdown-menu
+							//- .row
+							//- 	.col-xs-12
+							//- 		h4 Train and cultivate future executives for medtech startups.
+							li#fourWe-content
 								h4 The purpose of MEDx LIVE Taipei is to:
 									br
 									ul
@@ -60,7 +63,14 @@ block content
 											h4 Provide a platform for entrepreneurs to network and exchange ideas
 										li
 											h4 Create opportunities for people to express their creativity
-					#fourth.tab-pane
-						.row
-							.col-xs-12
-								h4 We offer project-based executive training which encourages our fellows to refine their skills through learning-by-doing. 
+							
+					li
+						a.dropdown-toggle(href='#', data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false")
+							h4 HOW we do it
+						ul.dropdown-menu
+							//- .row
+							//- 	.col-xs-12
+							//- 		h4 Train and cultivate future executives for medtech startups.
+							li#fourWe-content
+								h4 We offer project-based executive training which encourages our fellows to refine their skills through learning-by-doing. 				
+			

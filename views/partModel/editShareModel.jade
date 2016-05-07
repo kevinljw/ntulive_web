@@ -1,0 +1,26 @@
+.modal.fade(tabindex='-1', role='dialog', aria-labelledby='ShareLabel', id='editShareModel_#{index}', aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+        h4#ShareLabel.modal-title Share Editor
+      form.form-horizontal(action='/editShareData/#{thisShare.id}', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+        .modal-body
+          .form-group
+            label.col-sm-3.control-label(for='title') Title
+            .col-sm-7
+              input.form-control(type='text', name='title', id='title', value='#{thisShare.title}')
+          .form-group
+            label.col-sm-3.control-label(for='description') Description
+            .col-sm-7
+              textarea.form-control(type='text', name='description', id='description', rows='5') #{thisShare.description}
+          
+        .modal-footer
+          .col-sm-6
+            button.col-sm-12.btn.btn-default.btn-simple(type='button', data-dismiss='modal') 取消
+          .col-sm-6
+            .form-group
+              button.col-sm-12.btn.btn-default.btn-simple(type='submit')
+                i.fa.fa-paper-plane-o
+                | 送出修改

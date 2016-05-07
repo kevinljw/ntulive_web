@@ -200,6 +200,9 @@ app.post('/deleteArticle/:id', passportConf.isAuthenticated, announcementsContro
 app.post('/deleteShare/:id', passportConf.isAuthenticated, announcementsController.postDeleteShare);
 app.post('/deleteIdea/:id', passportConf.isAuthenticated, announcementsController.postDeleteIdea);
 
+app.post('/editArticleData/:id', passportConf.isAuthenticated, announcementsController.postEditArticle);
+app.post('/editShareData/:id', passportConf.isAuthenticated, announcementsController.postEditShare);
+
 
 app.get('/idea', passportConf.isAuthenticated, ideaController.getIdea);
 app.post('/idea/new/:id', passportConf.isAuthenticated, ideaController.postIdea);

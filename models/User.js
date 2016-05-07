@@ -23,6 +23,8 @@ var userSchema = new mongoose.Schema({
     // gender: { type: String, default: '' },
     status: { type: String, default: 'fellow' },
     statusYear: { type: String, default: '15' },
+    status2: { type: String, default: 'none' },
+    status2Year: { type: String, default: '16' },
     // location: { type: String, default: '' },
     website: { type: String, default: '' },
     picture: { type: String, default: '' },

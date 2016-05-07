@@ -19,15 +19,16 @@ function getFormatedData(showStatus,callback){
   // console.log(splitArr);
 
   if(splitArr.length>1){
-    User.find({"profile.status": splitArr[0], "profile.statusYear": splitArr[1]}, null, {sort: {"profile.name": 1}}, function(err, users) {
+    User.find({$or: [{"profile.status": splitArr[0], "profile.statusYear": splitArr[1]},{"profile.status2": splitArr[0], "profile.status2Year": splitArr[1]}]}, null, {sort: {"profile.name": 1}}, function(err, users) {
       if (err) throw err;
+
           // console.log("formatedUserData: "+formatedUserData);
           // console.log('16',users)
           callback(users); 
     });
   }
   else{
-    User.find({"profile.status": showStatus}, null, {sort: {"profile.name": 1}}, function(err, users) {
+    User.find({$or: [{"profile.status": showStatus},{"profile.status2": showStatus}]}, null, {sort: {"profile.name": 1}}, function(err, users) {
       if (err) throw err;
           // console.log("formatedUserData: "+formatedUserData);
           // console.log(users)
