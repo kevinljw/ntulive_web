@@ -899,14 +899,23 @@ article.post .post-inner iframe {
 #fourWe.nav-justified > li, #fourWe.nav-tabs.nav-justified > li{
          width: 24.5%;
 }
-@media(min-width: 768px){
-    #fourWe.nav-justified > li, #fourWe.nav-tabs.nav-justified > li{
-         width: 24.5%;
-    }
-    
-}
 @media (max-width: 767px){
     #fourWe .dropdown-menu{
         border-bottom: 1px solid #ccc;
+    }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+    #fourWe.nav-justified > li, #fourWe.nav-tabs.nav-justified > li{
+         width: 24.5%;
+    }
+}
+@media (min-width: 980px) {
+    #fourWe.nav-justified > li, #fourWe.nav-tabs.nav-justified > li{
+         width: 24.5%;
+    }
+}
+@media (min-width: 1200px) {
+    #fourWe.nav-justified > li, #fourWe.nav-tabs.nav-justified > li{
+         width: 24.5%;
     }
 }
