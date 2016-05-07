@@ -896,9 +896,7 @@ article.post .post-inner iframe {
     border:none;
     box-shadow:none;
 }
-#fourWe.nav-justified > li, #fourWe.nav-tabs.nav-justified > li{
-         width: 24.5%;
-}
+
 @media (max-width: 767px){
     #fourWe .dropdown-menu{
         border-bottom: 1px solid #ccc;
@@ -915,6 +913,11 @@ article.post .post-inner iframe {
     }
 }
 @media (min-width: 1200px) {
+    #fourWe.nav-justified > li, #fourWe.nav-tabs.nav-justified > li{
+         width: 24.5%;
+    }
+}
+@media (min-width: 2400px) {
     #fourWe.nav-justified > li, #fourWe.nav-tabs.nav-justified > li{
          width: 24.5%;
     }
